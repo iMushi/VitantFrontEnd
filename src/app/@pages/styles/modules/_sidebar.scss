@@ -72,6 +72,11 @@ body{
         transition: transform 400ms cubic-bezier($menu-bezier);
 -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000px;
+
+    &:hover .sidebar-header{
+      background-color:$color-white;
+    }
+
     a,button {
         color:$color-menu-light;
         &:hover,&:active{
@@ -111,6 +116,7 @@ body{
         clear: both;
         z-index: 10;
         position: relative;
+        transition: 0.5s ease;
         .sidebar-header-controls{
             display: inline-block;
             -webkit-transition: -webkit-transform 0.4s cubic-bezier($menu-bezier);
