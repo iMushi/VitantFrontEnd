@@ -1,5 +1,5 @@
-// Native Javascript for Pages 4.0 
-(function (root, factory) { 
+// Native Javascript for Pages 4.0
+(function (root, factory) {
 if (typeof define === 'function' && define.amd) {
     // AMD support:
     define([], factory);
@@ -25,7 +25,7 @@ if (typeof define === 'function' && define.amd) {
  // function toggle attributes
   dataToggle    = 'data-toggle',
   dataInit = 'data-pages',
-  
+
   // components
   stringSideBar = 'SideBar',
   stringParallax = 'Parallax',
@@ -35,7 +35,7 @@ if (typeof define === 'function' && define.amd) {
   stringListView = 'ListView',
   stringCard = 'Card',
   stringNotification = 'Notification',
-  
+
   // event names
   clickEvent    = 'click',
   hoverEvent    = 'hover',
@@ -78,6 +78,7 @@ if (typeof define === 'function' && define.amd) {
   var Pages = function(){
       this.pageScrollElement = 'html, body';
       this.$body = document.getElementsByTagName('body');
+      this._innerWidth = window.innerWidth;
       /** @function setUserOS
       * @description SET User Operating System eg: mac,windows,etc
       * @returns {string} - Appends OSName to Pages.$body
@@ -340,6 +341,7 @@ if (typeof define === 'function' && define.amd) {
       this.isVisible = function(element){
         return (element.offsetWidth > 0 || element.offsetHeight > 0)
       }
+
   }
  var pg = new Pages();
  window.pg = pg;

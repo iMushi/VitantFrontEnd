@@ -7,8 +7,7 @@
     "callable-types": true,
     "class-name": true,
     "comment-format": [
-      true,
-      "check-space"
+      true
     ],
     "curly": true,
     "deprecation": {
@@ -125,9 +124,8 @@
       "camelCase"
     ],
     "component-selector": [
-      true,
+      false,
       "element",
-      "app",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
@@ -138,7 +136,7 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
+    "component-class-suffix": false,
     "directive-class-suffix": true
   }
 }

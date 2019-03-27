@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import must be at top of file, otherwise CSS will not work */
+
+
+
+@font-face {
+  font-family: 'DanmarkURW-Med';
+  src: url('assets/Vitant/webfont/38FAA9_0_0.eot?#iefix') format('embedded-opentype'),
+  url('assets/Vitant/webfont/38FAA9_0_0.woff2') format('woff2'),
+  url('assets/Vitant/webfont/38FAA9_0_0.woff') format('woff'),
+  url('assets/Vitant/webfont/38FAA9_0_0.ttf') format('truetype');
+}
+@font-face {font-family: 'DanmarkURW-Dem';src: url('assets/Vitant/webfont/38FAA9_1_0.eot');src: url('assets/Vitant/webfont/38FAA9_1_0.eot?#iefix') format('embedded-opentype'),url('assets/Vitant/webfont/38FAA9_1_0.woff2') format('woff2'),url('assets/Vitant/webfont/38FAA9_1_0.woff') format('woff'),url('assets/Vitant/webfont/38FAA9_1_0.ttf') format('truetype');}
+@font-face {font-family: 'DanmarkURW-Lig';src: url('assets/Vitant/webfont/38FAA9_2_0.eot');src: url('assets/Vitant/webfont/38FAA9_2_0.eot?#iefix') format('embedded-opentype'),url('assets/Vitant/webfont/38FAA9_2_0.woff2') format('woff2'),url('assets/Vitant/webfont/38FAA9_2_0.woff') format('woff'),url('assets/Vitant/webfont/38FAA9_2_0.ttf') format('truetype');}
+@font-face {font-family: 'DanmarkURW-Bol';src: url('assets/Vitant/webfont/38FAA9_3_0.eot');src: url('assets/Vitant/webfont/38FAA9_3_0.eot?#iefix') format('embedded-opentype'),url('assets/Vitant/webfont/38FAA9_3_0.woff2') format('woff2'),url('assets/Vitant/webfont/38FAA9_3_0.woff') format('woff'),url('assets/Vitant/webfont/38FAA9_3_0.ttf') format('truetype');}
+
+
+body {
+  font-family: DanmarkURW-Lig !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: DanmarkURW-Bol !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}

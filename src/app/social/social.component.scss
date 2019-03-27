@@ -6,3 +6,60 @@
 .day{
     margin: 0 auto;
 }
+
+
+.vitantInnerLogo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 200px;
+}
+
+
+.vitantImgCard {
+  padding: 0px !important;
+}
+
+.vitantImgCard .vitantImgCardContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden!important
+}
+
+.vitantImgCard .vitantImgCardContainer img{
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.pgCardNoHeader {
+  display: none;
+}
+
+
+.card-body .hoverTitle{
+  position: absolute;
+  top: 60px;
+  margin: 0;
+  padding: 0;
+  font-size: 3em;
+  color: rgba(0,0	,0	,.05);
+  transition: 0.5s;
+}
+
+.hoverCard:hover .card-body .hoverTitle{
+   top:0px;
+}
+
+
+.hoverCard:before{
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #000;
+  transform: skew(2deg,2deg);
+  z-index: -1;
+  background: linear-gradient(315deg,#eb4953,#91308d);
+}

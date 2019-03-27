@@ -24,6 +24,7 @@
         ]
       },
       "styles": [
+        "styles.css",
         "assets/plugins/bootstrap/css/bootstrap.min.css",
         "assets/plugins/font-awesome/css/font-awesome.min.css",
         "assets/plugins/codrops-stepsform/css/component.css"

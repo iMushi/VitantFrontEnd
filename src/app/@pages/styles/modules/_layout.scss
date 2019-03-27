@@ -125,7 +125,7 @@ body {
         overflow: hidden;
         @include transition(opacity .3s ease);
         background-size: cover;
-        background-color: $color-success;
+        background-color: $color-white;
     }
     h1 {
         font-size: 44px;

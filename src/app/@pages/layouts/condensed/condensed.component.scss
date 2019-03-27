@@ -4,6 +4,9 @@
 $base-img-url: "../../assets/images" !global;
 $assets-url: "../../assets" !global;
 
+
+
+
 @import "modules/_layout.scss";
 @import "modules/_sidebar.scss";
 @import "modules/_secondary-sidebar.scss";
@@ -107,3 +110,16 @@ $assets-url: "../../assets" !global;
 @import "vendor/ng-datatable.scss";
 @import "vendor/ngx-nvd3.scss";
 @import "vendor/ngx-google-map.scss";
+
+
+body {
+  background-color: white !important;
+}
+
+.content-noHeader {
+  padding-top: 0px !important;
+}
+
+.page-container {
+  background-color: white !important;
+}
