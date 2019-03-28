@@ -54,7 +54,14 @@ body{
         }
 
     }
+  &.sidebar-visible, &.sidebar-open {
+    .sidebar-header {
+      background-color: white !important;
+      transition: 0.7s ease;
+    }
+  }
 }
+
 
 .page-sidebar{
     width: $layout-sidepanel-width;
@@ -73,9 +80,6 @@ body{
 -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000px;
 
-    &:hover .sidebar-header{
-      background-color:$color-white;
-    }
 
     a,button {
         color:$color-menu-light;
