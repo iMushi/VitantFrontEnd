@@ -1,19 +1,16 @@
 import {
   Component,
-  OnInit,
-  ElementRef,
-  ViewEncapsulation,
-  Inject,
-  forwardRef,
-  Input,
-  ViewChild,
-  TemplateRef,
   ContentChild,
+  ElementRef,
+  HostBinding,
   HostListener,
-  HostBinding
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewEncapsulation
 } from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {pagesToggleService} from '../../services/toggler.service';
+import { Subscription } from 'rxjs/Subscription';
+import { pagesToggleService } from '../../services/toggler.service';
 
 declare var pg: any;
 
@@ -22,28 +19,26 @@ declare var pg: any;
   selector: 'pg-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  host: {
-    'class': 'page-sidebar',
-  },
   encapsulation: ViewEncapsulation.None
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
   subscriptions: Array<Subscription> = [];
-  pin: boolean = false;
-  drawer: boolean = false;
+  pin = false;
+  drawer = false;
   sidebar;
   timer;
+
+  @HostBinding('class.page-sidebar') hasSideBar = true;
   @HostBinding('style.transform')
   style: string;
-
-  private sideBarWidth = 280;
-  private sideBarWidthCondensed = 280 - 70;
-
   @ContentChild('sideBarOverlay') sideBarOverlay: TemplateRef<void>;
   @ContentChild('sideBarHeader') sideBarHeader: TemplateRef<void>;
   @ContentChild('menuItems') menuItems: TemplateRef<void>;
+  @HostBinding('class.visible') mobileSidebar: boolean;
+  private sideBarWidth = 280;
+  private sideBarWidthCondensed = 280 - 70;
 
-  constructor(private appSidebar: ElementRef, public toggler: pagesToggleService) {
+  constructor (private appSidebar: ElementRef, public toggler: pagesToggleService) {
     this.subscriptions.push(this.toggler.sideBarToggle.subscribe(toggle => {
       this.toggleMobile(toggle);
     }));
@@ -56,21 +51,19 @@ export class SidebarComponent implements OnInit {
     this.mobileSidebar = false;
   }
 
-  ngOnInit() {
+  ngOnInit () {
   }
 
-  ngOnDestroy() {
+  ngOnDestroy () {
     for (const subs of this.subscriptions) {
       subs.unsubscribe();
     }
     clearTimeout(this.timer);
   }
 
-  @HostBinding('class.visible') mobileSidebar: boolean;
-
   @HostListener('mouseenter', ['$event'])
   @HostListener('click', ['$event'])
-  openSideBar() {
+  openSideBar () {
     if (pg.isVisibleSm() || pg.isVisibleXs()) {
       return false;
     }
@@ -82,7 +75,7 @@ export class SidebarComponent implements OnInit {
     pg.addClass(document.body, 'sidebar-visible');
   }
 
-  closeSideBar() {
+  closeSideBar () {
     if (pg.isVisibleSm() || pg.isVisibleXs()) {
       return false;
     }
@@ -96,7 +89,7 @@ export class SidebarComponent implements OnInit {
     //this.drawer = false;
   }
 
-  toggleMenuPin() {
+  toggleMenuPin () {
     if (this.pin) {
       this.pin = false;
     } else {
@@ -104,7 +97,7 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  toggleDrawer() {
+  toggleDrawer () {
     if (this.drawer) {
       this.drawer = false;
     } else {
@@ -112,14 +105,14 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  toggleMobile(toggle: boolean) {
+  toggleMobile (toggle: boolean) {
     clearTimeout(this.timer);
     if (toggle) {
       this.mobileSidebar = toggle;
     } else {
       this.timer = setTimeout(() => {
         this.mobileSidebar = toggle;
-      }, 400)
+      }, 400);
     }
   }
 }
