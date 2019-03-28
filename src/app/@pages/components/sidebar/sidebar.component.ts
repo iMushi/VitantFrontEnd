@@ -1,6 +1,20 @@
-import { Component, OnInit,ElementRef,ViewEncapsulation, Inject, forwardRef, Input,ViewChild,TemplateRef,ContentChild,HostListener,HostBinding } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { pagesToggleService} from '../../services/toggler.service';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewEncapsulation,
+  Inject,
+  forwardRef,
+  Input,
+  ViewChild,
+  TemplateRef,
+  ContentChild,
+  HostListener,
+  HostBinding
+} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {pagesToggleService} from '../../services/toggler.service';
+
 declare var pg: any;
 
 
@@ -15,12 +29,12 @@ declare var pg: any;
 })
 export class SidebarComponent implements OnInit {
   subscriptions: Array<Subscription> = [];
-  pin:boolean = false;
-  drawer:boolean = false;
+  pin: boolean = false;
+  drawer: boolean = false;
   sidebar;
   timer;
   @HostBinding('style.transform')
-  style:string;
+  style: string;
 
   private sideBarWidth = 280;
   private sideBarWidthCondensed = 280 - 70;
@@ -28,68 +42,84 @@ export class SidebarComponent implements OnInit {
   @ContentChild('sideBarOverlay') sideBarOverlay: TemplateRef<void>;
   @ContentChild('sideBarHeader') sideBarHeader: TemplateRef<void>;
   @ContentChild('menuItems') menuItems: TemplateRef<void>;
-  
-  constructor(private appSidebar: ElementRef,private toggler:pagesToggleService) { 
-  	this.subscriptions.push(this.toggler.sideBarToggle.subscribe(toggle => { this.toggleMobile(toggle) }));
-  	this.subscriptions.push(this.toggler.pageContainerHover.subscribe(message => { this.closeSideBar() }));
-    this.subscriptions.push(this.toggler.menuDrawer.subscribe(message => { this.toggleDrawer() }));
+
+  constructor(private appSidebar: ElementRef, public toggler: pagesToggleService) {
+    this.subscriptions.push(this.toggler.sideBarToggle.subscribe(toggle => {
+      this.toggleMobile(toggle);
+    }));
+    this.subscriptions.push(this.toggler.pageContainerHover.subscribe(message => {
+      this.closeSideBar();
+    }));
+    this.subscriptions.push(this.toggler.menuDrawer.subscribe(message => {
+      this.toggleDrawer();
+    }));
     this.mobileSidebar = false;
   }
 
   ngOnInit() {
   }
+
   ngOnDestroy() {
     for (const subs of this.subscriptions) {
       subs.unsubscribe();
     }
     clearTimeout(this.timer);
   }
-  @HostBinding('class.visible') mobileSidebar:boolean;
 
-  @HostListener('mouseenter', ["$event"])
-  @HostListener('click', ["$event"])
-  openSideBar(){
-    if (pg.isVisibleSm() || pg.isVisibleXs()) return false
-    if(this.pin) return false;
+  @HostBinding('class.visible') mobileSidebar: boolean;
 
-    this.style = 'translate3d(' +this. sideBarWidthCondensed + 'px, 0,0)'
-    pg.addClass(document.body,"sidebar-visible");
+  @HostListener('mouseenter', ['$event'])
+  @HostListener('click', ['$event'])
+  openSideBar() {
+    if (pg.isVisibleSm() || pg.isVisibleXs()) {
+      return false;
+    }
+    if (this.pin) {
+      return false;
+    }
+
+    this.style = 'translate3d(' + this.sideBarWidthCondensed + 'px, 0,0)';
+    pg.addClass(document.body, 'sidebar-visible');
   }
 
-  closeSideBar(){
-    if (pg.isVisibleSm() || pg.isVisibleXs()) return false
-    if(this.pin) return false;
+  closeSideBar() {
+    if (pg.isVisibleSm() || pg.isVisibleXs()) {
+      return false;
+    }
+    if (this.pin) {
+      return false;
+    }
 
-    this.style = 'translate3d(0,0,0)'
-    pg.removeClass(document.body,"sidebar-visible");
-    
+    this.style = 'translate3d(0,0,0)';
+    pg.removeClass(document.body, 'sidebar-visible');
+
     //this.drawer = false;
   }
 
-  toggleMenuPin(){
-    if(this.pin)
+  toggleMenuPin() {
+    if (this.pin) {
       this.pin = false;
-    
-    else
+    } else {
       this.pin = true;
+    }
   }
 
-  toggleDrawer(){
-    if(this.drawer)
+  toggleDrawer() {
+    if (this.drawer) {
       this.drawer = false;
-    else
+    } else {
       this.drawer = true;
+    }
   }
 
-  toggleMobile(toggle:boolean){
-      clearTimeout(this.timer);
-      if(toggle){
+  toggleMobile(toggle: boolean) {
+    clearTimeout(this.timer);
+    if (toggle) {
+      this.mobileSidebar = toggle;
+    } else {
+      this.timer = setTimeout(() => {
         this.mobileSidebar = toggle;
-      }
-      else{
-        this.timer = setTimeout(()=>{  
-          this.mobileSidebar = toggle;
-        },400)
-      }
+      }, 400)
+    }
   }
 }

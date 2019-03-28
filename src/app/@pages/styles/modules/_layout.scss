@@ -126,6 +126,9 @@ body {
         @include transition(opacity .3s ease);
         background-size: cover;
         background-color: $color-white;
+        background-position: center;
+        background-color: #fff;
+        background-repeat: no-repeat;
     }
     h1 {
         font-size: 44px;

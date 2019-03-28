@@ -26,3 +26,9 @@ h1, h2, h3, h4, h5 {
   font-weight: normal !important;
   font-style: normal !important;
 }
+
+.font-med {
+  font-family: DanmarkURW-Med;
+  font-weight: normal !important;
+  font-style: normal !important;
+}

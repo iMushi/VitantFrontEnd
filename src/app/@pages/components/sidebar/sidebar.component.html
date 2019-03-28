@@ -5,7 +5,7 @@
       </div>
       <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
       <!-- BEGIN SIDEBAR MENU HEADER-->
-      <div class="sidebar-header">
+      <div class="sidebar-header" [ngClass]="{ 'headerBgWhite' : toggler.sideBarToggle | async}">
         <ng-template [ngTemplateOutlet]="sideBarHeader"></ng-template>
       </div>
       <!-- END SIDEBAR MENU HEADER-->
