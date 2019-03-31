@@ -8,7 +8,7 @@
            [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'">
         <div class="inner">
           <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
-            <h5 class="titleCoral no-margin">Registro</h5>
+            <h5 class="titleAzul no-margin">Registro de Contacto</h5>
           </div>
         </div>
       </div>
@@ -74,29 +74,13 @@
                       </div>
                     </div>
 
-                    <div class="row clearfix">
-                      <div class="col-md-12">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="basicFormPassword.invalid && (basicFormPassword.dirty || basicFormPassword.touched)">
-                          <label>Contrase&ntilde;a</label>
-                          <input type="password" class="form-control" name="password" [(ngModel)]="password" #basicFormPassword="ngModel" required>
-                        </div>
-                        <div *ngIf="basicFormPassword.invalid && (basicFormPassword.dirty || basicFormPassword.touched)">
-                          <label *ngIf="basicFormPassword.errors.required" class="error font-med">Esta informaci&oacute;n es requerida</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p class="pull-right">
-                      <a href="https://vitant.mx/themes/begrand/assets/documents/vitant-aviso-de-privacidad.pdf" target="_blank">Terminos y Condiciones</a> .
-                    </p>
-
                     <div class="clearfix"></div>
 
                     <BR>
                     <div class="row clearfix">
                       <div class="col-md-12 buttonCenter">
                         <button class="btn btn-coral btnVitant" type="submit" [class.disabled]="basicForm.invalid">
-                         <i> Crear Cuenta</i>
+                          <i>Registrar Contacto</i>
                         </button>
                       </div>
                     </div>

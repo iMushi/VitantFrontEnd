@@ -1,0 +1,152 @@
+
+
+<div class="container-fluid padding-25 sm-padding-10 sm-gutter">
+  <div class="row">
+    <div class="col-lg-6 col-xlg-5">
+      <div class="row">
+        <div class="col-md-12 m-b-10">
+          <div class="ar-3-2 widget-1-wrapper">
+            <image-widget></image-widget>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 m-b-10">
+          <div class="ar-2-1">
+            <graph-tile-widget></graph-tile-widget>
+          </div>
+        </div>
+        <div class="col-sm-6 m-b-10">
+          <div class="ar-2-1">
+            <bar-tile-widget></bar-tile-widget>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xlg-4">
+      <div class="row">
+        <div class="col-sm-6 m-b-10">
+          <div class="ar-1-1">
+
+            <!--
+            <image-widget-basic></image-widget-basic>
+-->
+
+            <pgcard TimeOut="3000" AdditionalClasses="widgetRegContactos card no-border bg-primary widget widget-loader-circle-lg no-margin full-height" MinimalHeader="true">
+              <div class="pull-bottom bottom-left bottom-right padding-25">
+                <span class="label font-montserrat fs-11">NEWS</span>
+                <br>
+                <h3 class="text-white">So much more to see at a glance.</h3>
+                <p class="text-white hint-text d-none d-xl-block">Learn More at Project Pages</p>
+              </div>
+            </pgcard>
+
+
+          </div>
+        </div>
+        <div class="col-sm-6 m-b-10">
+          <div class="ar-1-1">
+
+
+
+
+
+            <pgcard TimeOut="3000" AdditionalClasses="widgetConoceMas card no-border bg-complete no-margin widget-loader-bar full-height" MinimalHeader="true" BodyClass="no-padding" HeaderClass="hidden">
+              <swiper [config]="configLiveWidget" [(index)]="index">
+                <div class="slide-front tiles slide active">
+                  <div class="padding-30">
+                    <div class="pull-top">
+                      <div class="pull-left visible-lg visible-xlg">
+                        <i class="pg pg-map"></i>
+                      </div>
+                      <div class="pull-right">
+                        <ul class="list-inline ">
+                          <li>
+                            <a href="javascript:void(0)" class="no-decoration text-white">
+                              <i class="pg pg-comment"></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" class="widget-3-fav no-decoration text-white">
+                              <i class="pg pg-like"></i>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="pull-bottom p-b-30">
+                      <p class="p-t-10 fs-12 p-b-5 text-white no-margin">21 Jan</p>
+
+                      <h3 class="no-margin text-white p-b-10">Carefully
+                        <br>designed for a
+                        <br>great
+                        <span class="semi-bold">experience</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="slide-back tiles">
+                  <div class="padding-30">
+                    <div class="pull-top">
+                      <div class="pull-left visible-lg visible-xlg">
+                        <i class="pg pg-map"></i>
+                      </div>
+                      <div class="pull-right">
+                        <ul class="list-inline ">
+                          <li>
+                            <a href="javascript:void(0)" class="no-decoration text-white">
+                              <i class="pg pg-comment"></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" class="widget-3-fav no-decoration text-white">
+                              <i class="pg pg-like"></i>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="pull-bottom p-b-30">
+                      <p class="p-t-10 fs-12 p-b-5 text-white no-margin">21 Jan</p>
+
+                      <h3 class="no-margin text-white p-b-10">A whole new
+                        <br>
+                        <span class="semi-bold">page</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </swiper>
+            </pgcard>
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 m-b-10">
+          <div class="ar-1-1">
+            <plain-widget></plain-widget>
+          </div>
+        </div>
+        <div class="col-sm-6 m-b-10">
+          <div class="ar-1-1">
+            <graph-live-widget></graph-live-widget>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="visible-xlg col-xlg-3">
+      <div class="ar-2-3">
+        <table-widget></table-widget>
+      </div>
+    </div>
+  </div>
+</div>

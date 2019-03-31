@@ -81,6 +81,16 @@ import { BlankCorporateComponent } from './@pages/layouts/blank-corporate/blank-
 import { BlankSimplywhiteComponent } from './@pages/layouts/blank-simplywhite/blank-simplywhite.component';
 import { BlankCasualComponent } from './@pages/layouts/blank-casual/blank-casual.component';
 import { RegistroComponent } from './registro/registro.component';
+import { RegistroContactoComponent } from './registro-contacto/registro-contacto.component';
+import { ViewVoceroComponent } from './view-vocero/view-vocero.component';
+
+
+import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -120,9 +130,12 @@ export class AppHammerConfig extends HammerGestureConfig {
     BlankCorporateComponent,
     BlankSimplywhiteComponent,
     BlankCasualComponent,
-    RegistroComponent
+    RegistroComponent,
+    RegistroContactoComponent,
+    ViewVoceroComponent
   ],
   imports: [
+    SwiperModule,
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
@@ -162,6 +175,9 @@ export class AppHammerConfig extends HammerGestureConfig {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: AppHammerConfig
+    },{
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
     }],
   bootstrap: [AppComponent]
 })

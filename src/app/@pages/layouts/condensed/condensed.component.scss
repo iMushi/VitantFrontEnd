@@ -110,7 +110,7 @@ $assets-url: "../../assets" !global;
 
 
 body {
-  background-color: white !important;
+  background-color: $color-white !important;
 }
 
 .content-noHeader {
@@ -118,12 +118,12 @@ body {
 }
 
 .page-container {
-  background-color: white !important;
+  background-color: $color-white !important;
 }
 
 .footer {
  // position: sticky !important;
-  background-color: white !important;
+  background-color: $color-white !important;
 }
 
 
@@ -143,9 +143,21 @@ body {
   margin: 0 10px;
   border-radius: 30%;
   box-shadow: 0 5px 15px -5px #00000070;
-  color: #91308d;
+  color: $color-rosa;
   overflow: hidden;
   position: relative;
+}
+
+
+.btnVitant {
+  line-height: 30px;
+  font-size: 15px;
+  transition: 0.2s linear;
+}
+
+.btnVitant:hover i{
+  transform: scale(1.3);
+  color: $color-morado;
 }
 
 .btnAnimatedVitant i{
@@ -164,7 +176,7 @@ body {
   position: absolute;
   width: 120%;
   height: 120%;
-  background: #91308d;
+  background: $color-rosa;
   transform: rotate(45deg);
   left: -110%;
   top: 90%;
@@ -176,7 +188,6 @@ body {
   left: -10%;
 }
 @keyframes aaa {
-
   0%{
     left: -110%;
     top: 90%;
@@ -244,7 +255,7 @@ body {
   background: #000;
   transform: skew(2deg,2deg);
   z-index: -1;
-  background: linear-gradient(315deg,#eb4953,#91308d);
+  background: linear-gradient(315deg,$color-coral,$color-rosa);
 }
 
 .social-wrapper .social .smallBanner{
@@ -258,3 +269,85 @@ body {
 .rowJustifyCenter {
   justify-content: center;
 }
+
+.buttonCenter{
+  display: flex;
+  justify-content: center;
+}
+
+
+$assets-url :"/assets";
+
+
+// Widget Registrar contactos
+.widgetRegContactos {
+  height: 100% !important;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  .card-body{
+    height:auto !important;
+  }
+  &:after {
+    background-image: url("#{$assets-url}/img/social/person-cropped.jpg");
+    background-size: cover;
+    content: " ";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 0;
+    opacity: .69;
+  }
+  & > div{
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Widget Registrar contactos
+
+
+
+// Widget Conoce Más
+
+
+.widgetConoceMas{
+  height: 100% !important;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  .widget-3-fav{
+    background: rgba(0,0,0,.07);
+    vertical-align: middle;
+    padding: 6px 11px;
+    display: block;
+  }
+  .pg-map {
+    font-size: 30px;
+    color: #fff;
+  }
+  .widget-3-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &:after{
+      position: absolute;
+      background: transparent;
+      content:"";
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+  }
+}
+
+
+// Widget Conoce Mas

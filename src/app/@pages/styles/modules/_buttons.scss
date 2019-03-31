@@ -128,6 +128,10 @@ Alternate buttons
 --------------------------------------------------
 */
 
+.btn-coral {
+  @include button($color-white, $color-coral, $color-rosa);
+}
+
 .btn-primary {
     @include button($color-white, $color-primary, $color-primary);
 }

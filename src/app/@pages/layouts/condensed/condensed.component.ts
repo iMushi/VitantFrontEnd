@@ -36,6 +36,18 @@ export class CondensedComponent extends RootLayout implements OnInit {
       routerLink: '/Vitant/registro',
       iconType: 'pg',
       iconName: 'form'
+    },
+    {
+      label: 'Registro Contacto',
+      routerLink: '/Vitant/registro-contacto',
+      iconType: 'fa',
+      iconName: 'user-plus'
+    },
+    {
+      label: 'Vocero',
+      routerLink: '/Vitant/vocero',
+      iconType: 'fa',
+      iconName: 'user'
     }
 
   ];
