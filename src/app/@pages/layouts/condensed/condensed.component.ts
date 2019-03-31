@@ -24,7 +24,7 @@ export class CondensedComponent extends RootLayout implements OnInit {
     */
 
     {
-      label: 'Home',
+      label: 'Inicio',
       routerLink: '/Vitant',
       iconType: 'pg',
       iconName: 'home'

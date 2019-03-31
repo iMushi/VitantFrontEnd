@@ -1,94 +1,97 @@
 <!-- WRAP LAYOUT IF BOXED -->
 <div class="container" *ngIf="_boxed; else basicLayoutBlock">
-    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
 </div>
 <ng-template #basicLayoutBlock>
-    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
 </ng-template>
 
 <!-- YOUR LAYOUT CONTENT GOES INSIDE HERE -->
 <ng-template #contentTpl>
-    <!-- PAGE SIDEBAR -->
-    <pg-sidebar>
-        <ng-template #sideBarOverlay>
-            <div class="row">
-                <div class="col-xs-6 no-padding">
-                    <a href="javascript:void(0)" class="p-l-40"><img src="assets/img/demo/social_app.svg" alt="socail">
-                    </a>
-                </div>
-                <div class="col-xs-6 no-padding">
-                    <a href="javascript:void(0)" class="p-l-10"><img src="assets/img/demo/email_app.svg" alt="socail">
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 m-t-20 no-padding">
-                    <a href="javascript:void(0)" class="p-l-40"><img src="assets/img/demo/calendar_app.svg" alt="socail">
-                    </a>
-                </div>
-                <div class="col-xs-6 m-t-20 no-padding">
-                    <a href="javascript:void(0)" class="p-l-10"><img src="assets/img/demo/add_more.svg" alt="socail">
-                    </a>
-                </div>
-            </div>
-        </ng-template>
-        <ng-template #sideBarHeader>
-            <img src="assets/Vitant/VITANT_Logo_horizontal_RGB.png" alt="logo" class="brand" pgRetina src1x="assets/Vitant/VITANT_Logo_horizontal_RGB.png" src2x="assets/Vitant/VITANT_Logo_horizontal_RGB.png" width="150">
-            <div class="sidebar-header-controls">
-              <!--
-                <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" [class.active]="_menuDrawerOpen" (click)="toggleMenuDrawer()"><i
-                        class="fa fa-angle-down fs-16"></i>
-                </button>
+  <!-- PAGE SIDEBAR -->
+  <pg-sidebar>
+    <!--
+      <ng-template #sideBarOverlay>
+          <div class="row">
+              <div class="col-xs-6 no-padding">
+                  <a href="javascript:void(0)" class="p-l-40"><img src="assets/img/demo/social_app.svg" alt="socail">
+                  </a>
+              </div>
+              <div class="col-xs-6 no-padding">
+                  <a href="javascript:void(0)" class="p-l-10"><img src="assets/img/demo/email_app.svg" alt="socail">
+                  </a>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-6 m-t-20 no-padding">
+                  <a href="javascript:void(0)" class="p-l-40"><img src="assets/img/demo/calendar_app.svg" alt="socail">
+                  </a>
+              </div>
+              <div class="col-xs-6 m-t-20 no-padding">
+                  <a href="javascript:void(0)" class="p-l-10"><img src="assets/img/demo/add_more.svg" alt="socail">
+                  </a>
+              </div>
+          </div>
+      </ng-template>
+      -->
+    <ng-template #sideBarHeader>
+      <img src="assets/Vitant/VITANT_Logo_horizontal_RGB.png" alt="logo" class="brand" pgRetina src1x="assets/Vitant/VITANT_Logo_horizontal_RGB.png"
+           src2x="assets/Vitant/VITANT_Logo_horizontal_RGB.png" width="150">
+      <div class="sidebar-header-controls">
+        <!--
+          <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" [class.active]="_menuDrawerOpen" (click)="toggleMenuDrawer()"><i
+                  class="fa fa-angle-down fs-16"></i>
+          </button>
 
-                <button type="button" class="btn btn-link d-lg-inline-block d-xlg-inline-block d-md-inline-block d-sm-none d-none" data-toggle-pin="sidebar"
-                        (click)="toggleMenuPin()"><i class="fa fs-12"></i>
-                </button>
-                -->
+          <button type="button" class="btn btn-link d-lg-inline-block d-xlg-inline-block d-md-inline-block d-sm-none d-none" data-toggle-pin="sidebar"
+                  (click)="toggleMenuPin()"><i class="fa fs-12"></i>
+          </button>
+          -->
+      </div>
+    </ng-template>
+    <ng-template #menuItems>
+      <pg-menu-items [Items]="menuLinks">
+      </pg-menu-items>
+    </ng-template>
+  </pg-sidebar>
+  <!-- PAGE CONTAINER -->
+  <page-container>
+
+    <pg-header [boxed]="_boxed" [hidden]="!_isMobile">
+      <!-- START MOBILE SIDEBAR TOGGLE -->
+      <a href="javascript:void(0);" class="btn-link toggle-sidebar d-lg-none pg pg-menu" (click)="toggleMobileSidebar()"></a>
+      <!-- END MOBILE SIDEBAR TOGGLE -->
+    </pg-header>
+
+    <div class="page-content-wrapper {{_pageContainerClass}}">
+      <!-- START PAGE CONTENT -->
+      <div class="content {{_contentClass}}" [ngClass]=" {'content-noHeader' : !_isMobile }">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- END PAGE CONTENT -->
+      <!-- START COPYRIGHT -->
+      <ng-template [ngIf]="_footer">
+        <div class=" container-fluid container-fixed-lg footer">
+          <div class="copyright  sm-text-center">
+
+            <div class="pull-left sm-pull-reset copyrightExtended ">
+              <span class="font-med">Vitant del Valle</span>.
             </div>
-        </ng-template>
-        <ng-template #menuItems>
-            <pg-menu-items [Items]="menuLinks">
-            </pg-menu-items>
-        </ng-template>
-    </pg-sidebar>
-    <!-- PAGE CONTAINER -->
-    <page-container>
-
-        <pg-header [boxed]="_boxed" [hidden]="!_isMobile">
-            <!-- START MOBILE SIDEBAR TOGGLE -->
-            <a href="javascript:void(0);" class="btn-link toggle-sidebar d-lg-none pg pg-menu" (click)="toggleMobileSidebar()"></a>
-            <!-- END MOBILE SIDEBAR TOGGLE -->
-        </pg-header>
-
-        <div class="page-content-wrapper {{_pageContainerClass}}">
-            <!-- START PAGE CONTENT -->
-            <div class="content {{_contentClass}}" [ngClass]=" {'content-noHeader' : !_isMobile }">
-                <router-outlet></router-outlet>
+            <div class="pull-right sm-pull-reset">
+              <a class="btnAnimatedVitant" href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a class="btnAnimatedVitant" href="#">
+                <i class="fa fa-twitter"></i>
+              </a>
             </div>
-            <!-- END PAGE CONTENT -->
-            <!-- START COPYRIGHT -->
-            <ng-template [ngIf]="_footer">
-                <div class=" container-fluid container-fixed-lg footer">
-                    <div class="copyright sm-text-center">
-                        <p class="small no-margin pull-left sm-pull-reset">
-                            <span class="hint-text">Copyright &copy; 2017</span>
-                            <span class="font-montserrat">REVOX</span>.
-                            <span class="hint-text">All rightsreserved.</span>
-                            <span class="sm-block"><a class="m-l-10 m-r-10" href="javascript:void(0)">Terms of use</a>
-                                <span class="muted">|</span>
-                                <a class="m-l-10" href="javascript:void(0)">Privacy Policy</a>
-                            </span>
-                        </p>
-                        <p class="small no-margin pull-right sm-pull-reset">
-                            Hand-crafted <span class="hint-text">&amp; made with Love</span>
-                        </p>
+            <div class="clearfix">
+            </div>
+          </div>
 
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-                <!-- END COPYRIGHT -->
-            </ng-template>
         </div>
-    </page-container>
+        <!-- END COPYRIGHT -->
+      </ng-template>
+    </div>
+  </page-container>
 </ng-template>
