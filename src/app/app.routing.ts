@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { CondensedComponent } from './@pages/layouts';
 // Sample Pages
 import { SocialComponent } from './social/social.component';
+import { RegistroComponent } from './registro/registro.component';
 
 export const AppRoutes: Routes = [
     {
@@ -21,6 +22,9 @@ export const AppRoutes: Routes = [
         children: [{
             path: '',
             component: SocialComponent
+        }, {
+            path: 'registro',
+            component: RegistroComponent
         }]
     }
 ];

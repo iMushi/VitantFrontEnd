@@ -36,7 +36,7 @@
       -->
     <ng-template #sideBarHeader>
       <img src="assets/Vitant/VITANT_Logo_horizontal_RGB.png" alt="logo" class="brand" pgRetina src1x="assets/Vitant/VITANT_Logo_horizontal_RGB.png"
-           src2x="assets/Vitant/VITANT_Logo_horizontal_RGB.png" width="150">
+           src2x="assets/Vitant/VITANT_Logo_horizontal_RGB.png" width="200">
       <div class="sidebar-header-controls">
         <!--
           <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" [class.active]="_menuDrawerOpen" (click)="toggleMenuDrawer()"><i
@@ -71,7 +71,7 @@
       <!-- END PAGE CONTENT -->
       <!-- START COPYRIGHT -->
       <ng-template [ngIf]="_footer">
-        <div class=" container-fluid container-fixed-lg footer">
+        <div class=" container-fluid container-fixed-lg footer" [@enterAnimation]=" (toggler.animateEnter|async) ?'loading':'ready'">
           <div class="copyright  sm-text-center">
 
             <div class="pull-left sm-pull-reset copyrightExtended ">

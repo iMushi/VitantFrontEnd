@@ -5,7 +5,7 @@
       <div class="cover-photo" pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
       </div>
       <div class="{% if mode =='horizontal_menu' %} container  {% else %} container-fluid {% endif %}  container-fixed-lg sm-p-l-0 sm-p-r-0"
-           [@enterAnimation]="_isLoading == true ?'loading':'ready'">
+           [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'">
         <div class="inner">
           <div class="pull-bottom bottom-left  sm-p-l-15" style="margin-bottom: 200px; width: 100%">
             <div class="vitantInnerLogo" pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/vitantLogo.png)'}"></div>
@@ -17,7 +17,7 @@
     <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0">
 
       <pg-container>
-        <div class="card card-transparent" [@enterAnimation]="_isLoading == true ?'loading':'ready'">
+        <div class="card card-transparent" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
           <div class="card-body">
             <div class="row">
               <div class="col-lg-4">

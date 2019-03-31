@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class pagesToggleService {
 
+  private _animateEnter = new BehaviorSubject(true);
+  animateEnter = this._animateEnter.asObservable();
+
   private _MobileViewToggle = new BehaviorSubject(false);
   mobileViewToggle = this._MobileViewToggle.asObservable();
 
@@ -128,4 +131,7 @@ export class pagesToggleService {
     this._MobileViewToggle.next(toggle);
   }
 
+  toggleAnimateEnter (toggle: boolean){
+    this._animateEnter.next(toggle);
+  }
 }

@@ -108,7 +108,6 @@ export class RootLayout implements OnInit, OnDestroy {
       }));
 
     });
-    console.log(this._innerWidth);
     this.setMobile();
   }
 
