@@ -351,3 +351,24 @@ $assets-url :"/assets";
 
 
 // Widget Conoce Mas
+
+
+.voceroContent{
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  height: 500px;
+  width: 500px;
+}
+
+.voceroPgCard {
+  background-color: $color-coral;
+  height: 500px;
+}
+
+.vitantLogoVocero {
+  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 300px;
+}

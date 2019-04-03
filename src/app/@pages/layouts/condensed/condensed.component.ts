@@ -38,17 +38,20 @@ export class CondensedComponent extends RootLayout implements OnInit {
       iconName: 'form'
     },
     {
-      label: 'Registro Contacto',
+      label: 'Contactos',
       routerLink: '/Vitant/registro-contacto',
       iconType: 'fa',
       iconName: 'user-plus'
-    },
+    }
+    /*
+    ,
     {
       label: 'Vocero',
       routerLink: '/Vitant/vocero',
       iconType: 'fa',
       iconName: 'user'
     }
+    */
 
   ];
 

@@ -41,13 +41,14 @@
                     <div class="row clearfix">
                       <div class="col-md-12">
                         <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="basicFormLName.invalid && (basicFormLName.dirty || basicFormLName.touched)">
-                          <label>Apellido</label>
+                          <label>Apellido(s)</label>
                           <input type="text" class="form-control" name="lastName" [(ngModel)]="lName" #basicFormLName="ngModel" required>
                         </div>
                         <div *ngIf="basicFormLName.invalid && (basicFormLName.dirty || basicFormLName.touched)">
                           <label *ngIf="basicFormLName.errors.required" class="error">Esta informaci&oacute;n es requerida</label>
                         </div>
                       </div>
+
                     </div>
 
                     <div class="row clearfix">
