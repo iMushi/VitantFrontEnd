@@ -4,59 +4,31 @@ import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angu
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 //Routing
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 //Layouts
-import {
-  BlankComponent,
-  CasualLayout,
-  CondensedComponent,
-  CorporateLayout,
-  ExecutiveLayout,
-  RootLayout,
-  SimplyWhiteLayout
-} from './@pages/layouts';
+import { CondensedComponent, RootLayout } from './@pages/layouts';
 //Layout Service - Required
 import { pagesToggleService } from './@pages/services/toggler.service';
 //Shared Layout Components
 import { SidebarComponent } from './@pages/components/sidebar/sidebar.component';
-import { QuickviewComponent } from './@pages/components/quickview/quickview.component';
-import { QuickviewService } from './@pages/components/quickview/quickview.service';
-import { SearchOverlayComponent } from './@pages/components/search-overlay/search-overlay.component';
 import { HeaderComponent } from './@pages/components/header/header.component';
-import { HorizontalMenuComponent } from './@pages/components/horizontal-menu/horizontal-menu.component';
 import { SharedModule } from './@pages/components/shared.module';
+
 import { pgListViewModule } from './@pages/components/list-view/list-view.module';
 import { pgCardModule } from './@pages/components/card/card.module';
 import { pgCardSocialModule } from './@pages/components/card-social/card-social.module';
+
 //Basic Bootstrap Modules
-import {
-  AccordionModule,
-  AlertModule,
-  BsDropdownModule,
-  ButtonsModule,
-  CollapseModule,
-  ModalModule,
-  ProgressbarModule,
-  TabsModule,
-  TooltipModule,
-  TypeaheadModule
-} from 'ngx-bootstrap';
 //Pages Globaly required Components - Optional
 import { pgTabsModule } from './@pages/components/tabs/tabs.module';
 import { pgSwitchModule } from './@pages/components/switch/switch.module';
 import { ProgressModule } from './@pages/components/progress/progress.module';
 //Thirdparty Components / Plugins - Optional
-import { NvD3Module } from 'ngx-nvd3';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { IsotopeModule } from 'ngx-isotope';
 import { StepsformDirective } from './social/stepsform.directive';
-import { NgxDnDModule } from '@swimlane/ngx-dnd';
-import { QuillModule } from 'ngx-quill';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 //Service - Demo content - Optional
 import { SocialService } from './social/social.service';
@@ -64,9 +36,6 @@ import { SocialService } from './social/social.service';
 import { SocialComponent } from './social/social.component';
 import { CoverpageDirective } from './social/coverpage.directive';
 //Sample Blank Pages - Optional
-import { BlankCorporateComponent } from './@pages/layouts/blank-corporate/blank-corporate.component';
-import { BlankSimplywhiteComponent } from './@pages/layouts/blank-simplywhite/blank-simplywhite.component';
-import { BlankCasualComponent } from './@pages/layouts/blank-casual/blank-casual.component';
 import { RegistroComponent } from './registro/registro.component';
 import { RegistroContactoComponent } from './registro-contacto/registro-contacto.component';
 import { ViewVoceroComponent } from './view-vocero/view-vocero.component';
@@ -96,19 +65,12 @@ export class AppHammerConfig extends HammerGestureConfig {
   declarations: [
     AppComponent,
     CondensedComponent,
-    CorporateLayout,
-    SimplyWhiteLayout,
-    ExecutiveLayout,
-    CasualLayout,
-    SidebarComponent, QuickviewComponent, SearchOverlayComponent, HeaderComponent, HorizontalMenuComponent,
-    BlankComponent,
+    SidebarComponent,
+    HeaderComponent,
     RootLayout,
     SocialComponent,
     StepsformDirective,
     CoverpageDirective,
-    BlankCorporateComponent,
-    BlankSimplywhiteComponent,
-    BlankCasualComponent,
     RegistroComponent,
     RegistroContactoComponent,
     ViewVoceroComponent
@@ -119,7 +81,6 @@ export class AppHammerConfig extends HammerGestureConfig {
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     SharedModule,
     ProgressModule,
@@ -127,26 +88,11 @@ export class AppHammerConfig extends HammerGestureConfig {
     pgCardModule,
     pgCardSocialModule,
     RouterModule.forRoot(AppRoutes),
-    BsDropdownModule.forRoot(),
-    AccordionModule.forRoot(),
-    AlertModule.forRoot(),
-    ButtonsModule.forRoot(),
-    CollapseModule.forRoot(),
-    ModalModule.forRoot(),
-    ProgressbarModule.forRoot(),
-    TabsModule.forRoot(),
-    TooltipModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    NvD3Module,
     pgTabsModule,
-    NgxEchartsModule,
-    IsotopeModule,
-    NgxDnDModule,
-    QuillModule,
     PerfectScrollbarModule,
     pgSwitchModule
   ],
-  providers: [QuickviewService, pagesToggleService, SocialService, {
+  providers: [pagesToggleService, SocialService, {
     provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
   },

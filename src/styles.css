@@ -37,36 +37,43 @@ h1, h2, h3, h4, h5 {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #F4364C;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .titleMorado {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #3b0c53;
+  font-size: 4em;
+
 }
 
 .titleRosa {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #91308d;
+  font-size: 4em;
+
 }
 
 .titleAmarillo {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #efaf0c;
+  font-size: 4em;
+
 }
 
 .titleAzul {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #00b1b0;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .titleVerde {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
+  font-size: 4em;
   color: #aad235;
 }

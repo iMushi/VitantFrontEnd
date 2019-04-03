@@ -31,10 +31,7 @@
       ],
       "scripts": [
        "../node_modules/scrollreveal/dist/scrollreveal.js",
-       "../node_modules/echarts/dist/echarts.min.js",
        "app/@pages/assets/javascript/pages.js",
-       "../node_modules/masonry-layout/dist/masonry.pkgd.min.js",
-       "../node_modules/isotope-layout/dist/isotope.pkgd.min.js",
        "../node_modules/imagesloaded/imagesloaded.pkgd.js",
        "assets/plugins/modernizr.custom.js",
        "assets/plugins/codrops-stepsform/js/classie.js",
