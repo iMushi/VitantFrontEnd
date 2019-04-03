@@ -2,19 +2,14 @@
   <div class="social " data-pages="social">
     <!-- START JUMBOTRON -->
     <div class="jumbotron smallBanner" data-social="cover">
-      <div class="cover-photo" pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
+      <div class="cover-photo"  [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
       </div>
-      <div class="{% if mode =='horizontal_menu' %} container  {% else %} container-fluid {% endif %}  container-fixed-lg sm-p-l-0 sm-p-r-0"
-           [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'">
-        <div class="inner">
-          <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
-            <h5 class="titleCoral no-margin">Registro</h5>
-          </div>
-        </div>
+      <div class="titleContainer" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
+        <h5 class="titleCoral m-l-20">Registro</h5>
       </div>
     </div>
     <!-- END JUMBOTRON -->
-    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0">
+    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main">
       <pg-container>
         <div class="card card-transparent" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
           <div class="card-body">

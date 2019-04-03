@@ -258,8 +258,25 @@ body {
   background: linear-gradient(315deg,$color-coral,$color-rosa);
 }
 
+.social-wrapper .social .smallBanner .titleContainer{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.social-wrapper .social .container-main{
+  padding-top: calc(15vh + 30px);
+}
+
+
 .social-wrapper .social .smallBanner{
   height: 15vh;
+  position: fixed;
+  width: 100vw;
+  z-index: 5;
 }
 
 .formPadding{

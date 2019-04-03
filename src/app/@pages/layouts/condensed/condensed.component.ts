@@ -43,7 +43,7 @@ export class CondensedComponent extends RootLayout implements OnInit {
       iconType: 'fa',
       iconName: 'user-plus'
     }
-    /*
+
     ,
     {
       label: 'Vocero',
@@ -51,8 +51,6 @@ export class CondensedComponent extends RootLayout implements OnInit {
       iconType: 'fa',
       iconName: 'user'
     }
-    */
-
   ];
 
   ngOnInit () {
