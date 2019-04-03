@@ -59,23 +59,10 @@ import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { QuillModule } from 'ngx-quill';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 //Service - Demo content - Optional
-import { ChartService } from './charts/charts.service';
 import { SocialService } from './social/social.service';
 //Social Page - Optional
 import { SocialComponent } from './social/social.component';
 import { CoverpageDirective } from './social/coverpage.directive';
-//Demo Pages - Optional
-import { CardsComponentPage } from './cards/cards.component';
-import { ViewsPageComponent } from './views/views.component';
-import { ChartsComponent } from './charts/charts.component';
-//Dashboard Widgets - Optional
-import { DashboardModule } from './dashboard/dashboard.module';
-//Dashboards - Optional
-import { CondensedDashboardComponent } from './dashboard/condensed/dashboard.component';
-import { SimplyWhiteDashboardComponent } from './dashboard/simplywhite/dashboard.component';
-import { CasualDashboardComponent } from './dashboard/casual/dashboard.component';
-import { CorporateDashboardComponent } from './dashboard/corporate/dashboard.component';
-import { ExecutiveDashboardComponent } from './dashboard/executive/dashboard.component';
 //Sample Blank Pages - Optional
 import { BlankCorporateComponent } from './@pages/layouts/blank-corporate/blank-corporate.component';
 import { BlankSimplywhiteComponent } from './@pages/layouts/blank-simplywhite/blank-simplywhite.component';
@@ -116,17 +103,9 @@ export class AppHammerConfig extends HammerGestureConfig {
     SidebarComponent, QuickviewComponent, SearchOverlayComponent, HeaderComponent, HorizontalMenuComponent,
     BlankComponent,
     RootLayout,
-    CardsComponentPage,
-    ViewsPageComponent,
-    ChartsComponent,
     SocialComponent,
     StepsformDirective,
     CoverpageDirective,
-    CondensedDashboardComponent,
-    SimplyWhiteDashboardComponent,
-    CasualDashboardComponent,
-    CorporateDashboardComponent,
-    ExecutiveDashboardComponent,
     BlankCorporateComponent,
     BlankSimplywhiteComponent,
     BlankCasualComponent,
@@ -165,17 +144,16 @@ export class AppHammerConfig extends HammerGestureConfig {
     NgxDnDModule,
     QuillModule,
     PerfectScrollbarModule,
-    pgSwitchModule,
-    DashboardModule
+    pgSwitchModule
   ],
-  providers: [QuickviewService, pagesToggleService, ChartService, SocialService, {
+  providers: [QuickviewService, pagesToggleService, SocialService, {
     provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
   },
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: AppHammerConfig
-    },{
+    }, {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
     }],
