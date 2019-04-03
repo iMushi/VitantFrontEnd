@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SocialService {
 
-  constructor(private http: Http) { }
+  constructor (private http: HttpClient) {
+  }
 
   // Get social feed posts
-  getFeed() {
-    return this.http.get('assets/data/feed.json')
-      .map(res => res.json());
+  getFeed () {
+    return this.http.get('assets/data/feed.json').map((res: any) => res.json());
   }
 }

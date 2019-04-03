@@ -4,7 +4,6 @@ import { ObserversModule } from '@angular/cdk/observers';
 
 import { SecondarySidebarComponent } from './secondary-sidebar/secondary-sidebar.component';
 
-import { QuickviewService } from './quickview/quickview.service';
 import { TypeaheadModule } from 'ngx-bootstrap';
 
 import { ParallaxDirective } from './parallax/parallax.directive';
@@ -69,7 +68,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ListViewContainerComponent,
     pgRetinaDirective
   ],
-  providers: [QuickviewService,
+  providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
