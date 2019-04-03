@@ -15,7 +15,9 @@
             <span  *ngIf="item.details" class="details">{{item.details}}</span>
         </a>
         </ng-template>
-        <pg-menu-icon *ngIf="item.iconType" [IconType]="item.iconType" [IconName]="item.iconName" [ExtraClass]="item.thumbNailClass"></pg-menu-icon>
+        <pg-menu-icon *ngIf="item.iconType"
+                      [routerLink]="[item.routerLink]"
+                      [IconType]="item.iconType" [IconName]="item.iconName" [ExtraClass]="item.thumbNailClass"></pg-menu-icon>
         <ul class="sub-menu" *ngIf="item.submenu" [@toggleHeight]="item.toggle">
             <li *ngFor="let child of item.submenu" [class.open]="child.toggle ==='open'">
                 <a href="javascript:;" *ngIf="child.submenu;else singleLinkChild" (click)="toggleNavigationSub($event,item)"><span class="title">{{ child.label }}</span>

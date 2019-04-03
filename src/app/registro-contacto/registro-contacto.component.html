@@ -8,7 +8,7 @@
            [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'">
         <div class="inner">
           <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
-            <h5 class="titleAzul no-margin">Registro de Contacto</h5>
+            <h5 class="titleAzul no-margin" [ngClass]="{'titleFontMobile' : (_togglerService.mobileViewToggle |async) }">Registro de Contacto</h5>
           </div>
         </div>
       </div>

@@ -33,18 +33,21 @@ h1, h2, h3, h4, h5 {
   font-style: normal !important;
 }
 
+
+
+
 .titleCoral {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #F4364C;
-  font-size: 4em;
+  font-size: 5em;
 }
 
 .titleMorado {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #3b0c53;
-  font-size: 4em;
+  font-size: 5em;
 
 }
 
@@ -52,7 +55,7 @@ h1, h2, h3, h4, h5 {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #91308d;
-  font-size: 4em;
+  font-size: 5em;
 
 }
 
@@ -60,7 +63,7 @@ h1, h2, h3, h4, h5 {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #efaf0c;
-  font-size: 4em;
+  font-size: 5em;
 
 }
 
@@ -68,12 +71,16 @@ h1, h2, h3, h4, h5 {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
   color: #00b1b0;
-  font-size: 4em;
+  font-size: 5em;
 }
 
 .titleVerde {
   font-family: DanmarkURW-Bol;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 5em;
   color: #aad235;
+}
+
+.titleFontMobile {
+  font-size: calc(2.6em);
 }
