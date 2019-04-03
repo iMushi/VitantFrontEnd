@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { pagesToggleService } from '../@pages/services/toggler.service';
 
@@ -6,6 +6,7 @@ import { pagesToggleService } from '../@pages/services/toggler.service';
   selector: 'app-registro-contacto',
   templateUrl: './registro-contacto.component.html',
   styleUrls: ['./registro-contacto.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('enterAnimation', [
       state('loading', style({
