@@ -2,13 +2,15 @@
   <div class="social " data-pages="social">
     <!-- START JUMBOTRON -->
     <div class="jumbotron" data-social="cover" coverpage>
-      <div class="cover-photo" pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
+      <div class="cover-photo"  pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
       </div>
       <div class="{% if mode =='horizontal_menu' %} container  {% else %} container-fluid {% endif %}  container-fixed-lg sm-p-l-0 sm-p-r-0"
            [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'">
         <div class="inner">
           <div class="pull-bottom bottom-left  sm-p-l-15" style="margin-bottom: 200px; width: 100%">
-            <div class="vitantInnerLogo" pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/vitantLogo.png)'}"></div>
+            <div class="vitantMainLogo "  [ngStyle]="{
+            'background-image': 'url(assets/Vitant/VITANT_Logo_vertical_condescriptivo_RGB.png)'
+            }"></div>
           </div>
         </div>
       </div>

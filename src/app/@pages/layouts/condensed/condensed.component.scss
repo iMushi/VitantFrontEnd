@@ -202,10 +202,19 @@ body {
 }
 
 
-.vitantInnerLogo {
+.vitantMainLogo {
   background-size: contain;
   background-repeat: no-repeat;
   height: 200px;
+}
+
+
+.vitantInnerLogo {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 25vh;
+  width: calc(100vw - 50%);
 }
 
 
@@ -258,13 +267,18 @@ body {
   background: linear-gradient(315deg,$color-coral,$color-rosa);
 }
 
-.social-wrapper .social .smallBanner .titleContainer{
+.smallBanner{
+  background-color: rgb(59,12,83);
+}
+
+.social-wrapper .social  .smallBanner .titleContainer{
   position: absolute;
   width: 100%;
   top: 0;
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .social-wrapper .social .container-main{
@@ -278,6 +292,55 @@ body {
   width: 100vw;
   z-index: 5;
 }
+
+
+
+
+/** Small Banner Social Page **/
+@media (max-width: 991px) {
+
+  .smallBannerWithHeader {
+    top: 60px;
+  }
+
+}
+
+@media (max-width: 767px){
+  .smallBannerWithHeader {
+    top: 48px;
+  }
+}
+
+
+.smallBannerHide{
+  transition: 0.5s ease;
+  opacity: 0;
+}
+
+.smallBannerShow{
+  opacity: 1 !important;
+  transition: 0.5s ease;
+}
+
+.smallBanner{
+  height: 15vh;
+  position: fixed;
+  width: 100vw;
+  z-index: 5;
+}
+
+.smallBanner .titleContainer{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/******/
+
 
 .formPadding{
   padding: 20px;
@@ -308,7 +371,7 @@ $assets-url :"/assets";
     height:auto !important;
   }
   &:after {
-    background-image: url("#{$assets-url}/img/social/person-cropped.jpg");
+    background-image: url("#{$assets-url}/Vitant/Stock2.jpg");
     background-size: cover;
     content: " ";
     left: 0;
@@ -323,14 +386,49 @@ $assets-url :"/assets";
     position: relative;
     z-index: 1;
   }
+  .pointer{
+    cursor: pointer;
+  }
 }
 
 // Widget Registrar contactos
 
+// Widget Brochure
+.widgetDescargaBrochure {
+  height: 100% !important;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $color-morado;
+  .card-body{
+    height:auto !important;
+  }
 
+  /*&:after {
+    background-image: url("#{$assets-url}/Vitant/Stock2.jpg");
+    background-size: cover;
+    content: " ";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 0;
+    opacity: .69;
+  }
+  */
+  & > div{
+    position: relative;
+    z-index: 1;
+  }
+  .pointer{
+    cursor: pointer;
+  }
+}
 
-// Widget Conoce Más
-
+// Widget Brochure
 
 .widgetConoceMas{
   height: 100% !important;
@@ -339,6 +437,7 @@ $assets-url :"/assets";
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: $color-rosa;
   .widget-3-fav{
     background: rgba(0,0,0,.07);
     vertical-align: middle;
@@ -364,10 +463,58 @@ $assets-url :"/assets";
       z-index: 1;
     }
   }
+  .pointer{
+    cursor: pointer;
+  }
 }
 
+.widgetMisContactos{
+  height: 100% !important;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $color-rosa;
+  .widget-3-fav{
+    background: rgba(0,0,0,.07);
+    vertical-align: middle;
+    padding: 6px 11px;
+    display: block;
+  }
+  .pg-map {
+    font-size: 30px;
+    color: #fff;
+  }
+  .widget-3-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &:after{
+      position: absolute;
+      background: transparent;
+      content:"";
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+  }
+  .pointer{
+    cursor: pointer;
+  }
+}
+
+.tilesVerDesarrollo{
+  background-repeat: no-repeat;
+  background-image: url("#{$assets-url}/Vitant/banner.png");
+  background-position: center;
+  background-size: cover;
+}
 
 // Widget Conoce Mas
+
 
 .vocerPgCardBody{
   display: flex;
@@ -378,7 +525,6 @@ $assets-url :"/assets";
 
 .voceroPgCard {
   background-color: $color-coral;
-  height: 500px;
 }
 
 .vitantLogoVocero {

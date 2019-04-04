@@ -35,8 +35,7 @@
       </ng-template>
       -->
     <ng-template #sideBarHeader>
-      <img src="assets/Vitant/VITANT_Logo_horizontal_RGB.png" alt="logo" class="brand" pgRetina src1x="assets/Vitant/VITANT_Logo_horizontal_RGB.png"
-           src2x="assets/Vitant/VITANT_Logo_horizontal_RGB.png" width="200">
+
       <div class="sidebar-header-controls">
         <!--
           <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" [class.active]="_menuDrawerOpen" (click)="toggleMenuDrawer()"><i
@@ -63,6 +62,20 @@
       <!-- END MOBILE SIDEBAR TOGGLE -->
     </pg-header>
 
+    <div class="jumbotron smallBanner" [ngClass]=" {
+    'smallBannerWithHeader' : _isMobile,
+    'smallBannerShow' : (toggler.smallBannerOpacity | async),
+    'smallBannerHide' : !(toggler.smallBannerOpacity | async)
+    }">
+      <div class="titleContainer">
+        <h3>&nbsp;</h3>
+        <div class="vitantInnerLogo" [ngStyle]="{
+            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'
+            }"></div>
+      </div>
+    </div>
+
+
     <div class="page-content-wrapper {{_pageContainerClass}}">
       <!-- START PAGE CONTENT -->
       <div class="content {{_contentClass}}" [ngClass]=" {'content-noHeader' : !_isMobile }">
@@ -71,7 +84,7 @@
       <!-- END PAGE CONTENT -->
       <!-- START COPYRIGHT -->
       <ng-template [ngIf]="_footer">
-        <div class=" container-fluid con  tainer-fixed-lg footer" [@enterAnimation]=" (toggler.animateEnter|async) ?'loading':'ready'">
+        <div class=" container-fluid container-fixed-lg footer" [@enterAnimation]=" (toggler.animateEnter|async) ?'loading':'ready'">
           <div class="copyright  sm-text-center">
 
             <div class="pull-left sm-pull-reset copyrightExtended ">

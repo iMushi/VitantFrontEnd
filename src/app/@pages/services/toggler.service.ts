@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class pagesToggleService {
 
+  private _smallBannerOpacity = new BehaviorSubject(false);
+  smallBannerOpacity = this._smallBannerOpacity.asObservable();
+
   private _animateEnter = new BehaviorSubject(true);
   animateEnter = this._animateEnter.asObservable();
 
@@ -134,4 +137,9 @@ export class pagesToggleService {
   toggleAnimateEnter (toggle: boolean){
     this._animateEnter.next(toggle);
   }
+
+  toggleSmallBannerOpacity( toggle: boolean){
+    this._smallBannerOpacity.next(toggle);
+  }
+
 }

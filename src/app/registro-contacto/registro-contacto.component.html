@@ -2,10 +2,11 @@
   <div class="social " data-pages="social">
     <!-- START JUMBOTRON -->
     <div class="jumbotron smallBanner" data-social="cover">
-      <div class="cover-photo"  [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
-      </div>
       <div class="titleContainer" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
-        <h5 class="titleAzul m-l-20">Registro de Contactos</h5>
+        <h5 class="titleLargo text-white m-l-20">Registro de Contactos</h5>
+        <div class="vitantInnerLogo" [ngStyle]="{
+            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'
+            }"></div>
       </div>
     </div>
     <!-- END JUMBOTRON -->
