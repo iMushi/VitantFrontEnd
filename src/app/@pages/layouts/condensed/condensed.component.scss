@@ -369,13 +369,11 @@ $assets-url :"/assets";
 
 // Widget Conoce Mas
 
-
-.voceroContent{
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  height: 500px;
-  width: 500px;
+.vocerPgCardBody{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .voceroPgCard {
@@ -384,8 +382,10 @@ $assets-url :"/assets";
 }
 
 .vitantLogoVocero {
-  width: 300px;
-  background-size: contain;
+  width: 250px;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 300px;
+  border-radius: 50%;
+  height: 250px;
 }

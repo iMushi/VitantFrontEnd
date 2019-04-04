@@ -1,32 +1,17 @@
-
-
 <div class="container-fluid padding-25 sm-padding-10 sm-gutter">
   <div class="row">
     <div class="col-lg-6 col-xlg-5">
       <div class="row">
         <div class="col-md-12 m-b-10">
-            <pgcard Controls="false" HeaderClass="pgCardNoHeader" AdditionalClasses="voceroPgCard">
-
-              <div class="voceroContent">
-
-                <div class="vitantLogoVocero" pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/vitantLogo.png)'}"></div>
-                <div>
-
-                  <p>
-                    ¡ Bienvenido Vocero !
-                  </p>
-
-                </div>
-
-
-
-              </div>
-
-
-
-
-
-            </pgcard>
+          <pgcard Controls="false" HeaderClass="pgCardNoHeader" AdditionalClasses="voceroPgCard" BodyClass="vocerPgCardBody">
+            <div class="vitantLogoVocero" pg-parallax [ngStyle]="{
+                'background-image': 'url(assets/Vitant/VITANT_Logo_vertical_condescriptivo_CMYK_FC.jpg)'
+                }"></div>
+            <div class="text-center">
+              <h2 class="text-white">¡ Bienvenida Paulina !</h2>
+              <h3 class="text-white">Vocero Vitant</h3>
+            </div>
+          </pgcard>
         </div>
       </div>
     </div>
@@ -34,10 +19,6 @@
       <div class="row">
         <div class="col-sm-6 m-b-10">
           <div class="ar-1-1">
-
-            <!--
-            <image-widget-basic></image-widget-basic>
--->
 
             <pgcard TimeOut="3000" AdditionalClasses="widgetRegContactos card no-border bg-primary widget widget-loader-circle-lg no-margin full-height" MinimalHeader="true">
               <div class="pull-bottom bottom-left bottom-right padding-25">
@@ -55,10 +36,8 @@
           <div class="ar-1-1">
 
 
-
-
-
-            <pgcard TimeOut="3000" AdditionalClasses="widgetConoceMas card no-border bg-complete no-margin widget-loader-bar full-height" MinimalHeader="true" BodyClass="no-padding" HeaderClass="hidden">
+            <pgcard TimeOut="3000" AdditionalClasses="widgetConoceMas card no-border bg-complete no-margin widget-loader-bar full-height" MinimalHeader="true"
+                    BodyClass="no-padding" HeaderClass="hidden">
               <swiper [config]="configLiveWidget" [(index)]="index">
                 <div class="slide-front tiles slide active">
                   <div class="padding-30">
@@ -127,11 +106,6 @@
                 </div>
               </swiper>
             </pgcard>
-
-
-
-
-
 
 
           </div>
