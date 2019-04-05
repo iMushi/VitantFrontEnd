@@ -92,10 +92,5 @@ export class ParallaxDirective {
       this._togglerService.toggleSmallBannerOpacity(false);
 
     }
-
-    console.log('=ZZZZZZZ', rect.height);
-    console.log('=xxxxxxx', rect.height * 50 / 100);
-    console.log('======>', this.scrollPos);
-
   }
 }

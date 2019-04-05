@@ -24,7 +24,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class CondensedComponent extends RootLayout implements OnInit {
 
   menuLinks = [
-
     {
       label: 'Inicio',
       routerLink: '/Vitant',
@@ -33,21 +32,19 @@ export class CondensedComponent extends RootLayout implements OnInit {
     },
     {
       label: 'Registro',
-      routerLink: '/Vitant/registro',
+      routerLink: '/Registro',
       iconType: 'pg',
       iconName: 'form'
     },
     {
       label: 'Contactos',
-      routerLink: '/Vitant/registro-contacto',
+      routerLink: '/Registro-contacto',
       iconType: 'fa',
       iconName: 'user-plus'
-    }
-
-    ,
+    },
     {
       label: 'Vocero',
-      routerLink: '/Vitant/vocero',
+      routerLink: '/Vocero',
       iconType: 'fa',
       iconName: 'user'
     }
@@ -55,7 +52,6 @@ export class CondensedComponent extends RootLayout implements OnInit {
 
   ngOnInit () {
 
-    /** aplicado para quitar espacio del header **/
   }
 
 }

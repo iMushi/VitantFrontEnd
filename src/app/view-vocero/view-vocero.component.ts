@@ -23,8 +23,12 @@ import { pagesToggleService } from '../@pages/services/toggler.service';
 })
 export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  configLiveWidget;
-  index = 0;
+  configLiveWidgetDesarrollo;
+  indexWidgetDesarrollo = 0;
+
+
+  configLiveWidgetContactos;
+  indexWidgetContactos = 0;
 
 
   constructor (public _togglerService: pagesToggleService) {
@@ -32,12 +36,17 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit () {
 
-    this.configLiveWidget = {
+    this.configLiveWidgetDesarrollo = {
+
       direction: 'vertical',
       autoplay: {
-        delay: 5000,
+        delay: 5000
       }
-    }
+    };
+
+    this.configLiveWidgetContactos = {
+      direction: 'horizontal'
+    };
 
   }
 

@@ -13,25 +13,18 @@ export const AppRoutes: Routes = [
     data: {
       breadcrumb: 'Home'
     },
-    component: CondensedComponent
-  },
-  {
-    path: 'Vitant',
-    data: {
-      breadcrumb: 'Home'
-    },
     component: CondensedComponent,
     children: [{
-      path: '',
+      path: 'Vitant',
       component: SocialComponent
     }, {
-      path: 'registro',
+      path: 'Registro',
       component: RegistroComponent
     }, {
-      path: 'registro-contacto',
+      path: 'Registro-contacto',
       component: RegistroContactoComponent
     }, {
-      path: 'vocero',
+      path: 'Vocero',
       component: ViewVoceroComponent
     }]
   }

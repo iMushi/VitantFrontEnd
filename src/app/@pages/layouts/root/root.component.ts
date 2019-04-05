@@ -1,7 +1,7 @@
-import {Component, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {pagesToggleService} from '../../services/toggler.service';
-import {Event, NavigationEnd, Router} from '@angular/router';
+import { Component, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { pagesToggleService } from '../../services/toggler.service';
+import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 declare var pg: any;
 
@@ -36,6 +36,7 @@ export class RootLayout implements OnInit, OnDestroy {
   _isMobile = false;
   _innerWidth = pg._innerWidth;
   _layout;
+  _selectedRoute;
   @Input()
   public contentClass = '';
 
@@ -45,11 +46,15 @@ export class RootLayout implements OnInit, OnDestroy {
   @Input()
   public footer = true;
 
-  constructor(public toggler: pagesToggleService, private router: Router) {
+  constructor (public toggler: pagesToggleService, private router: Router) {
     if (this.layoutState) {
       pg.addClass(document.body, this.layoutState);
     }
     router.events.subscribe((event: Event) => {
+      if(event instanceof NavigationStart){
+        this.toggler.toggleSmallBannerOpacity(false);
+      }
+
       if (event instanceof NavigationEnd) {
         let root = this.router.routerState.snapshot.root;
         while (root) {
@@ -60,6 +65,9 @@ export class RootLayout implements OnInit, OnDestroy {
             this._pageTitle = root.data['title'];
             this._layoutOption = root.data['layoutOption'];
             this._boxed = root.data['boxed'];
+
+            this._selectedRoute = '/' + root.routeConfig.path;
+
             break;
           } else {
             break;
@@ -114,7 +122,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function changeLayout
    *   @description Add Document Layout Class
    */
-  changeLayout(type: string) {
+  changeLayout (type: string) {
     this.layoutState = type;
     if (type) {
       pg.addClass(document.body, type);
@@ -124,26 +132,26 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function removeLayout
    *   @description Remove Document Layout Class
    */
-  removeLayout(type: string) {
+  removeLayout (type: string) {
     pg.removeClass(document.body, type);
   }
 
-  ngOnInit() {
+  ngOnInit () {
   }
 
-  ngOnDestroy() {
+  ngOnDestroy () {
     for (const sub of this._subscriptions) {
       sub.unsubscribe();
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit () {
   }
 
   /** @function scrollToTop
    *   @description Force to scroll to top of page. Used on Route
    */
-  scrollToTop() {
+  scrollToTop () {
     const top = window.pageYOffset;
     if (top == 0) {
       const scroller = document.querySelector('.page-container');
@@ -158,7 +166,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function openQuickView
    *   @description Show Quick View Component / Right Sidebar - Service
    */
-  openQuickView($e) {
+  openQuickView ($e) {
     $e.preventDefault();
     this.toggler.toggleQuickView();
   }
@@ -166,7 +174,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function openSearch
    *   @description Show Quick Search Component - Service
    */
-  openSearch($e) {
+  openSearch ($e) {
     $e.preventDefault();
     this.toggler.toggleSearch(true);
   }
@@ -174,7 +182,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function toggleMenuPin
    *   @description Permanently Open / Close Main Sidebar
    */
-  toggleMenuPin($e) {
+  toggleMenuPin ($e) {
     if (pg.isVisibleSm()) {
       this._menuPin = false;
       return;
@@ -191,7 +199,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function toggleMenuDrawer
    *   @description Open Main Sidebar Menu Drawer - Service
    */
-  toggleMenuDrawer() {
+  toggleMenuDrawer () {
     this._menuDrawerOpen = (this._menuDrawerOpen == true ? false : true);
     this.toggler.toggleMenuDrawer();
   }
@@ -199,7 +207,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function toggleMobileSidebar
    *   @description Open Main Sidebar on Mobile - Service
    */
-  toggleMobileSidebar() {
+  toggleMobileSidebar () {
     if (this._mobileSidebar) {
       this._mobileSidebar = false;
       pg.removeClass(document.body, 'sidebar-open');
@@ -213,7 +221,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function toggleHorizontalMenuMobile
    *   @description Open Secondary Sidebar on Mobile - Service
    */
-  toggleSecondarySideBar() {
+  toggleSecondarySideBar () {
     console.log('hi');
     this._secondarySideBar = (this._secondarySideBar == true ? false : true);
     this.toggler.toggleSecondarySideBar(this._secondarySideBar);
@@ -222,25 +230,25 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function toggleHorizontalMenuMobile
    *   @description Call Horizontal Menu Toggle Service for mobile
    */
-  toggleHorizontalMenuMobile() {
+  toggleHorizontalMenuMobile () {
     this._mobileHorizontalMenu = (this._mobileHorizontalMenu == true ? false : true);
     this.toggler.toggleMobileHorizontalMenu(this._mobileHorizontalMenu);
   }
 
   @HostListener('window:resize', [])
-  onResize() {
+  onResize () {
     this._innerWidth = window.innerWidth;
     this.setMobile();
     this.autoHideMenuPin();
   }
 
-  setMobile() {
+  setMobile () {
     this._isMobile = this._innerWidth < 1025;
     this.toggler.mobileView(this._isMobile);
   }
 
   //Utils
-  autoHideMenuPin() {
+  autoHideMenuPin () {
     if (window.innerWidth < 1025) {
       if (pg.hasClass(document.body, 'menu-pin')) {
         pg.addClass(document.body, 'menu-unpinned');

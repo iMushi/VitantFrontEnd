@@ -5,14 +5,25 @@
       <div class="cover-photo"  pg-parallax [ngStyle]="{'background-image': 'url(assets/Vitant/banner.png)'}">
       </div>
       <div class="{% if mode =='horizontal_menu' %} container  {% else %} container-fluid {% endif %}  container-fixed-lg sm-p-l-0 sm-p-r-0"
-           [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'">
-        <div class="inner">
-          <div class="pull-bottom bottom-left  sm-p-l-15" style="margin-bottom: 200px; width: 100%">
+           [@enterAnimation]="(_togglerService.animateEnter|async) ?'loading':'ready'"
+      style="position: absolute;top: 0px;height: 100%;">
+
+
+          <div class="sm-p-l-15" style="
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-left: 150px;">
             <div class="vitantMainLogo " pg-parallax [ngStyle]="{
             'background-image': 'url(assets/Vitant/VITANT_Logo_vertical_condescriptivo_RGB.png)'
             }"></div>
+            <div style="height: 100px;">&nbsp;</div>
+
           </div>
-        </div>
+
       </div>
     </div>
     <!-- END JUMBOTRON -->
@@ -45,7 +56,7 @@
 
                   <div class="row clearfix">
                     <div class="col-md-12 buttonCenter">
-                      <button class="btn btn-coral btnVitant" type="submit" [routerLink]="'registro'">
+                      <button class="btn btn-coral btnVitant" type="submit" [routerLink]="'/Registro'">
                         ¡REGÍSTRATE!
                       </button>
                     </div>

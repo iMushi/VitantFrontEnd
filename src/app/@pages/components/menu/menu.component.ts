@@ -29,6 +29,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 })
 export class MenuComponent implements OnInit, AfterViewInit {
   menuItems = [];
+  selectedItem;
   currentItem = null;
   isPerfectScrollbarDisabled = false;
   public config: PerfectScrollbarConfigInterface = {};
@@ -39,6 +40,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
   @Input()
   set Items (value) {
     this.menuItems = value;
+  }
+
+
+  @Input()
+  set SelectedItem (value) {
+    this.selectedItem = value;
   }
 
   ngOnInit () {
