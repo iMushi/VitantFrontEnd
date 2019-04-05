@@ -34,9 +34,9 @@ $color-warning: #f8d053 ;
 $color-danger: #f55753 ;
 $color-info: #3b4752 ;
 
-$color-coral: #eb4953;
-$color-rosa: #91308d;
-$color-morado: #3b0c53;
+$color-coral: rgba(235, 73, 83, 1);// #eb4953;
+$color-rosa: rgba(145, 48, 141, 1);// #91308d;
+$color-morado: rgb(59, 12, 83);// #3b0c53;
 $color-azul: #00b1b0;
 
 
@@ -49,7 +49,7 @@ $menu-bezier:.05, .74, .27, .99 ;
 $menu-icon-size:40px ;
 //$color-menu :#3b0c35 ;
 
-$color-menu :#320A48 ;
+$color-menu :rgb(59, 12, 83);
 
 $color-menu-dark :  mix($color-menu, #000, 77%) ;
 $color-menu-darker : mix($color-menu, #000, 90%) ;

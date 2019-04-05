@@ -293,7 +293,7 @@ body {
 }
 
 .social-wrapper .social .container-main {
-  padding-top: calc(15vh + 30px);
+  padding-top: calc(15vh + 30px) !important;
 }
 
 
@@ -454,7 +454,7 @@ $assets-url: "/assets";
     top: 0;
     width: 0;
     height: 100%;
-    background-color: rgb(235, 73, 83);
+    background-color: $color-coral;
     transition: 0.5s ease;
   }
 
@@ -497,7 +497,7 @@ $assets-url: "/assets";
     top: 0;
     width: 0;
     height: 100%;
-    background-color: rgba(235, 73, 83, 1);
+    background-color: $color-coral;
     transition: 0.5s ease;
     z-index: -1;
   }
@@ -531,7 +531,7 @@ $assets-url: "/assets";
     top: 0;
     width: 0;
     height: 100%;
-    background-color: rgba(235, 73, 83, 1);
+    background-color: $color-coral;
     transition: 0.5s ease;
     z-index: -1;
   }
@@ -589,8 +589,6 @@ $assets-url: "/assets";
 }
 
 
-// Widget Conoce Mas
-
 
 .vocerPgCardBody {
   display: flex;
@@ -615,4 +613,47 @@ $assets-url: "/assets";
 
 .focusIcon, li:focus-within > pg-menu-icon {
   outline: auto 5px $color-coral;
+}
+
+
+.widgetContactoRegistrado {
+  height: 100% !important;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $color-morado;
+
+
+  .card-body {
+    height: auto !important;
+  }
+
+  &:hover {
+    &::before {
+      width: 20%;
+      transition: 0.5s ease;
+      transform: rotate3d(1, 2, -1, 192deg);
+    }
+  }
+
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: $color-coral;
+    transition: 0.5s ease;
+  }
+
+  & > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
 }

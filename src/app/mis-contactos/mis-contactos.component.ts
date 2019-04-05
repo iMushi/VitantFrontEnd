@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { pagesToggleService } from '../@pages/services/toggler.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ContactModel } from '../models/contact.model';
+import { SocialService } from '../social/social.service';
 
 @Component({
   selector: 'app-mis-contactos',
@@ -23,10 +25,19 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class MisContactosComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor (public _togglerService: pagesToggleService) {
+  contacts: Array<ContactModel> = [];
+
+  constructor (public _togglerService: pagesToggleService, private _socialService: SocialService) {
   }
 
   ngOnInit () {
+
+    this._socialService.getContacts().subscribe(
+      resp => {
+        this.contacts = resp;
+      }
+    );
+
   }
 
   ngAfterViewInit (): void {

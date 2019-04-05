@@ -10,11 +10,35 @@
       </div>
     </div>
     <!-- END JUMBOTRON -->
-    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main">
-      <pg-container>
+    <div class="container-fluid padding-25 sm-padding-10 sm-gutter container-main">
+      <div class="row">
+        <div class="col-lg-12 col-xlg-12">
+          <div class="row">
+            <div class="col-sm-4 m-b-10" *ngFor="let contact of contacts">
+              <div class="ar-1-1">
 
-      </pg-container>
+                <pgcard
+                  TimeOut="3000" BodyClass="no-padding"
+                  AdditionalClasses="widgetContactoRegistrado card no-border widget widget-loader-circle-lg no-margin full-height"
+                  Controls="false" HeaderClass="pgCardNoHeader">
 
+                  <div class="concatTileInfo">
+                    <div>
+                      <h3 class="text-white nombreContactoTile">{{contact.nombre}} {{contact.apellido}}</h3>
+                      <h4 class="text-white correoContactoTile hint-text">{{contact.email}}</h4>
+                      <h4 class="text-white correoContactoTile hint-text">{{contact.telefono}}</h4>
+                      <h4 class="text-white correoContactoTile hint-text">Registrado: {{contact.fechaRegistro}}</h4>
+                    </div>
+                  </div>
+
+                </pgcard>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
