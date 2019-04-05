@@ -23,7 +23,7 @@
             <pgcard
               TimeOut="3000"
               AdditionalClasses="widgetRegContactos card no-border bg-primary widget widget-loader-circle-lg no-margin full-height"
-              Controls="false">
+              Controls="false" HeaderClass="pgCardNoHeader">
               <div class="pull-bottom bottom-left bottom-right padding-25">
                 <span class="label font-montserrat fs-11 pointer" [routerLink]="'/Registro'">REGISTRA A TUS CONTACTOS</span>
                 <h4 class="text-white hint-text d-xl-block">Sube los datos de los contactos que crees que pueden ser familia Vitant.</h4>
@@ -90,18 +90,16 @@
                     AdditionalClasses="widgetMisContactos card no-border no-margin widget-loader-bar full-height"
                     Controls="false"
                     BodyClass="no-padding" HeaderClass="hidden">
-              <swiper [config]="configLiveWidgetContactos" [(index)]="indexWidgetContactos">
+              <swiper [config]="configLiveWidgetContactos" [(index)]="indexWidgetContactos" *ngIf="contacts.length">
                 <div class="slide-front tiles slide active tilesMisContactos">
                   <div class="padding-30">
-
                     <div class="pull-bottom p-b-30">
                       <span class="label font-montserrat fs-11 pointer">VER TODOS MIS CONTACTOS</span>
                     </div>
                   </div>
                 </div>
-                <div class="slide-back tiles">
+                <div class="slide-back tiles" *ngFor="let contact of contacts">
                   <div class="padding-30">
-
                     <div class="pull-top">
                       <div class="pull-right">
                         <ul class="list-inline ">
@@ -116,12 +114,10 @@
 
                   <div class="concatTileInfo">
                     <div>
-                      <h3 class="text-white nombreContactoTile">GABRIEL LOPEZ</h3>
-                      <h4 class="text-white correoContactoTile hint-text">imushi@me.com</h4>
+                      <h3 class="text-white nombreContactoTile">{{contact.nombre}} {{contact.apellido}}</h3>
+                      <h4 class="text-white correoContactoTile hint-text">{{contact.email}}</h4>
                     </div>
                   </div>
-
-
                 </div>
               </swiper>
             </pgcard>

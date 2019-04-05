@@ -46,7 +46,13 @@ export class CondensedComponent extends RootLayout implements OnInit {
       label: 'Vocero',
       routerLink: '/Vocero',
       iconType: 'fa',
-      iconName: 'user'
+      iconName: 'laptop'
+    },
+    {
+      label: 'Mis Contactos',
+      routerLink: '/Contactos',
+      iconType: 'fa',
+      iconName: 'users'
     }
   ];
 
