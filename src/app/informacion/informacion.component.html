@@ -1,0 +1,76 @@
+<div class="social-wrapper">
+  <div class="social " data-pages="social">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron smallBanner" data-social="cover">
+      <div class="titleContainer" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
+        <h5 class="titleCorto text-white m-l-20">Informaci&oacute;n</h5>
+        <div class="vitantInnerLogo" [ngStyle]="{
+            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'
+            }"></div>
+      </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <div class="container-fluid padding-25 sm-padding-10 sm-gutter container-main ">
+
+      <pg-container>
+        <div class="card card-transparent" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <pgcard Controls="false" HeaderClass="pgCardNoHeader" AdditionalClasses="hoverCard">
+
+                  <div class="informacionContainer">
+
+
+                    <div class="infoHeader">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh nisi, laoreet nec dapibus eget, volutpat eget magna. Ut elementum justo tempor dui feugiat
+                      tincidunt. Vivamus egestas id dolor et suscipit. Cras in placerat quam. Praesent eget ultrices ante. Sed fermentum malesuada nulla ut varius. Class aptent taciti sociosqu
+                      ad litora torquent per conubia nostra, per inceptos himenaeos. Integer sodales sodales risus. Donec molestie sem vitae orci tincidunt, vitae consequat lorem pellentesque.
+                      Cras interdum posuere blandit. Curabitur vel dictum justo. Curabitur nec sodales odio, non bibendum dolor. Morbi aliquam faucibus quam eget elementum. Nam consequat arcu
+                      eu pharetra euismod.
+                    </div>
+
+
+                    <div class="infoLeft">
+                      Morbi nulla augue, porta at ante vitae, aliquam iaculis mauris. Mauris consectetur dolor imperdiet euismod mollis. Nulla euismod vitae mi nec consectetur. Pellentesque
+                      accumsan ligula eros, non egestas augue dictum nec. Curabitur iaculis metus nec cursus interdum. Donec non augue non ligula faucibus pharetra.
+                    </div>
+
+
+                    <div class="infoCenter">
+                      <iframe width="100%" height="315" src="https://www.youtube.com/embed/vgzOLxNvLLo" frameborder="0"
+                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="infoRight">
+                      Etiam placerat porta nisl eget vestibulum. Fusce euismod velit urna, id egestas dui interdum non. Vivamus suscipit odio eget eros finibus facilisis. Phasellus vitae
+                      ullamcorper mauris. Nullam vitae ullamcorper ex, eu condimentum ex. Quisque ut laoreet sem. Ut a tincidunt justo
+                    </div>
+
+                    <div class="inforBottom">
+                      Vivamus ultricies justo
+                      turpis, in vulputate dui auctor vel. Sed commodo rutrum nunc sed accumsan. Phasellus sagittis fringilla molestie. Nulla est est, tempor sit amet volutpat ac, ornare sed
+                      mi. Vestibulum tempus nec turpis nec dictum. In ut congue ligula, mollis pretium nisi. Sed quis gravida nisi, sit amet egestas libero. Nunc congue sodales arcu sed
+                      sodales. Fusce lacus purus, dictum id ante id, scelerisque imperdiet massa.
+                    </div>
+
+
+                  </div>
+
+                </pgcard>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </pg-container>
+
+
+<!--
+
+-->
+
+    <!-- END CONTAINER FLUID -->
+  </div>
+  <!-- /container -->
+</div>

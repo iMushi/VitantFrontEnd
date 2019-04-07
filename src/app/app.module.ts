@@ -43,6 +43,7 @@ import { ViewVoceroComponent } from './view-vocero/view-vocero.component';
 
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
 import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
+import { InformacionComponent } from './informacion/informacion.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -75,7 +76,8 @@ export class AppHammerConfig extends HammerGestureConfig {
     RegistroComponent,
     RegistroContactoComponent,
     ViewVoceroComponent,
-    MisContactosComponent
+    MisContactosComponent,
+    InformacionComponent
   ],
   imports: [
     SwiperModule,

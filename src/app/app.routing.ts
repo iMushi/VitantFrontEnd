@@ -7,6 +7,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { RegistroContactoComponent } from './registro-contacto/registro-contacto.component';
 import { ViewVoceroComponent } from './view-vocero/view-vocero.component';
 import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
+import { InformacionComponent } from './informacion/informacion.component';
 
 export const AppRoutes: Routes = [
   {
@@ -30,6 +31,9 @@ export const AppRoutes: Routes = [
     }, {
       path: 'Contactos',
       component: MisContactosComponent
+    }, {
+      path: 'Informacion',
+      component: InformacionComponent
     }]
   }
 ];
