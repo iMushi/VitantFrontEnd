@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  urlServices: 'http://localhost:8090/api',
+  registerUser: '/register',
+  loginUser: '/login'
 };

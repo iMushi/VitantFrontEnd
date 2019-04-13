@@ -670,6 +670,11 @@ $assets-url: "/assets";
   align-items: center;
 }
 
+
+.informacionContainer .infoHeader,.infoLeft,.infoCenter,.infoRight,.infoBottom{
+  margin: 5px;
+}
+
 .informacionContainer .infoHeader{
   flex: 1 0 100%;
   order: 1;
@@ -691,7 +696,7 @@ $assets-url: "/assets";
   order: 4;
 }
 
-.informacionContainer .inforBottom{
+.informacionContainer .infoBottom{
   flex: 1 0 100%;
   order:5
 }

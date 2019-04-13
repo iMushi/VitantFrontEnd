@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { pagesToggleService } from '../@pages/services/toggler.service';
+import emailMask from 'text-mask-addons/dist/emailMask';
+import { NgForm } from '@angular/forms';
+import { RegisterService } from '../services/register.service';
 
 @Component({
   selector: 'app-registro',
@@ -23,13 +26,20 @@ import { pagesToggleService } from '../@pages/services/toggler.service';
 })
 export class RegistroComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  fName;
-  lName;
-  phone;
+  name;
+  lastName;
+  phoneNumber;
   password;
   email;
 
-  constructor (public _togglerService: pagesToggleService) {
+  mask = {
+    telephone: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+    name: Array(50).fill(/^[a-zA-Z\s]*$/),
+    password: Array(50).fill(/^[a-zA-Z\s.1-9]*$/),
+    emailMask: emailMask
+  };
+
+  constructor (public _togglerService: pagesToggleService, private _registerService: RegisterService) {
   }
 
   ngOnInit () {
@@ -43,5 +53,21 @@ export class RegistroComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy (): void {
     this._togglerService.toggleAnimateEnter(true);
+  }
+
+  createAccount (form: NgForm) {
+    if (form.valid) {
+
+      const {name, lastName, phoneNumber, password, email} = this;
+
+      this._registerService.RegisterUser({
+        name, lastName, phoneNumber, password, email
+      }).subscribe(
+        resp => {
+          console.log(resp);
+
+        }
+      );
+    }
   }
 }

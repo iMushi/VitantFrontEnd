@@ -5,38 +5,5 @@
     "email": "imushi@me.com",
     "fechaRegistro": "01/04/2019",
     "telefono": 5551430175
-  },
-  {
-    "nombre": "Contacto",
-    "apellido": "Uno",
-    "email": "contactoUno@me.com",
-    "fechaRegistro": "02/04/2019",
-    "telefono": 5575430151
-  },{
-  "nombre": "Gabriel",
-  "apellido": "Lopez",
-  "email": "imushi@me.com",
-  "fechaRegistro": "01/04/2019",
-  "telefono": 5551430175
-},
-  {
-    "nombre": "Contacto",
-    "apellido": "Uno",
-    "email": "contactoUno@me.com",
-    "fechaRegistro": "02/04/2019",
-    "telefono": 5575430151
-  },{
-  "nombre": "Gabriel",
-  "apellido": "Lopez",
-  "email": "imushi@me.com",
-  "fechaRegistro": "01/04/2019",
-  "telefono": 5551430175
-},
-  {
-    "nombre": "Contacto",
-    "apellido": "Uno",
-    "email": "contactoUno@me.com",
-    "fechaRegistro": "02/04/2019",
-    "telefono": 5575430151
   }
 ]

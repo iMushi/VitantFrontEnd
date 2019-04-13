@@ -4,7 +4,7 @@ import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angu
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 //Routing
 import { AppRoutes } from './app.routing';
@@ -21,7 +21,6 @@ import { SharedModule } from './@pages/components/shared.module';
 import { pgListViewModule } from './@pages/components/list-view/list-view.module';
 import { pgCardModule } from './@pages/components/card/card.module';
 import { pgCardSocialModule } from './@pages/components/card-social/card-social.module';
-
 //Basic Bootstrap Modules
 //Pages Globaly required Components - Optional
 import { pgTabsModule } from './@pages/components/tabs/tabs.module';
@@ -44,6 +43,9 @@ import { ViewVoceroComponent } from './view-vocero/view-vocero.component';
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
 import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
 import { InformacionComponent } from './informacion/informacion.component';
+import { TextMaskModule } from 'angular2-text-mask';
+import { RegisterService } from './services/register.service';
+import { HeaderInterceptor } from './Interceptors/HeaderInterceptor';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -80,6 +82,7 @@ export class AppHammerConfig extends HammerGestureConfig {
     InformacionComponent
   ],
   imports: [
+    TextMaskModule,
     SwiperModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -96,10 +99,12 @@ export class AppHammerConfig extends HammerGestureConfig {
     PerfectScrollbarModule,
     pgSwitchModule
   ],
-  providers: [pagesToggleService, SocialService, {
-    provide: PERFECT_SCROLLBAR_CONFIG,
-    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-  },
+  providers: [pagesToggleService, SocialService, RegisterService,
+    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: AppHammerConfig
