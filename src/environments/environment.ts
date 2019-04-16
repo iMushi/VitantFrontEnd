@@ -7,5 +7,7 @@ export const environment = {
   production: false,
   urlServices: 'http://localhost:8090/api',
   registerUser: '/register',
-  loginUser: '/login'
+  loginUser: '/login',
+  getContacts: '/getContacts',
+  registerContacts: '/registerContacts'
 };

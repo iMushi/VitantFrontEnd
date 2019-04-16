@@ -3,6 +3,7 @@ import { pagesToggleService } from '../@pages/services/toggler.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ContactModel } from '../models/contact.model';
 import { SocialService } from '../social/social.service';
+import { RegisterService } from '../services/register.service';
 
 @Component({
   selector: 'app-mis-contactos',
@@ -27,12 +28,12 @@ export class MisContactosComponent implements OnInit, AfterViewInit, OnDestroy {
 
   contacts: Array<ContactModel> = [];
 
-  constructor (public _togglerService: pagesToggleService, private _socialService: SocialService) {
+  constructor (public _togglerService: pagesToggleService, private _registerService: RegisterService) {
   }
 
   ngOnInit () {
 
-    this._socialService.getContacts().subscribe(
+    this._registerService.GetContacts().subscribe(
       resp => {
         this.contacts = resp;
       }

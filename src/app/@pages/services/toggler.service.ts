@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class pagesToggleService {
 
+  public _messageBridge = new Subject();
+  messageBridge = this._messageBridge.asObservable();
+
   private _smallBannerOpacity = new BehaviorSubject(false);
   smallBannerOpacity = this._smallBannerOpacity.asObservable();
 
@@ -130,15 +133,15 @@ export class pagesToggleService {
     this._pageContainerHover.next(toggle);
   }
 
-  mobileView (toggle: boolean){
+  mobileView (toggle: boolean) {
     this._MobileViewToggle.next(toggle);
   }
 
-  toggleAnimateEnter (toggle: boolean){
+  toggleAnimateEnter (toggle: boolean) {
     this._animateEnter.next(toggle);
   }
 
-  toggleSmallBannerOpacity( toggle: boolean){
+  toggleSmallBannerOpacity (toggle: boolean) {
     this._smallBannerOpacity.next(toggle);
   }
 

@@ -2,6 +2,8 @@ import { Component, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@a
 import { Subscription } from 'rxjs/Subscription';
 import { pagesToggleService } from '../../services/toggler.service';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { MessageService } from '../../components/message/message.service';
 
 declare var pg: any;
 
@@ -46,12 +48,13 @@ export class RootLayout implements OnInit, OnDestroy {
   @Input()
   public footer = true;
 
-  constructor (public toggler: pagesToggleService, private router: Router) {
+  constructor (public toggler: pagesToggleService, private router: Router, public _authService: AuthService,
+               private _message: MessageService) {
     if (this.layoutState) {
       pg.addClass(document.body, this.layoutState);
     }
     router.events.subscribe((event: Event) => {
-      if(event instanceof NavigationStart){
+      if (event instanceof NavigationStart) {
         this.toggler.toggleSmallBannerOpacity(false);
       }
 
@@ -86,36 +89,46 @@ export class RootLayout implements OnInit, OnDestroy {
         //Scoll Top
         this.scrollToTop();
       }
-
-      //Subscribition List
-      this._subscriptions.push(this.toggler.pageContainerClass.subscribe(state => {
-        this._pageContainerClass = state;
-      }));
-
-      this._subscriptions.push(this.toggler.contentClass.subscribe(state => {
-        this._contentClass = state;
-      }));
-
-      this._subscriptions.push(this.toggler.bodyLayoutClass.subscribe(state => {
-        if (state) {
-          this.extraLayoutClass = state;
-          pg.addClass(document.body, this.extraLayoutClass);
-        }
-      }));
-
-      this._subscriptions.push(this.toggler.Applayout.subscribe(state => {
-        this.changeLayout(state);
-      }));
-
-      this._subscriptions.push(this.toggler.Footer.subscribe(state => {
-        this._footer = state;
-      }));
-
-      this._subscriptions.push(this.toggler.mobileHorizontaMenu.subscribe(state => {
-        this._mobileHorizontalMenu = state;
-      }));
-
     });
+
+    //Subscribition List
+    this._subscriptions.push(this.toggler.pageContainerClass.subscribe(state => {
+      this._pageContainerClass = state;
+    }));
+
+    this._subscriptions.push(this.toggler.contentClass.subscribe(state => {
+      this._contentClass = state;
+    }));
+
+    this._subscriptions.push(this.toggler.bodyLayoutClass.subscribe(state => {
+      if (state) {
+        this.extraLayoutClass = state;
+        pg.addClass(document.body, this.extraLayoutClass);
+      }
+    }));
+
+    this._subscriptions.push(this.toggler.Applayout.subscribe(state => {
+      this.changeLayout(state);
+    }));
+
+    this._subscriptions.push(this.toggler.Footer.subscribe(state => {
+      this._footer = state;
+    }));
+
+    this._subscriptions.push(this.toggler.mobileHorizontaMenu.subscribe(state => {
+      this._mobileHorizontalMenu = state;
+    }));
+
+
+    this._subscriptions.push(this.toggler.messageBridge.subscribe((state: any) => {
+      console.log('subs');
+      if (state) {
+        const {type, msg, options} = state;
+        this._message.create(type, msg, options);
+      }
+    }));
+
+
     this.setMobile();
   }
 

@@ -8,7 +8,7 @@
                 'background-image': 'url(assets/Vitant/VITANT_Logo_vertical_condescriptivo_CMYK_FC.jpg)'
                 }"></div>
             <div class="text-center">
-              <h2 class="text-white">¡ Bienvenida Paulina !</h2>
+              <h2 class="text-white">¡ Bienvenido(a) {{voceroInfo.Name}} !</h2>
               <h3 class="text-white">Vocero Vitant</h3>
             </div>
           </pgcard>
@@ -25,7 +25,7 @@
               AdditionalClasses="widgetRegContactos card no-border widget widget-loader-circle-lg no-margin full-height"
               Controls="false" HeaderClass="pgCardNoHeader">
               <div class="pull-bottom bottom-left bottom-right padding-25">
-                <span class="label font-montserrat fs-11 pointer" [routerLink]="'/Registro'">REGISTRA A TUS CONTACTOS</span>
+                <span class="label font-montserrat fs-11 pointer" [routerLink]="'/Registro-contacto'">REGISTRA A TUS CONTACTOS</span>
                 <h4 class="text-white hint-text d-xl-block">Sube los datos de los contactos que crees que pueden ser familia Vitant.</h4>
               </div>
             </pgcard>
@@ -114,8 +114,8 @@
 
                   <div class="concatTileInfo">
                     <div>
-                      <h3 class="text-white nombreContactoTile">{{contact.nombre}} {{contact.apellido}}</h3>
-                      <h4 class="text-white correoContactoTile hint-text">{{contact.email}}</h4>
+                      <h3 class="text-white nombreContactoTile">{{contact.Name}} {{contact.LastName}}</h3>
+                      <h4 class="text-white correoContactoTile hint-text">{{contact.Email}}</h4>
                     </div>
                   </div>
                 </div>

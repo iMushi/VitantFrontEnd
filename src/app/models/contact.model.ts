@@ -1,7 +1,10 @@
 export interface ContactModel {
-  nombre: string;
-  apellido: string;
-  email: string;
-  fechaRegistro: string;
-  telefono: number;
+  Email: string;
+  IdCustomer: number;
+  IdCustomerType: number;
+  IdReferring: number;
+  LastName: string;
+  Name: string;
+  PhoneNumber: string;
+  RegistrationDate: string;
 }

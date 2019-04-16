@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { RootLayout } from '../root/root.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeWhile';
 
 @Component({
   selector: 'condensed-layout',
@@ -21,9 +23,41 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ])
   ]
 })
-export class CondensedComponent extends RootLayout implements OnInit {
+export class CondensedComponent extends RootLayout implements OnInit, OnDestroy {
 
-  menuLinks = [
+  loggedInItems = [
+    {
+      label: 'Vocero',
+      routerLink: '/Vocero',
+      iconType: 'fa',
+      iconName: 'laptop'
+    },
+    {
+      label: 'Contactos',
+      routerLink: '/Registro-contacto',
+      iconType: 'fa',
+      iconName: 'user-plus'
+    },
+    {
+      label: 'Mis Contactos',
+      routerLink: '/Contactos',
+      iconType: 'fa',
+      iconName: 'users'
+    },
+    {
+      label: 'Información',
+      routerLink: '/Informacion',
+      iconType: 'fa',
+      iconName: 'info'
+    },
+    {
+      label: 'Salir',
+      routerLink: '/Sign-out',
+      iconType: 'fa',
+      iconName: 'sign-out'
+    }
+  ];
+  normalItems = [
     {
       label: 'Inicio',
       routerLink: '/Vitant',
@@ -37,32 +71,28 @@ export class CondensedComponent extends RootLayout implements OnInit {
       iconName: 'form'
     },
     {
-      label: 'Contactos',
-      routerLink: '/Registro-contacto',
+      label: 'Ingreso',
+      routerLink: '/Login',
       iconType: 'fa',
-      iconName: 'user-plus'
-    },
-    {
-      label: 'Vocero',
-      routerLink: '/Vocero',
-      iconType: 'fa',
-      iconName: 'laptop'
-    },
-    {
-      label: 'Mis Contactos',
-      routerLink: '/Contactos',
-      iconType: 'fa',
-      iconName: 'users'
-    },
-    {
-      label: 'Información',
-      routerLink: '/Informacion',
-      iconType: 'fa',
-      iconName: 'info'
-    }
-  ];
+      iconName: 'sign-in'
+    }];
+  menuLinks = [];
+  takeWhile$ = new Subject();
+
+  ngOnDestroy () {
+    super.ngOnDestroy();
+    this.takeWhile$.next(false);
+  }
 
   ngOnInit () {
+
+    this._authService.checkSession();
+
+    this._authService.isAuth.takeUntil(this.takeWhile$).subscribe(
+      isAuth => {
+        this.menuLinks = isAuth ? this.loggedInItems : this.normalItems;
+      }
+    );
 
   }
 

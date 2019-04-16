@@ -25,7 +25,13 @@
                         <div pgFormGroupDefault class="form-group form-group-default required"
                              [class.has-error]="basicFormfname.invalid && (basicFormfname.dirty || basicFormfname.touched)">
                           <label>Nombre</label>
-                          <input type="text" class="form-control" id="fName" name="fName" [(ngModel)]="fName" #basicFormfname="ngModel" required>
+                          <input type="text"
+                                 class="form-control"
+                                 id="name"
+                                 name="name"
+                                 [(ngModel)]="name"
+                                 [textMask]="{mask: mask.name, guide: false}"
+                                 #basicFormfname="ngModel" required>
                         </div>
 
                         <div *ngIf="basicFormfname.invalid && (basicFormfname.dirty || basicFormfname.touched)">
@@ -38,7 +44,12 @@
                       <div class="col-md-12">
                         <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="basicFormLName.invalid && (basicFormLName.dirty || basicFormLName.touched)">
                           <label>Apellido(s)</label>
-                          <input type="text" class="form-control" name="lastName" [(ngModel)]="lName" #basicFormLName="ngModel" required>
+                          <input type="text"
+                                 class="form-control"
+                                 name="lastName"
+                                 [(ngModel)]="lastName"
+                                 [textMask]="{mask: mask.name, guide: false}"
+                                 #basicFormLName="ngModel" required>
                         </div>
                         <div *ngIf="basicFormLName.invalid && (basicFormLName.dirty || basicFormLName.touched)">
                           <label *ngIf="basicFormLName.errors.required" class="error">Esta informaci&oacute;n es requerida</label>
@@ -51,22 +62,32 @@
                       <div class="col-md-12">
                         <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="basicFormPhone.invalid && (basicFormPhone.dirty || basicFormPhone.touched)">
                           <label>Tel&eacute;fono</label>
-                          <input type="text" class="form-control" name="phone" [(ngModel)]="phone" #basicFormPhone="ngModel" required>
+                          <input type="text"
+                                 class="form-control"
+                                 name="phoneNumber"
+                                 [(ngModel)]="phoneNumber"
+                                 [textMask]="{mask: mask.telephone}"
+                                 #basicFormPhone="ngModel" required>
                         </div>
                         <div *ngIf="basicFormPhone.invalid && (basicFormPhone.dirty || basicFormPhone.touched)">
                           <label *ngIf="basicFormPhone.errors.required" class="error">Esta informaci&oacute;n es requerida</label>
                         </div>
                       </div>
                     </div>
-
                     <div class="row clearfix">
                       <div class="col-md-12">
                         <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="basicFormEmail.invalid && (basicFormEmail.dirty || basicFormEmail.touched)">
                           <label>Correo</label>
-                          <input type="text" class="form-control" name="email" [(ngModel)]="email" #basicFormEmail="ngModel" required>
+                          <input type="text"
+                                 class="form-control"
+                                 name="email"
+                                 [textMask]="{mask: mask.emailMask}"
+                                 [pattern]="emailPattern"
+                                 [(ngModel)]="email" #basicFormEmail="ngModel" required>
                         </div>
                         <div *ngIf="basicFormEmail.invalid && (basicFormEmail.dirty || basicFormEmail.touched)">
                           <label *ngIf="basicFormEmail.errors.required" class="error font-med">Esta informaci&oacute;n es requerida</label>
+                          <label *ngIf="basicFormEmail.errors.pattern" class="error font-med">El email es inv&aacute;lido</label>
                         </div>
                       </div>
                     </div>
@@ -76,7 +97,7 @@
                     <BR>
                     <div class="row clearfix">
                       <div class="col-md-12 buttonCenter">
-                        <button class="btn btn-coral btnVitant" type="submit" [class.disabled]="basicForm.invalid">
+                        <button class="btn btn-coral btnVitant" type="submit" [class.disabled]="basicForm.invalid" (click)="registerContact(basicForm)">
                           <i>Registrar Contacto</i>
                         </button>
                       </div>

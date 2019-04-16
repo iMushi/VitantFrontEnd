@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { pagesToggleService } from '../@pages/services/toggler.service';
-import { SocialService } from '../social/social.service';
 import { ContactModel } from '../models/contact.model';
+import { RegisterService } from '../services/register.service';
+import { AuthService } from '../services/auth.service';
+import { LoginResponseModel } from '../models/LoginResponse.model';
 
 @Component({
   selector: 'app-view-vocero',
@@ -31,14 +33,15 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
   configLiveWidgetContactos;
   indexWidgetContactos = 0;
 
-
   contacts: Array<ContactModel> = [];
+  voceroInfo: LoginResponseModel;
 
-  constructor (public _togglerService: pagesToggleService, private _socialService: SocialService) {
+  constructor (public _togglerService: pagesToggleService, private _registerService: RegisterService,
+               private _auth: AuthService) {
   }
 
-  ngOnInit () {
 
+  ngOnInit () {
 
     this.configLiveWidgetDesarrollo = {
 
@@ -55,7 +58,9 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     };
 
-    this._socialService.getContacts().subscribe(
+    this.voceroInfo = this._auth.loggedInfo.getValue();
+
+    this._registerService.GetContacts().subscribe(
       resp => {
         this.contacts = resp;
       }

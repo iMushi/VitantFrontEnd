@@ -9,6 +9,7 @@
         <a *ngIf="item.routerLink" [routerLink]="[item.routerLink]" [class.detailed]="item.details">
             <span class="title">{{ item.label }}</span>
             <span  *ngIf="item.details" class="details">{{item.details}}</span>
+          <!-- <span class="details">{{item.routerLink }} - {{selectedItem}}</span> -->
         </a>
         <a *ngIf="item.externalLink" href="{{item.externalLink}}" [attr.target]="item.target" [class.detailed]="item.details">
             <span class="title">{{ item.label }}</span>
@@ -19,7 +20,7 @@
                       [routerLink]="[item.routerLink]"
                       [IconType]="item.iconType"
                       [IconName]="item.iconName"
-                      ExtraClass="item.thumbNailClass {{item.routerLink === selectedItem ? 'focusIcon':''}}">
+                      [ExtraClass]="item.routerLink === selectedItem ? 'focusIcon':'noFocus'">
 
         </pg-menu-icon>
         <ul class="sub-menu" *ngIf="item.submenu" [@toggleHeight]="item.toggle">

@@ -1,0 +1,91 @@
+<div class="social-wrapper">
+  <div class="social " data-pages="social">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron smallBanner" data-social="cover">
+      <div class="titleContainer" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
+        <h5 class="titleCorto text-white m-l-20">Ingreso</h5>
+        <div class="vitantInnerLogo"  [ngStyle]="{
+            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'
+            }"></div>
+      </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main">
+      <pg-container>
+        <div class="card card-transparent" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
+          <div class="card-body">
+            <div class="row rowJustifyCenter">
+
+              <div class="col-lg-12">
+                <pgcard Controls="false" HeaderClass="pgCardNoHeader" AdditionalClasses="hoverCard formPadding">
+
+                  <form id="form-personal" role="form" autocomplete="off" #basicForm="ngForm">
+
+
+                    <div class="row clearfix">
+                      <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                             [class.has-error]="basicFormfname.invalid && (basicFormfname.dirty || basicFormfname.touched)">
+                          <label>Email</label>
+                          <input [textMask]="{mask: mask.emailMask}"
+                                 type="text"
+                                 class="form-control"
+                                 id="userName"
+                                 name="userName"
+                                 [pattern]="emailPattern"
+                                 [(ngModel)]="userName" #basicFormfname="ngModel" required>
+                        </div>
+
+                        <div *ngIf="basicFormfname.invalid && (basicFormfname.dirty || basicFormfname.touched)">
+                          <label *ngIf="basicFormfname.errors.required" class="error">Esta informaci&oacute;n es requerida</label>
+                          <label *ngIf="basicFormfname.errors.pattern" class="error font-med">El email es inv&aacute;lido</label>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row clearfix">
+                      <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                             [class.has-error]="basicFormPassword.invalid && (basicFormPassword.dirty || basicFormPassword.touched)">
+                          <label>Contrase&ntilde;a</label>
+                          <input [textMask]="{mask: mask.password, guide: false}"
+                                 type="password"
+                                 class="form-control"
+                                 name="password"
+                                 [(ngModel)]="password"
+                                 #basicFormPassword="ngModel" required>
+                        </div>
+                        <div *ngIf="basicFormPassword.invalid && (basicFormPassword.dirty || basicFormPassword.touched)">
+                          <label *ngIf="basicFormPassword.errors.required" class="error font-med">Esta informaci&oacute;n es requerida</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <BR>
+                    <div class="row clearfix">
+                      <div class="col-md-12 buttonCenter">
+                        <button class="btn btn-coral btnVitant" type="submit" [class.disabled]="basicForm.invalid" (click)="doLogin(basicForm)">
+                          <i>Ingresar</i>
+                        </button>
+                      </div>
+                    </div>
+
+                  </form>
+
+                </pgcard>
+              </div>
+            </div>
+          </div>
+        </div>
+      </pg-container>
+
+
+    </div>
+
+    <!-- END CONTAINER FLUID -->
+  </div>
+  <!-- /container -->
+</div>

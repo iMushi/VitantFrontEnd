@@ -1,15 +1,16 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { pagesToggleService } from '../@pages/services/toggler.service';
 import emailMask from 'text-mask-addons/dist/emailMask';
-import { NgForm } from '@angular/forms';
+import { pagesToggleService } from '../@pages/services/toggler.service';
 import { RegisterService } from '../services/register.service';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('enterAnimation', [
@@ -25,13 +26,10 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class RegistroComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  name;
-  lastName;
-  phoneNumber;
   password;
-  email;
+  userName;
 
   mask = {
     telephone: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
@@ -42,9 +40,12 @@ export class RegistroComponent implements OnInit, AfterViewInit, OnDestroy {
 
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
-
-  constructor (public _togglerService: pagesToggleService, private _registerService: RegisterService
-    , private _router: Router) {
+  constructor (
+    public _togglerService: pagesToggleService,
+    private _registerService: RegisterService,
+    private _authService: AuthService,
+    private _router: Router
+  ) {
   }
 
   ngOnInit () {
@@ -60,30 +61,31 @@ export class RegistroComponent implements OnInit, AfterViewInit, OnDestroy {
     this._togglerService.toggleAnimateEnter(true);
   }
 
-  createAccount (form: NgForm) {
+  doLogin (form: NgForm) {
     if (form.valid) {
 
-      const {name, lastName, phoneNumber, password, email} = this;
+      const {userName, password} = this;
 
-      this._registerService.RegisterUser({
-        name, lastName, phoneNumber, password, email
-      }).subscribe(
-        resp => {
+      this._authService.login({userName, password}).catch(
+        msg => {
 
           this._togglerService._messageBridge.next({
-            type: 'success', msg: 'Te has registrado correctamente',
+            type: 'danger', msg,
             options: {
               Position: 'top-right',
               Style: 'simple',
               PauseOnHover: true,
-              Title: 'Exito',
-              Duration: 5000
+              Title: 'Error',
+              Duration: 2000
             }
           });
 
-          this._router.navigate(['/Login']);
+        }).then(_ => {
+        if (this._authService.isAuth.value) {
+          this._router.navigate(['/Vocero']);
         }
-      );
+      });
     }
   }
 }
+

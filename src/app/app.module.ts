@@ -46,6 +46,12 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { RegisterService } from './services/register.service';
 import { HeaderInterceptor } from './Interceptors/HeaderInterceptor';
+import { MessageService } from './@pages/components/message/message.service';
+import { MessageModule } from './@pages/components/message/message.module';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { SignOutComponent } from './sign-out/sign-out.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -79,7 +85,9 @@ export class AppHammerConfig extends HammerGestureConfig {
     RegistroContactoComponent,
     ViewVoceroComponent,
     MisContactosComponent,
-    InformacionComponent
+    InformacionComponent,
+    LoginComponent,
+    SignOutComponent
   ],
   imports: [
     TextMaskModule,
@@ -97,9 +105,10 @@ export class AppHammerConfig extends HammerGestureConfig {
     RouterModule.forRoot(AppRoutes),
     pgTabsModule,
     PerfectScrollbarModule,
-    pgSwitchModule
+    pgSwitchModule,
+    MessageModule
   ],
-  providers: [pagesToggleService, SocialService, RegisterService,
+  providers: [pagesToggleService, SocialService, RegisterService, MessageService, AuthService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

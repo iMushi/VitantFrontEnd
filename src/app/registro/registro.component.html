@@ -3,7 +3,7 @@
     <!-- START JUMBOTRON -->
     <div class="jumbotron smallBanner" data-social="cover">
       <div class="titleContainer" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
-        <h5 class="titleCorto text-white m-l-20">Registro</h5>
+        <h5 class="titleCorto text-white m-l-20">Registro Vocero</h5>
         <div class="vitantInnerLogo"  [ngStyle]="{
             'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'
             }"></div>
@@ -28,7 +28,7 @@
                           <input [textMask]="{mask: mask.name, guide: false}"
                                  type="text"
                                  class="form-control"
-                                 id="name" name="fName"
+                                 name="the_Name" autocomplete="off"
                                  [(ngModel)]="name" #basicFormfname="ngModel" required>
                         </div>
 
@@ -45,8 +45,8 @@
                           <input [textMask]="{mask: mask.name, guide: false}"
                                  type="text"
                                  class="form-control"
-                                 name="lastName"
-                                 [(ngModel)]="lastName"
+                                 name="the_lastName"
+                                 [(ngModel)]="lastName" autocomplete="off"
                                  #basicFormLName="ngModel" required>
                         </div>
                         <div *ngIf="basicFormLName.invalid && (basicFormLName.dirty || basicFormLName.touched)">
@@ -61,8 +61,8 @@
                           <label>Tel&eacute;fono</label>
                           <input [textMask]="{mask: mask.telephone}" type="text"
                                  class="form-control"
-                                 name="phoneNumber"
-                                 [(ngModel)]="phoneNumber"
+                                 name="the_phoneNumber"
+                                 [(ngModel)]="phoneNumber" autocomplete="off"
                                  #basicFormPhone="ngModel" required>
                         </div>
                         <div *ngIf="basicFormPhone.invalid && (basicFormPhone.dirty || basicFormPhone.touched)">
@@ -78,12 +78,14 @@
                           <input [textMask]="{mask: mask.emailMask}"
                                  type="text"
                                  class="form-control"
-                                 name="email"
+                                 name="the_email"
                                  [(ngModel)]="email"
+                                 [pattern]="emailPattern" autocomplete="off"
                                  #basicFormEmail="ngModel" required>
                         </div>
                         <div *ngIf="basicFormEmail.invalid && (basicFormEmail.dirty || basicFormEmail.touched)">
                           <label *ngIf="basicFormEmail.errors.required" class="error font-med">Esta informaci&oacute;n es requerida</label>
+                          <label *ngIf="basicFormEmail.errors.pattern" class="error font-med">El email es inv&aacute;lido</label>
                         </div>
                       </div>
                     </div>
@@ -92,7 +94,12 @@
                       <div class="col-md-12">
                         <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="basicFormPassword.invalid && (basicFormPassword.dirty || basicFormPassword.touched)">
                           <label>Contrase&ntilde;a</label>
-                          <input [textMask]="{mask: mask.password, guide: false}" type="password" class="form-control" name="password" [(ngModel)]="password" #basicFormPassword="ngModel" required>
+                          <input [textMask]="{mask: mask.password, guide: false}"
+                                 type="password"
+                                 class="form-control"
+                                 name="the_password"
+                                 [(ngModel)]="password" autocomplete="off"
+                                 #basicFormPassword="ngModel" required>
                         </div>
                         <div *ngIf="basicFormPassword.invalid && (basicFormPassword.dirty || basicFormPassword.touched)">
                           <label *ngIf="basicFormPassword.errors.required" class="error font-med">Esta informaci&oacute;n es requerida</label>

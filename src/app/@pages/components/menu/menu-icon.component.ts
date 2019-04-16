@@ -10,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MenuIconComponent implements OnInit {
   _classMap: string;
+  _orginalClass = 'icon-thumbnail ';
   @Input() IconType: string;
   @Input() IconName: string;
 
@@ -20,7 +21,7 @@ export class MenuIconComponent implements OnInit {
   @Input()
   set ExtraClass (value: string) {
     if (value !== undefined) {
-      this._classMap = this._classMap + value;
+      this._classMap = this._orginalClass + value;
     }
   }
 

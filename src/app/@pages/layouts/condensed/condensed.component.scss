@@ -224,7 +224,7 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 25vh;
+  height: 20vh;
   width: calc(100vw - 50%);
 }
 
@@ -260,10 +260,14 @@ body {
   transition: 0.5s;
 }
 
+/*
+
+
 .hoverCard:hover .card-body .hoverTitle {
   top: 0px;
 }
 
+ */
 
 .hoverCard:before {
   content: '';
@@ -383,11 +387,10 @@ $assets-url: "/assets";
     height: auto !important;
   }
 
+
   &:hover {
     &::before {
-      width: 20%;
-      transition: 0.5s ease;
-      transform: rotate3d(1, 2, -1, 192deg);
+      width: 61%;
     }
   }
 
@@ -395,10 +398,14 @@ $assets-url: "/assets";
     content: " ";
     position: absolute;
     top: 0;
+    left: -90px;
     width: 0;
     height: 100%;
-    background-color: rgb(235, 73, 83);
     transition: 0.5s ease;
+    background-image: url("#{$assets-url}/Vitant/VitantLines.png");
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   &:after {
@@ -442,9 +449,7 @@ $assets-url: "/assets";
 
   &:hover {
     &::before {
-      width: 20%;
-      transition: 0.5s ease;
-      transform: rotate3d(1, 2, -1, 192deg);
+      width: 61%;
     }
   }
 
@@ -452,11 +457,17 @@ $assets-url: "/assets";
     content: " ";
     position: absolute;
     top: 0;
+    left: -90px;
     width: 0;
     height: 100%;
-    background-color: $color-coral;
     transition: 0.5s ease;
+    background-image: url("#{$assets-url}/Vitant/VitantLines.png");
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
+
+
 
   & > div {
     position: relative;
@@ -485,9 +496,7 @@ $assets-url: "/assets";
 
   .tiles:not(.tilesVerDesarrollo):hover {
     &::before {
-      width: 20%;
-      transition: 0.5s ease;
-      transform: rotate3d(1, 2, -1, 192deg);
+      width: 61%;
     }
   }
 
@@ -495,10 +504,14 @@ $assets-url: "/assets";
     content: " ";
     position: absolute;
     top: 0;
+    left: -90px;
     width: 0;
     height: 100%;
-    background-color: $color-coral;
     transition: 0.5s ease;
+    background-image: url("#{$assets-url}/Vitant/VitantLines.png");
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: -1;
   }
 
@@ -519,9 +532,7 @@ $assets-url: "/assets";
 
   .tiles:not(.tilesMisContactos):hover {
     &::before {
-      width: 20%;
-      transition: 0.5s ease;
-      transform: rotate3d(1, 2, -1, 192deg);
+      width: 61%;
     }
   }
 
@@ -529,10 +540,14 @@ $assets-url: "/assets";
     content: " ";
     position: absolute;
     top: 0;
+    left: -90px;
     width: 0;
     height: 100%;
-    background-color: $color-coral;
     transition: 0.5s ease;
+    background-image: url("#{$assets-url}/Vitant/VitantLines.png");
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: -1;
   }
 }
@@ -611,7 +626,7 @@ $assets-url: "/assets";
 }
 
 
-.focusIcon, li:focus-within > pg-menu-icon {
+.focusIcon {
   outline: auto 5px $color-coral;
 }
 
@@ -633,9 +648,7 @@ $assets-url: "/assets";
 
   &:hover {
     &::before {
-      width: 20%;
-      transition: 0.5s ease;
-      transform: rotate3d(1, 2, -1, 192deg);
+      width: 61%;
     }
   }
 
@@ -643,13 +656,15 @@ $assets-url: "/assets";
     content: " ";
     position: absolute;
     top: 0;
+    left: -90px;
     width: 0;
     height: 100%;
-    background-color: $color-coral;
     transition: 0.5s ease;
+    background-image: url("#{$assets-url}/Vitant/VitantLines.png");
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-
-
 
   & > div {
     position: relative;
@@ -665,7 +680,7 @@ $assets-url: "/assets";
 .informacionContainer{
   display: flex;
   flex-flow: row  wrap;
-  justify-content: space-between;
+  justify-content: center;
   text-align: justify;
   align-items: center;
 }

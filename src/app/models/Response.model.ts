@@ -4,7 +4,8 @@ export const enum statusType {
 }
 
 export interface ResponseModel<T> {
-  data: T;
+  data: T[];
   error: string;
   status: statusType;
+  accessToken?: string;
 }

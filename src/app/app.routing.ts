@@ -8,6 +8,9 @@ import { RegistroContactoComponent } from './registro-contacto/registro-contacto
 import { ViewVoceroComponent } from './view-vocero/view-vocero.component';
 import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
 import { InformacionComponent } from './informacion/informacion.component';
+import { LoginComponent } from './login/login.component';
+import { SignOutComponent } from './sign-out/sign-out.component';
+import { AuthGuard } from './guard/auth.guard';
 
 export const AppRoutes: Routes = [
   {
@@ -24,16 +27,27 @@ export const AppRoutes: Routes = [
       component: RegistroComponent
     }, {
       path: 'Registro-contacto',
+      canActivate: [AuthGuard],
       component: RegistroContactoComponent
     }, {
       path: 'Vocero',
+      canActivate: [AuthGuard],
       component: ViewVoceroComponent
     }, {
       path: 'Contactos',
+      canActivate: [AuthGuard],
       component: MisContactosComponent
     }, {
       path: 'Informacion',
+      canActivate: [AuthGuard],
       component: InformacionComponent
+    }, {
+      path: 'Login',
+      component: LoginComponent
+    }, {
+      path: 'Sign-out',
+      canActivate: [AuthGuard],
+      component: SignOutComponent
     }]
   }
 ];
