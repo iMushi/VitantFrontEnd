@@ -22,7 +22,7 @@
         <div class="col-sm-6 m-b-10">
           <div class="ar-1-1">
 
-          <pgcard TimeOut="3000"
+            <pgcard TimeOut="3000"
                     AdditionalClasses="widgetRegContactos card no-border no-margin widget-loader-bar full-height"
                     Controls="false"
                     BodyClass="no-padding" HeaderClass="hidden">
@@ -73,7 +73,7 @@
                       </h4>
                     </div>
 
-                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;" >CONOCE M&Aacute;S</span>
+                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">CONOCE M&Aacute;S</span>
 
                   </div>
 
@@ -103,16 +103,26 @@
 
 
               <swiper [config]="configLiveWidgetBrochure" [(index)]="indexWidgetBrochure">
+                <div class="slide-front tiles slide active">
 
-
-                <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
-
-                  <div class="" style="max-width: 90%;flex-basis: 60%; display: flex;align-items: center">
-
+                  <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
+                    <div class="" style="max-width: 90%;flex-basis: 60%; display: flex;align-items: center">
+                    </div>
+                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">
+                      <a href="http://localhost:8090/static/Brochure_Digital_2.8MB.pdf" target="_blank">DESCARGA BROCHURE</a>
+                    </span>
                   </div>
+                </div>
 
-                  <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;" >DESCARGA BROCHURE</span>
 
+
+                <div class="slide-back tiles tilesBrochure">
+                  <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
+                    <h4 class="text-white hint-text d-xl-block" style="max-width: 90%;flex-basis: 60%;">&nbsp;</h4>
+                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">
+                      <a href="http://localhost:8090/static/Brochure_Digital_2.8MB.pdf" target="_blank">DESCARGA BROCHURE</a>
+                    </span>
+                  </div>
                 </div>
 
 
@@ -139,12 +149,12 @@
 
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
 
-                      <div class="concatTileInfo" style="max-width: 90%;flex-basis: 60%;">
-                        <div>
-                          <h3 class="text-white nombreContactoTile">{{contact.Name}} {{contact.LastName}}</h3>
-                          <h4 class="text-white correoContactoTile hint-text">{{contact.Email}}</h4>
-                        </div>
+                    <div class="concatTileInfo" style="max-width: 90%;flex-basis: 60%;">
+                      <div>
+                        <h3 class="text-white nombreContactoTile">{{contact.Name}} {{contact.LastName}}</h3>
+                        <h4 class="text-white correoContactoTile hint-text">{{contact.Email}}</h4>
                       </div>
+                    </div>
 
                     <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;" [routerLink]="'/Contactos'">VER TODOS MIS CONTACTOS</span>
                   </div>

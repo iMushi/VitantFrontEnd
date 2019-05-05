@@ -74,6 +74,13 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     };
 
+    this.configLiveWidgetBrochure = {
+      direction: 'horizontal',
+      autoplay: {
+        delay: 5000
+      }
+    };
+
     this.voceroInfo = this._auth.loggedInfo.getValue();
 
     this._registerService.GetContacts().subscribe(

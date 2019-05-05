@@ -570,8 +570,22 @@ $assets-url: "/assets";
 }
 
 
+.tilesBrochure::after {
+  background-image: url("#{$assets-url}/Vitant/CuadriculaBrochure.jpg");
+  background-size: cover;
+  content: " ";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 1;
+}
+
+
 .tilesMisContactos::after {
-  background-image: url("#{$assets-url}/Vitant/Stock3.jpg");
+  background-image: url("#{$assets-url}/Vitant/shutterstock_191746961.jpg");
   background-size: cover;
   content: " ";
   left: 0;
@@ -585,7 +599,7 @@ $assets-url: "/assets";
 
 .tilesVerDesarrollo::after {
 
-  background-image: url("#{$assets-url}/Vitant/banner.png");
+  background-image: url("#{$assets-url}/Vitant/DelValleFachada.jpg");
   background-size: cover;
   content: " ";
   left: 0;
@@ -601,7 +615,7 @@ $assets-url: "/assets";
 
 .tilesRegistrarContacto::after {
 
-  background-image: url("#{$assets-url}/Vitant/Stock2.jpg");
+  background-image: url("#{$assets-url}/Vitant/shutterstock_1306314856.jpg");
   background-size: cover;
   content: " ";
   left: 0;
@@ -716,6 +730,7 @@ $assets-url: "/assets";
   justify-content: center;
   text-align: justify;
   align-items: center;
+  font-family: Montserrat;
 }
 
 
@@ -728,20 +743,29 @@ $assets-url: "/assets";
   order: 1;
 }
 
+.informacionContainer .infoLeft > ul {
+  list-style-type: none;
+}
+
+.informacionContainer .infoLeft > ul > li> span{
+  font-weight: bolder;
+}
+
+
 .informacionContainer .infoLeft{
-  flex: 0 0 18%;
+  flex: 0 0 35%;
   order: 2;
 }
 
 .informacionContainer .infoCenter{
   text-align: center;
   flex: 0 0 60%;
-  order: 3;
+  order: 4;
 }
 
 .informacionContainer .infoRight{
-  flex: 0 0 18%;
-  order: 4;
+  flex: 0 0 48%;
+  order: 3;
 }
 
 .informacionContainer .infoBottom{
@@ -749,14 +773,21 @@ $assets-url: "/assets";
   order:5
 }
 
+.mapaVitant{
+  background-image: url("#{$assets-url}/Vitant/Mapa_Valle.png");
+  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
 
 @media (max-width: 1024px) {
   .informacionContainer .infoLeft{
-    order:3;
     flex-basis: 100%;
   }
   .informacionContainer .infoCenter{
-    order:2;
     flex-basis: 100%;
   }
   .informacionContainer .infoRight{
