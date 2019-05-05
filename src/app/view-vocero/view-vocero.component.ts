@@ -33,6 +33,12 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
   configLiveWidgetContactos;
   indexWidgetContactos = 0;
 
+  configLiveWidgetRegContactos;
+  indexWidgetRegContactos = 0;
+
+  configLiveWidgetBrochure;
+  indexWidgetBrochure = 0;
+
   contacts: Array<ContactModel> = [];
   voceroInfo: LoginResponseModel;
 
@@ -50,6 +56,16 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
         delay: 5000
       }
     };
+
+
+    this.configLiveWidgetRegContactos = {
+
+      direction: 'horizontal',
+      autoplay: {
+        delay: 5000
+      }
+    };
+
 
     this.configLiveWidgetContactos = {
       direction: 'horizontal',

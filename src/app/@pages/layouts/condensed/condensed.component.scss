@@ -309,6 +309,27 @@ body {
 }
 
 
+.titleLargo {
+  font-family: DanmarkURW-Bol;
+  font-weight: bold;
+  color: #F4364C;
+  font-size: calc(2vw + 1em);
+}
+
+.titleCorto {
+  font-family: DanmarkURW-Bol;
+  font-weight: bold;
+  color: #F4364C;
+  font-size: calc(2vw + 1em);
+}
+
+
+.titleFontMobile {
+  font-size: calc(2.6em);
+}
+
+
+
 /** Small Banner Social Page **/
 @media (max-width: 991px) {
 
@@ -321,6 +342,13 @@ body {
 @media (max-width: 767px) {
   .smallBannerWithHeader {
     top: 48px;
+  }
+  .titleLargo {
+    font-size: calc(2vw + 1em);
+
+  }
+  .titleCorto {
+    font-size: calc(2vw + 1em);
   }
 }
 
@@ -382,43 +410,30 @@ $assets-url: "/assets";
   right: 0;
   top: 0;
   bottom: 0;
-
-  .card-body {
-    height: auto !important;
-  }
+  background-color: $color-rosa;
 
 
-  &:hover {
+  .tiles:not(.tilesRegistrarContacto):hover {
     &::before {
-      width: 61%;
+      width: 75%;
+      opacity: 1;
+      transition: 0.5s ease-in;
     }
   }
 
-  &:before {
+  .tiles:not(.tilesRegistrarContacto)::before {
     content: " ";
     position: absolute;
     top: 0;
     left: -90px;
-    width: 0;
+    width: 50%;
     height: 100%;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in;
     background-image: url("#{$assets-url}/Vitant/VitantLines.png");
     background-size: contain;
     background-size: cover;
     background-repeat: no-repeat;
-  }
-
-  &:after {
-    background-image: url("#{$assets-url}/Vitant/Stock2.jpg");
-    background-size: cover;
-    content: " ";
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    z-index: 0;
-    opacity: .69;
+    opacity: 0;
   }
 
   & > div {
@@ -443,13 +458,12 @@ $assets-url: "/assets";
   bottom: 0;
   background-color: $color-morado;
 
-  .card-body {
-    height: auto !important;
-  }
 
   &:hover {
     &::before {
-      width: 61%;
+      width: 75%;
+      opacity: 1;
+      transition: 0.5s ease-in;
     }
   }
 
@@ -458,13 +472,14 @@ $assets-url: "/assets";
     position: absolute;
     top: 0;
     left: -90px;
-    width: 0;
+    width: 50%;
     height: 100%;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in;
     background-image: url("#{$assets-url}/Vitant/VitantLines.png");
     background-size: contain;
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: 0;
   }
 
 
@@ -496,7 +511,9 @@ $assets-url: "/assets";
 
   .tiles:not(.tilesVerDesarrollo):hover {
     &::before {
-      width: 61%;
+      width: 75%;
+      opacity: 1;
+      transition: 0.5s ease-in;
     }
   }
 
@@ -505,14 +522,14 @@ $assets-url: "/assets";
     position: absolute;
     top: 0;
     left: -90px;
-    width: 0;
+    width: 50%;
     height: 100%;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in;
     background-image: url("#{$assets-url}/Vitant/VitantLines.png");
     background-size: contain;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
+    opacity: 0;
   }
 
 }
@@ -581,16 +598,35 @@ $assets-url: "/assets";
   background-position: center;
 }
 
+
+.tilesRegistrarContacto::after {
+
+  background-image: url("#{$assets-url}/Vitant/Stock2.jpg");
+  background-size: cover;
+  content: " ";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 1;
+  background-position: center;
+}
+
+
+
+
 .concatTileInfo {
   display: flex;
   flex-flow: column wrap;
   align-content: center;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
+  // height: 100%;
   text-align: center;
-  position: absolute;
-  top: 0;
+  // position: absolute;
+  // top: 0;
   width: 100%;
   z-index: -1;
 }
@@ -613,7 +649,7 @@ $assets-url: "/assets";
 }
 
 .voceroPgCard {
-  background-color: $color-coral;
+  background-color: $color-morado;
 }
 
 .vitantLogoVocero {
@@ -621,7 +657,7 @@ $assets-url: "/assets";
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 50%;
+  // border-radius: 50%;
   height: 250px;
 }
 
@@ -640,15 +676,11 @@ $assets-url: "/assets";
   bottom: 0;
   background-color: $color-morado;
 
-
-  .card-body {
-    height: auto !important;
-  }
-
-
   &:hover {
     &::before {
-      width: 61%;
+      width: 75%;
+      opacity: 1;
+      transition: 0.5s ease-in;
     }
   }
 
@@ -657,13 +689,14 @@ $assets-url: "/assets";
     position: absolute;
     top: 0;
     left: -90px;
-    width: 0;
+    width: 50%;
     height: 100%;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in;
     background-image: url("#{$assets-url}/Vitant/VitantLines.png");
     background-size: contain;
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: 0;
   }
 
   & > div {
