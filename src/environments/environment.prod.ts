@@ -1,6 +1,8 @@
 export const environment = {
   production: true,
-  urlServices: 'http://localhost:8090/api',
+  urlServices: 'https://vitantmx/api',
   registerUser: '/register',
-  loginUser: '/login'
+  loginUser: '/login',
+  getContacts: '/getContacts',
+  registerContacts: '/registerContacts'
 };
