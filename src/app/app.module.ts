@@ -52,6 +52,12 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { AuthGuard } from './guard/auth.guard';
+import { BackOfficeComponent } from './back-office/back-office.component';
+import { pgDatePickerModule } from './@pages/components/datepicker/datepicker.module';
+import { pgSelectModule } from './@pages/components/select/select.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -87,7 +93,8 @@ export class AppHammerConfig extends HammerGestureConfig {
     MisContactosComponent,
     InformacionComponent,
     LoginComponent,
-    SignOutComponent
+    SignOutComponent,
+    BackOfficeComponent
   ],
   imports: [
     TextMaskModule,
@@ -106,7 +113,10 @@ export class AppHammerConfig extends HammerGestureConfig {
     pgTabsModule,
     PerfectScrollbarModule,
     pgSwitchModule,
-    MessageModule
+    MessageModule,
+    pgSelectModule,
+    pgDatePickerModule,
+    NgxDatatableModule
   ],
   providers: [pagesToggleService, SocialService, RegisterService, MessageService, AuthService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},

@@ -795,58 +795,196 @@ $assets-url: "/assets";
   }
 }
 
-/*
-.widgetContactoRegistrado {
-  transition: color 0.25s;
+/** BACK OFFICE */
 
-  &::before,
-  &::after {
-    // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
-    border: 10px solid transparent;
-    width: 0;
-    height: 0;
-    content: ' ';
-    position: absolute;
-  }
-
-  // This covers the top & right borders (expands right, then down)
-  &::before {
-    top: 0;
-    left: 0;
-  }
-
-  // And this the bottom & left borders (expands left, then up)
-  &::after {
-    bottom: 0;
-    right: 0;
-  }
-
-  &:hover {
-    color: $color-coral;
-  }
-
-  // Hover styles
-  &:hover::before,
-  &:hover::after {
-    width: 100%;
-    height: 100%;
-  }
-
-  &:hover::before {
-    border-top-color: $color-coral; // Make borders visible
-    border-right-color: $color-coral;
-    transition:
-      width 0.25s ease-out, // Width expands first
-      height 0.25s ease-out 0.25s; // And then height
-  }
-
-  &:hover::after {
-    border-bottom-color: $color-coral; // Make borders visible
-    border-left-color: $color-coral;
-    transition:
-      border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
-      width 0.25s ease-out 0.5s, // And then exanding width
-      height 0.25s ease-out 0.75s; // And finally height
-  }
+.headerPurple, .headerYellow, .headerGreen, .headerTerracota, .headerAzul, .headerYellowPiezas{
+  padding: 0px!important;
 }
-*/
+
+.headerPurple{
+  color: white !important;
+  background-image: linear-gradient($color-morado, $color-rosa);
+}
+
+.headerYellow{
+  background-image: linear-gradient(#FDA228, #F1C15F);
+  color: white !important;
+}
+
+.headerGreen {
+  background-image: linear-gradient(#0B6930, #B2D273);
+  color: white !important;
+}
+
+.headerTerracota {
+  background-image: linear-gradient(#FC261C, #BD5758);
+  color: white !important;
+}
+
+.headerAzul {
+  background-image: linear-gradient(#0826D2, #66C8EB);
+  color: white !important;
+}
+
+.headerYellowPiezas {
+  background-image: linear-gradient(#FDA228, #F1C15F);
+  color: white !important;
+}
+
+
+.headerNormal {
+  position: relative;
+  top: 20px;
+  height: 50px;
+  white-space: normal;
+  line-height: 10px;
+  width: 77px;
+  text-align: center;
+
+}
+
+.ngx-datatable .datatable-header .datatable-header-cell.sortable .sort-btn{
+  top: 20px !important;
+}
+
+.headerSuperior{
+  z-index: 9999;
+  position: fixed;
+  top: 3px;
+  text-align: center;
+  color: black !important;
+}
+
+
+.cellShowTienda {
+  height: 25px;
+  padding: 7px;
+  text-align: center
+}
+
+
+.cellClass {
+  display: flex !important;
+  justify-content: center ;
+  padding: 0px !important;
+  flex-direction: column;
+  height: 30px;
+}
+
+
+datatable-summary-row>datatable-body-row>div>datatable-body-cell {
+  height: 50px!important;
+}
+
+datatable-body-row:hover {
+  background-color: black;
+}
+
+.cellIdClass{
+  padding: 0px!important;
+  text-align: center;
+}
+
+.idColorMartes {
+  background-color: #FCF2D1;
+}
+
+.idColorMiércoles {
+  background-color: #E5F1F4;
+}
+
+.idColorJueves{
+  background-color: #F5DDCD;
+}
+
+.idColorViernes {
+  background-color: #D6F5E3;
+}
+
+.idColorSábado {
+  background-color: #FFFFFF;
+}
+
+.idColorDomingo {
+  background-color: #D7EAF7;
+}
+
+idColorLunes {
+  background-color: #FFFFFF;
+}
+
+
+.cellText {
+  display: table-cell !important;
+  vertical-align: middle !important;
+  height: 30px;
+}
+
+.cellIdText {
+  display: flex;
+  justify-content: space-around;
+  padding: 7px;
+}
+
+
+.cellNumber {
+  display: table-cell !important;
+  vertical-align: middle !important;
+  height: 30px;
+  width: 100px;
+  text-align: right;
+}
+
+datatable-summary-row,
+datatable-summary-row > datatable-body-row,
+datatable-summary-row > datatable-body-row > div,
+datatable-summary-row > datatable-body-row > div > datatable-body-cell{
+  background-color: #83909A !important;
+  color: white;
+  font-weight: bold;
+}
+
+datatable-summary-row > datatable-body-row > div > datatable-body-cell > .datatable-body-cell-label{
+  text-align: right;
+}
+
+
+datatable-row-wrapper > datatable-body-row > div> datatable-body-cell {
+  padding: 5px!important;
+}
+
+.ngx-datatable .datatable-body .datatable-body-row .datatable-body-cell{
+  font-size: 11px;
+}
+
+
+.linkSelectTable {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.linkSelectTable:hover {
+  font-weight: bolder;
+  text-shadow: #A4A4A4 0.1em 0.1em 0.2em;
+}
+
+.noPaddingTop {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.noMinHeight {
+  min-height: 0px !important;
+}
+
+.noMarginBottom {
+  margin-bottom: 0px !important;
+}
+
+pg-breadcrumb{
+  display: block !important;
+}
+
+.backOffice page-container {
+  padding-left: 0;
+}

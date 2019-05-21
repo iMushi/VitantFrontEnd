@@ -1,0 +1,269 @@
+<div class="social-wrapper">
+  <div class="social " data-pages="social">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron smallBanner" data-social="cover">
+      <div class="titleContainer" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
+        <h5 class="titleLargo text-white m-l-20">B&uacute;squeda de Voceros</h5>
+        <div class="vitantInnerLogo" [ngStyle]="{
+            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'
+            }"></div>
+      </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main">
+      <pg-container>
+
+        <pg-container *ngIf="!showModalInfo" extraHorizontalClass="bg-white p-l-0 p-r-0" extraClass="bg-white sm-p-l-0 sm-p-r-0">
+          <!-- START card -->
+          <div class="inner" pg-parallax>
+
+            <div class="card card-default noMarginBottom">
+              <div class="card-header ">
+                <div class="card-title">Filtros de B&uacute;squeda</div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>&nbsp;</label>
+                    <div class="form-group form-group-default form-group-default-select2">
+                      <label class="">Mes</label>
+                      <pg-select style="width: 100%;"
+                                 [(ngModel)]="selectedPeriodo"
+                                 (ngModelChange)="_startValuePeriodoChange()"
+                                 [PlaceHolder]="'Selecciona Mes'" ShowSearch>
+                        <pg-option
+                          *ngFor="let option of optionsFechas"
+                          [Label]="option.label"
+                          [Value]="option.value">
+                        </pg-option>
+                      </pg-select>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Periodo</label>
+                    <div class="form-group ">
+                      <div class="form-row">
+                        <div class="form-group form-group-default input-group col-md-6">
+                          <div class="form-input-group">
+                            <label class="">De:</label>
+                            <pg-datepicker (ngModelChange)="_startDate=$event;_startValueChange()"
+                                           Placeholder="Seleccione fecha"
+                                           [ngModel]="_startDate"
+                                           [DisabledDate]="_disabledStartDate" [Format]="'DD/MM/YYYY'"
+                                           (datePickerInstance)='fechaDeInstance = $event'
+
+                            ></pg-datepicker>
+                          </div>
+                          <div class="input-group-append" (click)="fechaDeInstance._openCalendar()">
+                        <span class="input-group-text">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                          </div>
+                        </div>
+
+
+                        <div class="form-group form-group-default input-group col-md-6">
+                          <div class="form-input-group">
+                            <label class="">A:</label>
+                            <pg-datepicker (ngModelChange)="_endDate=$event;_endValueChange()"
+                                           Placeholder="Seleccione fecha"
+                                           [ngModel]="_endDate" [DisabledDate]="_disabledEndDate"
+                                           [Format]="'DD/MM/YYYY'"
+                                           (datePickerInstance)='fechaAInstance = $event'
+                            ></pg-datepicker>
+                          </div>
+                          <div class="input-group-append" (click)="fechaAInstance._openCalendar()">
+                        <span class="input-group-text">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="row">
+
+                      <div class="col-md-12 col-sm-12">
+                        <div class="checkbox  check-danger checkbox-circle">
+                          <input type="checkbox" value="0" id="checkbox7"
+                                 [(ngModel)]="porVocero"
+                          >
+                          <label for="checkbox7">Voceros</label>
+                        </div>
+                        <div class="checkbox check-danger checkbox-circle">
+                          <input type="checkbox" value="1" id="checkbox8"
+                                 [(ngModel)]="porReferido"
+                          >
+                          <label for="checkbox8">Referidos</label>
+                        </div>
+                        <div class="checkbox check-danger checkbox-circle">
+                          <input type="checkbox" value="2" id="checkbox9"
+                                 [(ngModel)]="porReferidoVocero"
+                          >
+                          <label for="checkbox9">Referidos que son Voceros</label>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </pg-container>
+
+
+        <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
+
+          <div class="card card-transparent noPaddingTop">
+
+            <div class="card-body">
+              <div class="table-responsive" style="height:500px;overflow-y: hidden" #tableContainer>
+                <ng-template #verTiendasSummaryTemplate let-row="row">
+                  <div style="text-align: center;">
+                    <i class="pg pg-calender linkSelectTable" aria-hidden="true" (click)="$event.preventDefault(); $event.stopPropagation();"></i>
+                  </div>
+                </ng-template>
+
+
+                <ngx-datatable #tableAdvance class='table table-hover table-stripped striped'
+                               [scrollbarH]="scrollBarHorizontal"
+                               [scrollbarV]="true"
+                               [summaryPosition]="'bottom'"
+                               [summaryRow]="summaryRow"
+                               [summaryHeight]="summaryHeight"
+                               [headerHeight]="70"
+                               [footerHeight]="50"
+                               [rowHeight]="rowHeight"
+                               [scrollbarV]="true"
+                               [rows]='advanceRows' [columnMode]="'force'"
+                               (scroll)="tableScroll($event)">
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="ID" name="No" [frozenLeft]="true" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellIdClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                        &nbsp;
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+                    <ng-template ngx-datatable-cell-template let-value="value">
+                      <div class="cellIdText">
+                        {{value}}
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="NOMBRE" name="Nombre"  [frozenLeft]="true" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                      <div class="cellText">
+                      <span class="linkSelectTable">
+                      </span>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="CORREO" name="Correo"  [frozenLeft]="true" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                      <div class="cellText">
+                      <span class="linkSelectTable">
+                      </span>
+                      </div>
+                    </ng-template>
+
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="TELEFONO" name="Teléfono"  [frozenLeft]="true" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                      <div class="cellText">
+                      <span class="linkSelectTable">
+                      </span>
+                      </div>
+                    </ng-template>
+
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="REGISTRO" name="Fecha Registro"  [frozenLeft]="true" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                      <div class="cellText">
+                      <span class="linkSelectTable">
+                      </span>
+                      </div>
+                    </ng-template>
+
+                  </ngx-datatable-column>
+
+
+                </ngx-datatable>
+
+              </div>
+            </div>
+          </div>
+
+        </pg-container>
+
+      </pg-container>
+    </div>
+  </div>
+</div>

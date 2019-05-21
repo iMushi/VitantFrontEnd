@@ -39,6 +39,7 @@ export class RootLayout implements OnInit, OnDestroy {
   _innerWidth = pg._innerWidth;
   _layout;
   _selectedRoute;
+  _backOffice = false;
   @Input()
   public contentClass = '';
 
@@ -68,6 +69,7 @@ export class RootLayout implements OnInit, OnDestroy {
             this._pageTitle = root.data['title'];
             this._layoutOption = root.data['layoutOption'];
             this._boxed = root.data['boxed'];
+            this._backOffice = root.data['backOffice'];
 
             this._selectedRoute = '/' + root.routeConfig.path;
 
@@ -88,6 +90,11 @@ export class RootLayout implements OnInit, OnDestroy {
         this.toggler.toggleMobileHorizontalMenu(this._mobileHorizontalMenu);
         //Scoll Top
         this.scrollToTop();
+
+        if (this._backOffice) {
+          pg.addClass(document.body, 'backOffice');
+        }
+
       }
     });
 

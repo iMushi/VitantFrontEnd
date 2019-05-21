@@ -11,6 +11,7 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { LoginComponent } from './login/login.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { AuthGuard } from './guard/auth.guard';
+import { BackOfficeComponent } from './back-office/back-office.component';
 
 export const AppRoutes: Routes = [
   {
@@ -20,6 +21,12 @@ export const AppRoutes: Routes = [
     },
     component: CondensedComponent,
     children: [{
+      path: 'BackOffice',
+      data:{
+        backOffice: true
+      },
+      component: BackOfficeComponent
+    }, {
       path: 'Vitant',
       component: SocialComponent
     }, {

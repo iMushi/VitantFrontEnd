@@ -9,7 +9,7 @@
 <!-- YOUR LAYOUT CONTENT GOES INSIDE HERE -->
 <ng-template #contentTpl>
   <!-- PAGE SIDEBAR -->
-  <pg-sidebar>
+  <pg-sidebar *ngIf="!_backOffice">
     <!--
       <ng-template #sideBarOverlay>
           <div class="row">
