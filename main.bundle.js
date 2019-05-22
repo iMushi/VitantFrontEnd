@@ -10339,7 +10339,7 @@ module.exports = __webpack_require__.p + "Pages-icon.0fd5f549d439c281557b.woff";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    urlServices: 'https://morning-wave-50354.herokuapp.com/api',
+    urlServices: 'https://whispering-chamber-69118.herokuapp.com/api',
     registerUser: '/register',
     loginUser: '/login',
     getContacts: '/getContacts',
