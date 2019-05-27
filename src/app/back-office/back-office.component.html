@@ -91,19 +91,19 @@
                         <div class="checkbox  check-danger checkbox-circle">
                           <input type="checkbox" value="0" id="checkbox7"
                                  [(ngModel)]="porVocero"
-                          >
+                                 (change)="porReferido=false;porReferidoVocero=false; changeAgrup();">
                           <label for="checkbox7">Voceros</label>
                         </div>
                         <div class="checkbox check-danger checkbox-circle">
                           <input type="checkbox" value="1" id="checkbox8"
                                  [(ngModel)]="porReferido"
-                          >
+                                 (change)="porVocero=false;porReferidoVocero=false; changeAgrup();">
                           <label for="checkbox8">Referidos</label>
                         </div>
                         <div class="checkbox check-danger checkbox-circle">
                           <input type="checkbox" value="2" id="checkbox9"
                                  [(ngModel)]="porReferidoVocero"
-                          >
+                                 (change)="porReferido=false;porVocero=false; changeAgrup();">
                           <label for="checkbox9">Referidos que son Voceros</label>
                         </div>
                       </div>

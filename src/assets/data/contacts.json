@@ -1,9 +1,24 @@
-[
-  {
-    "nombre": "Gabriel",
-    "apellido": "Lopez",
-    "email": "imushi@me.com",
-    "fechaRegistro": "01/04/2019",
-    "telefono": 5551430175
-  }
-]
+{
+  "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZEN1c3RvbWVyIjo3LCJOYW1lIjoiUGF1bGluYSIsIkxhc3ROYW1lIjoiQ29yZG92YSIsIkVtYWlsIjoiZm9vbWFpbEBtYWlsLmNvbSIsImlhdCI6MTU1ODkyNTYzOSwiZXhwIjoxNTU4OTI1OTM5fQ.-W2PbZOzHVb2SrWLEjsp-eBhAxkq1lwli1j_5EyAAYo",
+  "data": [{
+    "IdCustomer": 8,
+    "Name": "Jhon",
+    "LastName": "Doe",
+    "Email": "jhondoe@mail.com",
+    "PhoneNumber": "(555) 555-5555",
+    "IdCustomerType": 2,
+    "IdReferring": 7,
+    "RegistrationDate": "2019-05-27T02:52:38.000Z"
+  }, {
+    "IdCustomer": 9,
+    "Name": "Jane",
+    "LastName": "Doe",
+    "Email": "janedoe@mail.com",
+    "PhoneNumber": "(123) 123-1231",
+    "IdCustomerType": 2,
+    "IdReferring": 7,
+    "RegistrationDate": "2019-05-27T02:52:56.000Z"
+  }],
+  "status": "OK",
+  "error": null
+}

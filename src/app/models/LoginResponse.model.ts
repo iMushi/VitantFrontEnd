@@ -7,4 +7,6 @@ export interface LoginResponseModel {
   IdCustomerType: number;
   IdReferring: number;
   RegistrationDate: string;
+  IdRole: number;
+  Description: string;
 }

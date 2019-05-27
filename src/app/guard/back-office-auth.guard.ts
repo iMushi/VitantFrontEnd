@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from '../models/LoginResponse.model';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class BackOfficeAuthGuard implements CanActivate {
 
   constructor (private _auth: AuthService, private router: Router) {
   }
@@ -16,13 +16,10 @@ export class AuthGuard implements CanActivate {
     this._auth.checkSession();
 
     return this._auth.loggedInfo.do((user: LoginResponseModel) => {
-      if (user === null) {
+      if (user === null || !this._auth.isAdmin) {
         this.router.navigate(['/Vitant']);
-      } else if (this._auth.isAdmin) {
-        this.router.navigate(['/BackOffice']);
       }
     }).map((user: LoginResponseModel) => !!user);
 
   }
 }
-

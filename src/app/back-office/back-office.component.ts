@@ -3,6 +3,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { pagesToggleService } from '../@pages/services/toggler.service';
 import * as moment from 'moment';
 import { pgDatePickerComponent } from '../@pages/components/datepicker/datepicker.component';
+import { BackOfficeService } from '../services/back-office.service';
+
+
+export const enum tipoQuery {
+  'VOCERO' = 1,
+  'REFERIDO' = 2,
+  'REFERIDOVOCERO' = 3
+}
+
 
 @Component({
   selector: 'app-back-office',
@@ -39,7 +48,7 @@ export class BackOfficeComponent implements OnInit, AfterViewInit, OnDestroy {
   fechaDeInstance: pgDatePickerComponent;
   fechaAInstance: pgDatePickerComponent;
 
-  porVocero: boolean;
+  porVocero = true;
   porReferido: boolean;
   porReferidoVocero: boolean;
 
@@ -50,7 +59,10 @@ export class BackOfficeComponent implements OnInit, AfterViewInit, OnDestroy {
   advanceRows: Array<any> = [];
   advanceRowsBck: Array<any> = [];
 
-  constructor (public _togglerService: pagesToggleService, private _renderer: Renderer2) {
+  constructor (public _togglerService: pagesToggleService
+    , private _renderer: Renderer2
+    , private _backOfficeService: BackOfficeService) {
+    moment.locale('es');
   }
 
   ngOnInit () {
@@ -107,12 +119,6 @@ export class BackOfficeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  _startMarcaChange = () => {
-  }
-
-  _startINCDECChange = () => {
-  }
-
   _startValueChange = () => {
     if (this._startDate > this._endDate) {
       this._endDate = null;
@@ -140,6 +146,28 @@ export class BackOfficeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     return endValue.getTime() <= this._startDate.getTime();
   }
+
+  changeAgrup () {
+    this.getData();
+  }
+
+
+  getData () {
+
+    const type = this.porVocero ? 1 : this.porReferido ? 2 : 3;
+
+    const request = {
+      type
+    };
+
+    this._backOfficeService.getRegByType(request).subscribe(
+      resp => {
+        console.log(resp);
+      }
+    );
+
+  }
+
 
   tableScroll (event) {
 

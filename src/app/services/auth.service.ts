@@ -11,6 +11,7 @@ import { environment as env } from '../../environments/environment';
 export class AuthService {
 
   isAuth: BehaviorSubject<boolean> = new BehaviorSubject(null);
+  isAdmin: boolean;
   isAuth$ = this.isAuth.asObservable();
 
   loggedInfo: BehaviorSubject<LoginResponseModel> = new BehaviorSubject(null);
@@ -30,14 +31,18 @@ export class AuthService {
     }
   }
 
-  updateToken(accessToken) {
+  updateToken (accessToken) {
     localStorage.setItem('accesstoken', accessToken);
   }
 
   login (userRequest: LoginRequestModel) {
 
+    if (env.useMockUps) {
+      return this.doLoginDummy();
+    }
+
     return new Promise((resolve, reject) => {
-      const endpoint = `${env.urlServices}${env.loginUser}`;
+      const endpoint = `${env.endpoint}${env.urlUserServices}${env.loginUser}`;
       this._http.post(endpoint, JSON.stringify(userRequest)).subscribe(
         (res: ResponseModel<LoginResponseModel>) => {
 
@@ -47,6 +52,32 @@ export class AuthService {
 
           if (res.status === statusType.OK) { // Loggin Exitoso
             this.isAuth.next(true);
+            this.isAdmin = loggedData.IdRole === 2;
+            localStorage.setItem('accesstoken', res.accessToken);
+            localStorage.setItem('accessInfo', JSON.stringify(loggedData));
+            resolve();
+          } else {
+            this.isAuth.next(false);
+            // Mensaje Propio de Login
+            reject(`${res.error}`);
+          }
+        });
+    });
+  }
+
+  doLoginDummy () {
+    return new Promise((resolve, reject) => {
+      const endpoint = `assets/data/loginUser.json`;
+      this._http.get(endpoint).subscribe(
+        (res: ResponseModel<LoginResponseModel>) => {
+
+          const [loggedData] = res.data;
+
+          this.loggedInfo.next(loggedData);
+
+          if (res.status === statusType.OK) { // Loggin Exitoso
+            this.isAuth.next(true);
+            this.isAdmin = loggedData.IdRole === 2;
             localStorage.setItem('accesstoken', res.accessToken);
             localStorage.setItem('accessInfo', JSON.stringify(loggedData));
             resolve();

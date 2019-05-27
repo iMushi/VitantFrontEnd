@@ -56,7 +56,12 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { pgDatePickerModule } from './@pages/components/datepicker/datepicker.module';
 import { pgSelectModule } from './@pages/components/select/select.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { defineLocale, esLocale } from 'ngx-bootstrap';
+import { BackOfficeService } from './services/back-office.service';
+import { BackOfficeAuthGuard } from './guard/back-office-auth.guard';
 
+
+defineLocale('es', esLocale);
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -118,8 +123,15 @@ export class AppHammerConfig extends HammerGestureConfig {
     pgDatePickerModule,
     NgxDatatableModule
   ],
-  providers: [pagesToggleService, SocialService, RegisterService, MessageService, AuthService, AuthGuard,
-    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
+  providers: [pagesToggleService
+    , SocialService
+    , RegisterService
+    , BackOfficeService
+    , MessageService
+    , AuthService
+    , AuthGuard
+    , BackOfficeAuthGuard
+    , {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

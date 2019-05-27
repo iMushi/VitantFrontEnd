@@ -1,0 +1,15 @@
+{
+  "accessToken": "aflakddfñkad",
+  "data": [{
+    "IdCustomer": 7,
+    "Name": "Paulina",
+    "LastName": "Cordova",
+    "Email": "foomail@mail.com",
+    "PhoneNumber": "(555) 555-5555",
+    "IdCustomerType": 1,
+    "IdReferring": null,
+    "RegistrationDate": "2019-05-27T02:07:53.000Z"
+  }],
+  "status": "OK",
+  "error": null
+}

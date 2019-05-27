@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { AuthGuard } from './guard/auth.guard';
 import { BackOfficeComponent } from './back-office/back-office.component';
+import { BackOfficeAuthGuard } from './guard/back-office-auth.guard';
 
 export const AppRoutes: Routes = [
   {
@@ -22,7 +23,8 @@ export const AppRoutes: Routes = [
     component: CondensedComponent,
     children: [{
       path: 'BackOffice',
-      data:{
+      canActivate: [BackOfficeAuthGuard],
+      data: {
         backOffice: true
       },
       component: BackOfficeComponent
@@ -53,7 +55,6 @@ export const AppRoutes: Routes = [
       component: LoginComponent
     }, {
       path: 'Sign-out',
-      canActivate: [AuthGuard],
       component: SignOutComponent
     }]
   }

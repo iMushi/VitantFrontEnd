@@ -2,7 +2,7 @@
 Author : NG-ZORRO
 Profile : https://github.com/NG-ZORRO
 Repository : https://github.com/NG-ZORRO/ng-zorro-antd
-version : 
+version :
 Modifed : Yes
 */
 import {
@@ -82,7 +82,7 @@ export class pgCalendarViewComponent implements OnInit {
   _value: Date = new Date();
   _rangeValue: Date[] = [null, null];
   _hoveringSelectValue: Date;
-  _locale = 'en';
+  _locale = 'es';
   @ContentChild('dateCell') dateCell: TemplateRef<void>;
   @ContentChild('monthCell') monthCell: TemplateRef<void>;
 

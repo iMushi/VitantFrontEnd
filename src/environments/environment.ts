@@ -5,9 +5,13 @@
 
 export const environment = {
   production: false,
-  urlServices: 'http://localhost:8090/api',
+  useMockUps: true,
+  endpoint: 'http://localhost:8090',
+  urlUserServices: '/api/user',
+  urlBackOfficeServices: '/api/backOffice',
   registerUser: '/register',
   loginUser: '/login',
   getContacts: '/getContacts',
-  registerContacts: '/registerContacts'
+  registerContacts: '/registerContacts',
+  getRegByType: '/getRegByType'
 };

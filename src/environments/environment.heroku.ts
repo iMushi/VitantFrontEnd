@@ -1,10 +1,14 @@
 export const environment = {
   production: true,
-  urlServices: 'https://morning-wave-50354.herokuapp.com/api',
+  useMockUps: false,
+  endpoint: 'http://localhost:8090',
+  urlUserServices: '/api/user',
+  urlBackOfficeServices: '/api/backOffice',
   registerUser: '/register',
-  loginUser: '/login',
+  loginUser: '/loginUser.json',
   getContacts: '/getContacts',
-  registerContacts: '/registerContacts'
+  registerContacts: '/registerContacts',
+  getRegByType: '/getRegByType'
 };
 
 

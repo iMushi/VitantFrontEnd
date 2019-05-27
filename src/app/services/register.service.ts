@@ -13,25 +13,29 @@ export class RegisterService {
   }
 
   RegisterUser (payload: RegisterUserModel) {
-    const endpoint = `${env.urlServices}${env.registerUser}`;
-
+    const endpoint = `${env.endpoint}${env.urlUserServices}${env.registerUser}`;
     return this._http.post<ResponseModel<any>>(
       endpoint, JSON.stringify(payload)).map(res => res.data);
   }
 
 
   RegisterContact (payload: RegisterContactModel) {
-    const endpoint = `${env.urlServices}${env.registerContacts}`;
-
+    const endpoint = `${env.endpoint}${env.urlUserServices}${env.registerContacts}`;
     return this._http.post<ResponseModel<any>>(
       endpoint, JSON.stringify(payload)).map(res => res.data);
   }
 
 
   GetContacts () {
-    const endpoint = `${env.urlServices}${env.getContacts}`;
+    if (env.useMockUps) {
+      const endpoint = `assets/data/contacts.json`;
+      return this._http.get<ResponseModel<ContactModel>>(endpoint).map(res => res.data);
+    } else {
+      const endpoint = `${env.endpoint}${env.urlUserServices}${env.getContacts}`;
+      return this._http.post<ResponseModel<ContactModel>>(
+        endpoint, JSON.stringify({})).map(res => res.data);
+    }
 
-    return this._http.post<ResponseModel<ContactModel>>(
-      endpoint, JSON.stringify({})).map(res => res.data);
   }
+
 }

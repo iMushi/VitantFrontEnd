@@ -82,7 +82,11 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
         }).then(_ => {
         if (this._authService.isAuth.value) {
-          this._router.navigate(['/Vocero']);
+          if (this._authService.isAdmin) {
+            this._router.navigate(['/BackOffice']);
+          } else {
+            this._router.navigate(['/Vocero']);
+          }
         }
       });
     }
