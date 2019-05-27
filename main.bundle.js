@@ -212,7 +212,7 @@ var pgCalendarViewComponent = (function () {
         this._showYear = __WEBPACK_IMPORTED_MODULE_1_moment__(new Date()).year();
         this._value = new Date();
         this._rangeValue = [null, null];
-        this._locale = 'en';
+        this._locale = 'es';
         this.ClickDay = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.ClickMonth = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.HoverDay = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -8711,6 +8711,9 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_components_select_select_module__ = __webpack_require__("../../../../../src/app/@pages/components/select/select.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__swimlane_ngx_datatable__ = __webpack_require__("../../../../@swimlane/ngx-datatable/release/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__swimlane_ngx_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_43__swimlane_ngx_datatable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_ngx_bootstrap__ = __webpack_require__("../../../../ngx-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__services_back_office_service__ = __webpack_require__("../../../../../src/app/services/back-office.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__guard_back_office_auth_guard__ = __webpack_require__("../../../../../src/app/guard/back-office-auth.guard.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -8782,6 +8785,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+Object(__WEBPACK_IMPORTED_MODULE_44_ngx_bootstrap__["b" /* defineLocale */])('es', __WEBPACK_IMPORTED_MODULE_44_ngx_bootstrap__["c" /* esLocale */]);
 var DEFAULT_SWIPER_CONFIG = {
     direction: 'horizontal',
     slidesPerView: 'auto'
@@ -8849,7 +8856,14 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_41__pages_components_datepicker_datepicker_module__["a" /* pgDatePickerModule */],
                 __WEBPACK_IMPORTED_MODULE_43__swimlane_ngx_datatable__["NgxDatatableModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_10__pages_services_toggler_service__["a" /* pagesToggleService */], __WEBPACK_IMPORTED_MODULE_22__social_social_service__["a" /* SocialService */], __WEBPACK_IMPORTED_MODULE_32__services_register_service__["a" /* RegisterService */], __WEBPACK_IMPORTED_MODULE_34__pages_components_message_message_service__["a" /* MessageService */], __WEBPACK_IMPORTED_MODULE_37__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_39__guard_auth_guard__["a" /* AuthGuard */],
+            providers: [__WEBPACK_IMPORTED_MODULE_10__pages_services_toggler_service__["a" /* pagesToggleService */],
+                __WEBPACK_IMPORTED_MODULE_22__social_social_service__["a" /* SocialService */],
+                __WEBPACK_IMPORTED_MODULE_32__services_register_service__["a" /* RegisterService */],
+                __WEBPACK_IMPORTED_MODULE_45__services_back_office_service__["a" /* BackOfficeService */],
+                __WEBPACK_IMPORTED_MODULE_34__pages_components_message_message_service__["a" /* MessageService */],
+                __WEBPACK_IMPORTED_MODULE_37__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_39__guard_auth_guard__["a" /* AuthGuard */],
+                __WEBPACK_IMPORTED_MODULE_46__guard_back_office_auth_guard__["a" /* BackOfficeAuthGuard */],
                 { provide: __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_33__Interceptors_HeaderInterceptor__["a" /* HeaderInterceptor */], multi: true },
                 {
                     provide: __WEBPACK_IMPORTED_MODULE_21_ngx_perfect_scrollbar__["a" /* PERFECT_SCROLLBAR_CONFIG */],
@@ -8888,9 +8902,11 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sign_out_sign_out_component__ = __webpack_require__("../../../../../src/app/sign-out/sign-out.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__guard_auth_guard__ = __webpack_require__("../../../../../src/app/guard/auth.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__back_office_back_office_component__ = __webpack_require__("../../../../../src/app/back-office/back-office.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__guard_back_office_auth_guard__ = __webpack_require__("../../../../../src/app/guard/back-office-auth.guard.ts");
 // Layouts
 
 // Sample Pages
+
 
 
 
@@ -8910,6 +8926,7 @@ var AppRoutes = [
         component: __WEBPACK_IMPORTED_MODULE_0__pages_layouts__["a" /* CondensedComponent */],
         children: [{
                 path: 'BackOffice',
+                canActivate: [__WEBPACK_IMPORTED_MODULE_11__guard_back_office_auth_guard__["a" /* BackOfficeAuthGuard */]],
                 data: {
                     backOffice: true
                 },
@@ -8941,7 +8958,6 @@ var AppRoutes = [
                 component: __WEBPACK_IMPORTED_MODULE_7__login_login_component__["a" /* LoginComponent */]
             }, {
                 path: 'Sign-out',
-                canActivate: [__WEBPACK_IMPORTED_MODULE_9__guard_auth_guard__["a" /* AuthGuard */]],
                 component: __WEBPACK_IMPORTED_MODULE_8__sign_out_sign_out_component__["a" /* SignOutComponent */]
             }]
     }
@@ -8953,7 +8969,7 @@ var AppRoutes = [
 /***/ "../../../../../src/app/back-office/back-office.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"social-wrapper\">\n  <div class=\"social \" data-pages=\"social\">\n    <!-- START JUMBOTRON -->\n    <div class=\"jumbotron smallBanner\" data-social=\"cover\">\n      <div class=\"titleContainer\" [@enterAnimation]=\"(_togglerService.animateEnter|async) == true ?'loading':'ready'\">\n        <h5 class=\"titleLargo text-white m-l-20\">B&uacute;squeda de Voceros</h5>\n        <div class=\"vitantInnerLogo\" [ngStyle]=\"{\n            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'\n            }\"></div>\n      </div>\n    </div>\n    <!-- END JUMBOTRON -->\n    <div class=\"container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main\">\n      <pg-container>\n\n        <pg-container *ngIf=\"!showModalInfo\" extraHorizontalClass=\"bg-white p-l-0 p-r-0\" extraClass=\"bg-white sm-p-l-0 sm-p-r-0\">\n          <!-- START card -->\n          <div class=\"inner\" pg-parallax>\n\n            <div class=\"card card-default noMarginBottom\">\n              <div class=\"card-header \">\n                <div class=\"card-title\">Filtros de B&uacute;squeda</div>\n              </div>\n              <div class=\"card-body\">\n                <div class=\"row\">\n                  <div class=\"col-md-4\">\n                    <label>&nbsp;</label>\n                    <div class=\"form-group form-group-default form-group-default-select2\">\n                      <label class=\"\">Mes</label>\n                      <pg-select style=\"width: 100%;\"\n                                 [(ngModel)]=\"selectedPeriodo\"\n                                 (ngModelChange)=\"_startValuePeriodoChange()\"\n                                 [PlaceHolder]=\"'Selecciona Mes'\" ShowSearch>\n                        <pg-option\n                          *ngFor=\"let option of optionsFechas\"\n                          [Label]=\"option.label\"\n                          [Value]=\"option.value\">\n                        </pg-option>\n                      </pg-select>\n                    </div>\n                  </div>\n                  <div class=\"col-md-4\">\n                    <label>Periodo</label>\n                    <div class=\"form-group \">\n                      <div class=\"form-row\">\n                        <div class=\"form-group form-group-default input-group col-md-6\">\n                          <div class=\"form-input-group\">\n                            <label class=\"\">De:</label>\n                            <pg-datepicker (ngModelChange)=\"_startDate=$event;_startValueChange()\"\n                                           Placeholder=\"Seleccione fecha\"\n                                           [ngModel]=\"_startDate\"\n                                           [DisabledDate]=\"_disabledStartDate\" [Format]=\"'DD/MM/YYYY'\"\n                                           (datePickerInstance)='fechaDeInstance = $event'\n\n                            ></pg-datepicker>\n                          </div>\n                          <div class=\"input-group-append\" (click)=\"fechaDeInstance._openCalendar()\">\n                        <span class=\"input-group-text\">\n                          <i class=\"fa fa-calendar\"></i>\n                        </span>\n                          </div>\n                        </div>\n\n\n                        <div class=\"form-group form-group-default input-group col-md-6\">\n                          <div class=\"form-input-group\">\n                            <label class=\"\">A:</label>\n                            <pg-datepicker (ngModelChange)=\"_endDate=$event;_endValueChange()\"\n                                           Placeholder=\"Seleccione fecha\"\n                                           [ngModel]=\"_endDate\" [DisabledDate]=\"_disabledEndDate\"\n                                           [Format]=\"'DD/MM/YYYY'\"\n                                           (datePickerInstance)='fechaAInstance = $event'\n                            ></pg-datepicker>\n                          </div>\n                          <div class=\"input-group-append\" (click)=\"fechaAInstance._openCalendar()\">\n                        <span class=\"input-group-text\">\n                          <i class=\"fa fa-calendar\"></i>\n                        </span>\n                          </div>\n                        </div>\n\n\n                      </div>\n                    </div>\n                  </div>\n\n                  <div class=\"col-md-4\">\n                    <div class=\"row\">\n\n                      <div class=\"col-md-12 col-sm-12\">\n                        <div class=\"checkbox  check-danger checkbox-circle\">\n                          <input type=\"checkbox\" value=\"0\" id=\"checkbox7\"\n                                 [(ngModel)]=\"porVocero\"\n                          >\n                          <label for=\"checkbox7\">Voceros</label>\n                        </div>\n                        <div class=\"checkbox check-danger checkbox-circle\">\n                          <input type=\"checkbox\" value=\"1\" id=\"checkbox8\"\n                                 [(ngModel)]=\"porReferido\"\n                          >\n                          <label for=\"checkbox8\">Referidos</label>\n                        </div>\n                        <div class=\"checkbox check-danger checkbox-circle\">\n                          <input type=\"checkbox\" value=\"2\" id=\"checkbox9\"\n                                 [(ngModel)]=\"porReferidoVocero\"\n                          >\n                          <label for=\"checkbox9\">Referidos que son Voceros</label>\n                        </div>\n                      </div>\n\n\n                    </div>\n                  </div>\n\n                </div>\n\n\n              </div>\n            </div>\n          </div>\n        </pg-container>\n\n\n        <pg-container extraHorizontalClass=\"bg-white\" extraClass=\"bg-white\">\n\n          <div class=\"card card-transparent noPaddingTop\">\n\n            <div class=\"card-body\">\n              <div class=\"table-responsive\" style=\"height:500px;overflow-y: hidden\" #tableContainer>\n                <ng-template #verTiendasSummaryTemplate let-row=\"row\">\n                  <div style=\"text-align: center;\">\n                    <i class=\"pg pg-calender linkSelectTable\" aria-hidden=\"true\" (click)=\"$event.preventDefault(); $event.stopPropagation();\"></i>\n                  </div>\n                </ng-template>\n\n\n                <ngx-datatable #tableAdvance class='table table-hover table-stripped striped'\n                               [scrollbarH]=\"scrollBarHorizontal\"\n                               [scrollbarV]=\"true\"\n                               [summaryPosition]=\"'bottom'\"\n                               [summaryRow]=\"summaryRow\"\n                               [summaryHeight]=\"summaryHeight\"\n                               [headerHeight]=\"70\"\n                               [footerHeight]=\"50\"\n                               [rowHeight]=\"rowHeight\"\n                               [scrollbarV]=\"true\"\n                               [rows]='advanceRows' [columnMode]=\"'force'\"\n                               (scroll)=\"tableScroll($event)\">\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"ID\" name=\"No\" [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellIdClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                        &nbsp;\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\">\n                      <div class=\"cellIdText\">\n                        {{value}}\n                      </div>\n                    </ng-template>\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"NOMBRE\" name=\"Nombre\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"CORREO\" name=\"Correo\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"TELEFONO\" name=\"Teléfono\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"REGISTRO\" name=\"Fecha Registro\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n\n                  </ngx-datatable-column>\n\n\n                </ngx-datatable>\n\n              </div>\n            </div>\n          </div>\n\n        </pg-container>\n\n      </pg-container>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"social-wrapper\">\n  <div class=\"social \" data-pages=\"social\">\n    <!-- START JUMBOTRON -->\n    <div class=\"jumbotron smallBanner\" data-social=\"cover\">\n      <div class=\"titleContainer\" [@enterAnimation]=\"(_togglerService.animateEnter|async) == true ?'loading':'ready'\">\n        <h5 class=\"titleLargo text-white m-l-20\">B&uacute;squeda de Voceros</h5>\n        <div class=\"vitantInnerLogo\" [ngStyle]=\"{\n            'background-image': 'url(assets/Vitant/VITANT_Logo_horizontal_condescriptivo_RGB_FC.jpg)'\n            }\"></div>\n      </div>\n    </div>\n    <!-- END JUMBOTRON -->\n    <div class=\"container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main\">\n      <pg-container>\n\n        <pg-container *ngIf=\"!showModalInfo\" extraHorizontalClass=\"bg-white p-l-0 p-r-0\" extraClass=\"bg-white sm-p-l-0 sm-p-r-0\">\n          <!-- START card -->\n          <div class=\"inner\" pg-parallax>\n\n            <div class=\"card card-default noMarginBottom\">\n              <div class=\"card-header \">\n                <div class=\"card-title\">Filtros de B&uacute;squeda</div>\n              </div>\n              <div class=\"card-body\">\n                <div class=\"row\">\n                  <div class=\"col-md-4\">\n                    <label>&nbsp;</label>\n                    <div class=\"form-group form-group-default form-group-default-select2\">\n                      <label class=\"\">Mes</label>\n                      <pg-select style=\"width: 100%;\"\n                                 [(ngModel)]=\"selectedPeriodo\"\n                                 (ngModelChange)=\"_startValuePeriodoChange()\"\n                                 [PlaceHolder]=\"'Selecciona Mes'\" ShowSearch>\n                        <pg-option\n                          *ngFor=\"let option of optionsFechas\"\n                          [Label]=\"option.label\"\n                          [Value]=\"option.value\">\n                        </pg-option>\n                      </pg-select>\n                    </div>\n                  </div>\n                  <div class=\"col-md-4\">\n                    <label>Periodo</label>\n                    <div class=\"form-group \">\n                      <div class=\"form-row\">\n                        <div class=\"form-group form-group-default input-group col-md-6\">\n                          <div class=\"form-input-group\">\n                            <label class=\"\">De:</label>\n                            <pg-datepicker (ngModelChange)=\"_startDate=$event;_startValueChange()\"\n                                           Placeholder=\"Seleccione fecha\"\n                                           [ngModel]=\"_startDate\"\n                                           [DisabledDate]=\"_disabledStartDate\" [Format]=\"'DD/MM/YYYY'\"\n                                           (datePickerInstance)='fechaDeInstance = $event'\n\n                            ></pg-datepicker>\n                          </div>\n                          <div class=\"input-group-append\" (click)=\"fechaDeInstance._openCalendar()\">\n                        <span class=\"input-group-text\">\n                          <i class=\"fa fa-calendar\"></i>\n                        </span>\n                          </div>\n                        </div>\n\n\n                        <div class=\"form-group form-group-default input-group col-md-6\">\n                          <div class=\"form-input-group\">\n                            <label class=\"\">A:</label>\n                            <pg-datepicker (ngModelChange)=\"_endDate=$event;_endValueChange()\"\n                                           Placeholder=\"Seleccione fecha\"\n                                           [ngModel]=\"_endDate\" [DisabledDate]=\"_disabledEndDate\"\n                                           [Format]=\"'DD/MM/YYYY'\"\n                                           (datePickerInstance)='fechaAInstance = $event'\n                            ></pg-datepicker>\n                          </div>\n                          <div class=\"input-group-append\" (click)=\"fechaAInstance._openCalendar()\">\n                        <span class=\"input-group-text\">\n                          <i class=\"fa fa-calendar\"></i>\n                        </span>\n                          </div>\n                        </div>\n\n\n                      </div>\n                    </div>\n                  </div>\n\n                  <div class=\"col-md-4\">\n                    <div class=\"row\">\n\n                      <div class=\"col-md-12 col-sm-12\">\n                        <div class=\"checkbox  check-danger checkbox-circle\">\n                          <input type=\"checkbox\" value=\"0\" id=\"checkbox7\"\n                                 [(ngModel)]=\"porVocero\"\n                                 (change)=\"porReferido=false;porReferidoVocero=false; changeAgrup();\">\n                          <label for=\"checkbox7\">Voceros</label>\n                        </div>\n                        <div class=\"checkbox check-danger checkbox-circle\">\n                          <input type=\"checkbox\" value=\"1\" id=\"checkbox8\"\n                                 [(ngModel)]=\"porReferido\"\n                                 (change)=\"porVocero=false;porReferidoVocero=false; changeAgrup();\">\n                          <label for=\"checkbox8\">Referidos</label>\n                        </div>\n                        <div class=\"checkbox check-danger checkbox-circle\">\n                          <input type=\"checkbox\" value=\"2\" id=\"checkbox9\"\n                                 [(ngModel)]=\"porReferidoVocero\"\n                                 (change)=\"porReferido=false;porVocero=false; changeAgrup();\">\n                          <label for=\"checkbox9\">Referidos que son Voceros</label>\n                        </div>\n                      </div>\n\n\n                    </div>\n                  </div>\n\n                </div>\n\n\n              </div>\n            </div>\n          </div>\n        </pg-container>\n\n\n        <pg-container extraHorizontalClass=\"bg-white\" extraClass=\"bg-white\">\n\n          <div class=\"card card-transparent noPaddingTop\">\n\n            <div class=\"card-body\">\n              <div class=\"table-responsive\" style=\"height:500px;overflow-y: hidden\" #tableContainer>\n                <ng-template #verTiendasSummaryTemplate let-row=\"row\">\n                  <div style=\"text-align: center;\">\n                    <i class=\"pg pg-calender linkSelectTable\" aria-hidden=\"true\" (click)=\"$event.preventDefault(); $event.stopPropagation();\"></i>\n                  </div>\n                </ng-template>\n\n\n                <ngx-datatable #tableAdvance class='table table-hover table-stripped striped'\n                               [scrollbarH]=\"scrollBarHorizontal\"\n                               [scrollbarV]=\"true\"\n                               [summaryPosition]=\"'bottom'\"\n                               [summaryRow]=\"summaryRow\"\n                               [summaryHeight]=\"summaryHeight\"\n                               [headerHeight]=\"70\"\n                               [footerHeight]=\"50\"\n                               [rowHeight]=\"rowHeight\"\n                               [scrollbarV]=\"true\"\n                               [rows]='advanceRows' [columnMode]=\"'force'\"\n                               (scroll)=\"tableScroll($event)\">\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"ID\" name=\"No\" [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellIdClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                        &nbsp;\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\">\n                      <div class=\"cellIdText\">\n                        {{value}}\n                      </div>\n                    </ng-template>\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"NOMBRE\" name=\"Nombre\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"CORREO\" name=\"Correo\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"TELEFONO\" name=\"Teléfono\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n\n                  </ngx-datatable-column>\n\n                  <ngx-datatable-column [draggable]=\"false\" [resizeable]=\"false\" prop=\"REGISTRO\" name=\"Fecha Registro\"  [frozenLeft]=\"true\" [sortable]='true'\n                                        headerClass=\"headerPurple\"\n                                        cellClass=\"cellClass\">\n\n                    <ng-template let-column=\"column\" ngx-datatable-header-template>\n                      <div class=\"headerSuperior\" [ngStyle]=\"{'width': column.width +'px' }\">\n                      </div>\n                      <div class=\"headerNormal\">\n                        {{column.name}}\n                      </div>\n                    </ng-template>\n\n\n                    <ng-template ngx-datatable-cell-template let-value=\"value\" let-row=\"row\">\n                      <div class=\"cellText\">\n                      <span class=\"linkSelectTable\">\n                      </span>\n                      </div>\n                    </ng-template>\n\n                  </ngx-datatable-column>\n\n\n                </ngx-datatable>\n\n              </div>\n            </div>\n          </div>\n\n        </pg-container>\n\n      </pg-container>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -8985,6 +9001,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_services_toggler_service__ = __webpack_require__("../../../../../src/app/@pages/services/toggler.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("../../../../moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_back_office_service__ = __webpack_require__("../../../../../src/app/services/back-office.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8998,17 +9015,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var BackOfficeComponent = (function () {
-    function BackOfficeComponent(_togglerService, _renderer) {
+    function BackOfficeComponent(_togglerService, _renderer, _backOfficeService) {
         var _this = this;
         this._togglerService = _togglerService;
         this._renderer = _renderer;
+        this._backOfficeService = _backOfficeService;
         this.rowHeight = 30;
         this.summaryHeight = 50;
         this.summaryRow = true;
         this.optionsFechas = [];
         this._startDate = null;
         this._endDate = null;
+        this.porVocero = true;
         this.scrollBarHorizontal = (window.innerWidth < 960);
         this.advanceRows = [];
         this.advanceRowsBck = [];
@@ -9027,10 +9047,6 @@ var BackOfficeComponent = (function () {
             }
             catch (e) {
             }
-        };
-        this._startMarcaChange = function () {
-        };
-        this._startINCDECChange = function () {
         };
         this._startValueChange = function () {
             if (_this._startDate > _this._endDate) {
@@ -9054,6 +9070,7 @@ var BackOfficeComponent = (function () {
             }
             return endValue.getTime() <= _this._startDate.getTime();
         };
+        __WEBPACK_IMPORTED_MODULE_3_moment__["locale"]('es');
     }
     BackOfficeComponent.prototype.ngOnInit = function () {
         var dateStart = __WEBPACK_IMPORTED_MODULE_3_moment__(new Date()).subtract(1, 'year');
@@ -9079,6 +9096,18 @@ var BackOfficeComponent = (function () {
     };
     BackOfficeComponent.prototype.ngOnDestroy = function () {
         this._togglerService.toggleAnimateEnter(true);
+    };
+    BackOfficeComponent.prototype.changeAgrup = function () {
+        this.getData();
+    };
+    BackOfficeComponent.prototype.getData = function () {
+        var type = this.porVocero ? 1 : this.porReferido ? 2 : 3;
+        var request = {
+            type: type
+        };
+        this._backOfficeService.getRegByType(request).subscribe(function (resp) {
+            console.log(resp);
+        });
     };
     BackOfficeComponent.prototype.tableScroll = function (event) {
         if (!this.showModalInfo) {
@@ -9119,7 +9148,9 @@ var BackOfficeComponent = (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__pages_services_toggler_service__["a" /* pagesToggleService */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__pages_services_toggler_service__["a" /* pagesToggleService */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"],
+            __WEBPACK_IMPORTED_MODULE_4__services_back_office_service__["a" /* BackOfficeService */]])
     ], BackOfficeComponent);
     return BackOfficeComponent;
 }());
@@ -9160,6 +9191,9 @@ var AuthGuard = (function () {
             if (user === null) {
                 _this.router.navigate(['/Vitant']);
             }
+            else if (_this._auth.isAdmin) {
+                _this.router.navigate(['/BackOffice']);
+            }
         }).map(function (user) { return !!user; });
     };
     AuthGuard = __decorate([
@@ -9167,6 +9201,51 @@ var AuthGuard = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], AuthGuard);
     return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/guard/back-office-auth.guard.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BackOfficeAuthGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BackOfficeAuthGuard = (function () {
+    function BackOfficeAuthGuard(_auth, router) {
+        this._auth = _auth;
+        this.router = router;
+    }
+    BackOfficeAuthGuard.prototype.canActivate = function (next, state) {
+        var _this = this;
+        this._auth.checkSession();
+        return this._auth.loggedInfo.do(function (user) {
+            if (user === null || !_this._auth.isAdmin) {
+                _this.router.navigate(['/Vitant']);
+            }
+        }).map(function (user) { return !!user; });
+    };
+    BackOfficeAuthGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
+    ], BackOfficeAuthGuard);
+    return BackOfficeAuthGuard;
 }());
 
 
@@ -9358,7 +9437,12 @@ var LoginComponent = (function () {
                 });
             }).then(function (_) {
                 if (_this._authService.isAuth.value) {
-                    _this._router.navigate(['/Vocero']);
+                    if (_this._authService.isAdmin) {
+                        _this._router.navigate(['/BackOffice']);
+                    }
+                    else {
+                        _this._router.navigate(['/Vocero']);
+                    }
                 }
             });
         }
@@ -9793,13 +9877,39 @@ var AuthService = (function () {
     };
     AuthService.prototype.login = function (userRequest) {
         var _this = this;
+        if (__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].useMockUps) {
+            return this.doLoginDummy();
+        }
         return new Promise(function (resolve, reject) {
-            var endpoint = "" + __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].urlServices + __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].loginUser;
+            var endpoint = "" + __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].endpoint + __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].urlUserServices + __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].loginUser;
             _this._http.post(endpoint, JSON.stringify(userRequest)).subscribe(function (res) {
                 var loggedData = res.data[0];
                 _this.loggedInfo.next(loggedData);
                 if (res.status === "OK" /* OK */) {
                     _this.isAuth.next(true);
+                    _this.isAdmin = loggedData.IdRole === 2;
+                    localStorage.setItem('accesstoken', res.accessToken);
+                    localStorage.setItem('accessInfo', JSON.stringify(loggedData));
+                    resolve();
+                }
+                else {
+                    _this.isAuth.next(false);
+                    // Mensaje Propio de Login
+                    reject("" + res.error);
+                }
+            });
+        });
+    };
+    AuthService.prototype.doLoginDummy = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var endpoint = "assets/data/loginUser.json";
+            _this._http.get(endpoint).subscribe(function (res) {
+                var loggedData = res.data[0];
+                _this.loggedInfo.next(loggedData);
+                if (res.status === "OK" /* OK */) {
+                    _this.isAuth.next(true);
+                    _this.isAdmin = loggedData.IdRole === 2;
                     localStorage.setItem('accesstoken', res.accessToken);
                     localStorage.setItem('accessInfo', JSON.stringify(loggedData));
                     resolve();
@@ -9824,6 +9934,45 @@ var AuthService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]])
     ], AuthService);
     return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/back-office.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BackOfficeService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BackOfficeService = (function () {
+    function BackOfficeService(_http) {
+        this._http = _http;
+    }
+    BackOfficeService.prototype.getRegByType = function (request) {
+        var endpoint = "" + __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].endpoint + __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].urlBackOfficeServices + __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].getRegByType;
+        return this._http.post(endpoint, JSON.stringify(request)).map(function (res) { return res.data; });
+    };
+    BackOfficeService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])
+    ], BackOfficeService);
+    return BackOfficeService;
 }());
 
 
@@ -9855,16 +10004,22 @@ var RegisterService = (function () {
         this._http = _http;
     }
     RegisterService.prototype.RegisterUser = function (payload) {
-        var endpoint = "" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].urlServices + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].registerUser;
+        var endpoint = "" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].endpoint + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].urlUserServices + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].registerUser;
         return this._http.post(endpoint, JSON.stringify(payload)).map(function (res) { return res.data; });
     };
     RegisterService.prototype.RegisterContact = function (payload) {
-        var endpoint = "" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].urlServices + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].registerContacts;
+        var endpoint = "" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].endpoint + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].urlUserServices + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].registerContacts;
         return this._http.post(endpoint, JSON.stringify(payload)).map(function (res) { return res.data; });
     };
     RegisterService.prototype.GetContacts = function () {
-        var endpoint = "" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].urlServices + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].getContacts;
-        return this._http.post(endpoint, JSON.stringify({})).map(function (res) { return res.data; });
+        if (__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].useMockUps) {
+            var endpoint = "assets/data/contacts.json";
+            return this._http.get(endpoint).map(function (res) { return res.data; });
+        }
+        else {
+            var endpoint = "" + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].endpoint + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].urlUserServices + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].getContacts;
+            return this._http.post(endpoint, JSON.stringify({})).map(function (res) { return res.data; });
+        }
     };
     RegisterService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -10337,13 +10492,21 @@ module.exports = __webpack_require__.p + "Pages-icon.0fd5f549d439c281557b.woff";
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: true,
-    urlServices: 'https://morning-wave-50354.herokuapp.com/api',
+    production: false,
+    useMockUps: true,
+    endpoint: 'http://localhost:8090',
+    urlUserServices: '/api/user',
+    urlBackOfficeServices: '/api/backOffice',
     registerUser: '/register',
     loginUser: '/login',
     getContacts: '/getContacts',
-    registerContacts: '/registerContacts'
+    registerContacts: '/registerContacts',
+    getRegByType: '/getRegByType'
 };
 
 
