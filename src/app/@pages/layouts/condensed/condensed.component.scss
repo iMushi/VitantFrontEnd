@@ -733,7 +733,6 @@ $assets-url: "/assets";
   font-family: Montserrat;
 }
 
-
 .informacionContainer .infoHeader,.infoLeft,.infoCenter,.infoRight,.infoBottom{
   margin: 5px;
 }
@@ -838,13 +837,18 @@ $assets-url: "/assets";
   height: 50px;
   white-space: normal;
   line-height: 10px;
-  width: 77px;
-  text-align: center;
+  text-align: left;
+  margin-left: 10px;
 
+}
+
+.pg-calendar{
+  max-width: 280px;
 }
 
 .ngx-datatable .datatable-header .datatable-header-cell.sortable .sort-btn{
   top: 20px !important;
+  color: white;
 }
 
 .headerSuperior{
@@ -863,26 +867,10 @@ $assets-url: "/assets";
 }
 
 
-.cellClass {
-  display: flex !important;
-  justify-content: center ;
-  padding: 0px !important;
-  flex-direction: column;
-  height: 30px;
-}
 
-
-datatable-summary-row>datatable-body-row>div>datatable-body-cell {
-  height: 50px!important;
-}
 
 datatable-body-row:hover {
   background-color: black;
-}
-
-.cellIdClass{
-  padding: 0px!important;
-  text-align: center;
 }
 
 .idColorMartes {
@@ -913,51 +901,6 @@ idColorLunes {
   background-color: #FFFFFF;
 }
 
-
-.cellText {
-  display: table-cell !important;
-  vertical-align: middle !important;
-  height: 30px;
-}
-
-.cellIdText {
-  display: flex;
-  justify-content: space-around;
-  padding: 7px;
-}
-
-
-.cellNumber {
-  display: table-cell !important;
-  vertical-align: middle !important;
-  height: 30px;
-  width: 100px;
-  text-align: right;
-}
-
-datatable-summary-row,
-datatable-summary-row > datatable-body-row,
-datatable-summary-row > datatable-body-row > div,
-datatable-summary-row > datatable-body-row > div > datatable-body-cell{
-  background-color: #83909A !important;
-  color: white;
-  font-weight: bold;
-}
-
-datatable-summary-row > datatable-body-row > div > datatable-body-cell > .datatable-body-cell-label{
-  text-align: right;
-}
-
-
-datatable-row-wrapper > datatable-body-row > div> datatable-body-cell {
-  padding: 5px!important;
-}
-
-.ngx-datatable .datatable-body .datatable-body-row .datatable-body-cell{
-  font-size: 11px;
-}
-
-
 .linkSelectTable {
   cursor: pointer;
   font-weight: bold;
@@ -980,6 +923,9 @@ datatable-row-wrapper > datatable-body-row > div> datatable-body-cell {
 .noMarginBottom {
   margin-bottom: 0px !important;
 }
+.noMarginTop {
+  margin-top: 0px !important;
+}
 
 pg-breadcrumb{
   display: block !important;
@@ -987,4 +933,18 @@ pg-breadcrumb{
 
 .backOffice page-container {
   padding-left: 0;
+}
+
+.modal-xl {
+  min-width: 1000px!important;
+}
+
+.inlineEdit{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $color-morado;
+}
+
+.backOffice{
+  font-family: Montserrat;
 }

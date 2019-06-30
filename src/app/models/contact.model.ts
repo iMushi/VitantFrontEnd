@@ -7,4 +7,5 @@ export interface ContactModel {
   Name: string;
   PhoneNumber: string;
   RegistrationDate: string;
+  ReferredPurchased: number;
 }

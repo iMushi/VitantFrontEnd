@@ -10,7 +10,7 @@
       </div>
     </div>
     <!-- END JUMBOTRON -->
-    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main">
+    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0 container-main backOffice" [@enterAnimation]="(_togglerService.animateEnter|async) == true ?'loading':'ready'">
       <pg-container>
 
         <pg-container *ngIf="!showModalInfo" extraHorizontalClass="bg-white p-l-0 p-r-0" extraClass="bg-white sm-p-l-0 sm-p-r-0">
@@ -25,12 +25,12 @@
                 <div class="row">
                   <div class="col-md-4">
                     <label>&nbsp;</label>
-                    <div class="form-group form-group-default form-group-default-select2">
+                    <div class="form-group form-group-default form-group-default-select2" [ngClass]="{disabled: disableSearchField}">
                       <label class="">Mes</label>
-                      <pg-select style="width: 100%;"
+                      <pg-select style="width: 100%;" #monthSelect
                                  [(ngModel)]="selectedPeriodo"
                                  (ngModelChange)="_startValuePeriodoChange()"
-                                 [PlaceHolder]="'Selecciona Mes'" ShowSearch>
+                                 [PlaceHolder]="'Selecciona Mes'" ShowSearch [Disabled]="disableSearchField">
                         <pg-option
                           *ngFor="let option of optionsFechas"
                           [Label]="option.label"
@@ -43,7 +43,7 @@
                     <label>Periodo</label>
                     <div class="form-group ">
                       <div class="form-row">
-                        <div class="form-group form-group-default input-group col-md-6">
+                        <div class="form-group form-group-default input-group col-md-6" [ngClass]="{disabled: disableSearchField}">
                           <div class="form-input-group">
                             <label class="">De:</label>
                             <pg-datepicker (ngModelChange)="_startDate=$event;_startValueChange()"
@@ -51,7 +51,7 @@
                                            [ngModel]="_startDate"
                                            [DisabledDate]="_disabledStartDate" [Format]="'DD/MM/YYYY'"
                                            (datePickerInstance)='fechaDeInstance = $event'
-
+                                          [Disabled]="disableSearchField"
                             ></pg-datepicker>
                           </div>
                           <div class="input-group-append" (click)="fechaDeInstance._openCalendar()">
@@ -62,7 +62,7 @@
                         </div>
 
 
-                        <div class="form-group form-group-default input-group col-md-6">
+                        <div class="form-group form-group-default input-group col-md-6" [ngClass]="{disabled: disableSearchField}">
                           <div class="form-input-group">
                             <label class="">A:</label>
                             <pg-datepicker (ngModelChange)="_endDate=$event;_endValueChange()"
@@ -70,6 +70,7 @@
                                            [ngModel]="_endDate" [DisabledDate]="_disabledEndDate"
                                            [Format]="'DD/MM/YYYY'"
                                            (datePickerInstance)='fechaAInstance = $event'
+                                           [Disabled]="disableSearchField"
                             ></pg-datepicker>
                           </div>
                           <div class="input-group-append" (click)="fechaAInstance._openCalendar()">
@@ -83,11 +84,10 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="col-md-4">
                     <div class="row">
 
-                      <div class="col-md-12 col-sm-12">
+                      <div class="col-md-8 col-sm-8">
                         <div class="checkbox  check-danger checkbox-circle">
                           <input type="checkbox" value="0" id="checkbox7"
                                  [(ngModel)]="porVocero"
@@ -108,13 +108,51 @@
                         </div>
                       </div>
 
+                      <div class="col-md-4 col-sm-4">
+                        <button class="btn btn-primary" (click)="exportData()">Exportar</button>
+                      </div>
 
                     </div>
                   </div>
-
                 </div>
-
-
+                <div class="row">
+                  <div class="col-md-3">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                      <label for="busquedaNombreText">Nombre:</label>
+                      <input type="text"
+                             class="form-control"
+                             name="busquedaNombreText"
+                             id="busquedaNombreText"
+                             #busquedaNombreText
+                             [(ngModel)]="textSearchNombre"
+                             [textMask]="{mask: mask.textSearch, guide: false}">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                      <label for="busquedaApellidoText">Apellido:</label>
+                      <input type="text"
+                             class="form-control"
+                             name="busquedaApellidoText"
+                             id="busquedaApellidoText"
+                             #busquedaApellidoText
+                             [(ngModel)]="textSearchApellido"
+                             [textMask]="{mask: mask.textSearch, guide: false}">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                      <label for="busquedaEmailText">Email:</label>
+                      <input type="text"
+                             class="form-control"
+                             name="busquedaEmailText"
+                             id="busquedaEmailText"
+                             #busquedaEmailText
+                             [(ngModel)]="textSearchEmail"
+                             [textMask]="{mask: mask.textSearch, guide: false}">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -127,47 +165,86 @@
 
             <div class="card-body">
               <div class="table-responsive" style="height:500px;overflow-y: hidden" #tableContainer>
-                <ng-template #verTiendasSummaryTemplate let-row="row">
-                  <div style="text-align: center;">
-                    <i class="pg pg-calender linkSelectTable" aria-hidden="true" (click)="$event.preventDefault(); $event.stopPropagation();"></i>
-                  </div>
-                </ng-template>
 
-
-                <ngx-datatable #tableAdvance class='table table-hover table-stripped striped'
+                <ngx-datatable #expTable class='table table-hover table-stripped striped'
                                [scrollbarH]="scrollBarHorizontal"
                                [scrollbarV]="true"
-                               [summaryPosition]="'bottom'"
-                               [summaryRow]="summaryRow"
-                               [summaryHeight]="summaryHeight"
                                [headerHeight]="70"
-                               [footerHeight]="50"
-                               [rowHeight]="rowHeight"
-                               [scrollbarV]="true"
-                               [rows]='advanceRows' [columnMode]="'force'"
-                               (scroll)="tableScroll($event)">
-
-                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="ID" name="No" [frozenLeft]="true" [sortable]='true'
+                               [rowHeight]="getRowHeight"
+                               [rows]='advanceRows'
+                               [columnMode]="'flex'"
+                               [messages]="messages"
+                >
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" [flexGrow]="1" prop="Name" name="Nombre" [frozenLeft]="true" [sortable]='true'
                                         headerClass="headerPurple"
-                                        cellClass="cellIdClass">
+                                        cellClass="cellClass">
 
                     <ng-template let-column="column" ngx-datatable-header-template>
                       <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
-                        &nbsp;
                       </div>
                       <div class="headerNormal">
                         {{column.name}}
                       </div>
                     </ng-template>
 
-                    <ng-template ngx-datatable-cell-template let-value="value">
-                      <div class="cellIdText">
+                    <ng-template let-expanded="expanded" ngx-datatable-cell-template let-value="value" let-row="row" let-rowIndex="rowIndex">
+                      <div class="cellText">
+                        <span class="linkSelectTable">
+                          {{value}}
+                        </span>
+                      </div>
+
+                    </ng-template>
+
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" [flexGrow]="1" prop="LastName" name="Apellido" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+                    <ng-template let-expanded="expanded" ngx-datatable-cell-template let-value="value" let-row="row" let-rowIndex="rowIndex">
+                      <div class="cellText">
+                        <span class="linkSelectTable">
+                          {{value}}
+                        </span>
+                      </div>
+
+                    </ng-template>
+
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" [flexGrow]="1" prop="Email" name="Correo" [sortable]='true'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                      <div class="cellText">
+                      <span class="linkSelectTable">
                         {{value}}
+                      </span>
                       </div>
                     </ng-template>
+
                   </ngx-datatable-column>
 
-                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="NOMBRE" name="Nombre"  [frozenLeft]="true" [sortable]='true'
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" [flexGrow]="1" prop="PhoneNumber" name="Teléfono" [sortable]='true'
                                         headerClass="headerPurple"
                                         cellClass="cellClass">
 
@@ -183,12 +260,14 @@
                     <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
                       <div class="cellText">
                       <span class="linkSelectTable">
+                        {{value}}
                       </span>
                       </div>
                     </ng-template>
+
                   </ngx-datatable-column>
 
-                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="CORREO" name="Correo"  [frozenLeft]="true" [sortable]='true'
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" [flexGrow]="1" prop="RegistrationDate" name="Fecha Registro" [sortable]='true'
                                         headerClass="headerPurple"
                                         cellClass="cellClass">
 
@@ -204,13 +283,37 @@
                     <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
                       <div class="cellText">
                       <span class="linkSelectTable">
+                        {{value | date:'dd/MM/yyyy' }}
                       </span>
                       </div>
                     </ng-template>
 
                   </ngx-datatable-column>
 
-                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="TELEFONO" name="Teléfono"  [frozenLeft]="true" [sortable]='true'
+                  <ngx-datatable-column *ngIf="porReferido" [draggable]="false" [resizeable]="false" [flexGrow]="1" prop="ReferredPurchased" name="" [sortable]='false'
+                                        headerClass="headerPurple"
+                                        cellClass="cellClass">
+                    <ng-template let-column="column" ngx-datatable-header-template>
+                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
+                      </div>
+                      <div class="headerNormal">
+                        {{column.name}}
+                      </div>
+                    </ng-template>
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row" let-rowIndex="rowIndex">
+                      <div class="cellText">
+                        <span class="linkSelectTable">
+                          <div class="checkbox check-success checkbox-circle noMarginBottom noMarginTop">
+                            <input type="checkbox" value="4" [(ngModel)]="advanceRows[rowIndex]['ReferredPurchased']"
+                               (change)="changeBuyState(row)" id="{{'checkbox-'+rowIndex}}">
+                            <label for="{{'checkbox-'+rowIndex}}">Venta Concretada</label>
+                          </div>
+                        </span>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column [draggable]="false" [resizeable]="false" [flexGrow]="0.5" prop="RegistrationDate" name="" [sortable]='false'
                                         headerClass="headerPurple"
                                         cellClass="cellClass">
 
@@ -222,38 +325,15 @@
                       </div>
                     </ng-template>
 
-
                     <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
                       <div class="cellText">
                       <span class="linkSelectTable">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="detailsContacto(row)"></i>
                       </span>
                       </div>
                     </ng-template>
 
                   </ngx-datatable-column>
-
-                  <ngx-datatable-column [draggable]="false" [resizeable]="false" prop="REGISTRO" name="Fecha Registro"  [frozenLeft]="true" [sortable]='true'
-                                        headerClass="headerPurple"
-                                        cellClass="cellClass">
-
-                    <ng-template let-column="column" ngx-datatable-header-template>
-                      <div class="headerSuperior" [ngStyle]="{'width': column.width +'px' }">
-                      </div>
-                      <div class="headerNormal">
-                        {{column.name}}
-                      </div>
-                    </ng-template>
-
-
-                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-                      <div class="cellText">
-                      <span class="linkSelectTable">
-                      </span>
-                      </div>
-                    </ng-template>
-
-                  </ngx-datatable-column>
-
 
                 </ngx-datatable>
 

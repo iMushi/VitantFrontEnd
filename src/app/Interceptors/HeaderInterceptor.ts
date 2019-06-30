@@ -66,6 +66,10 @@ export class HeaderInterceptor implements HttpInterceptor {
       const response = <HttpResponse<ResponseModel<Object>>>resp;
       const body = JSON.parse(req.body);
 
+      if (response.status === 200 && req.responseType === 'blob'){
+        return resp;
+      }
+
       if (response.body) {
         this._auth.updateToken(response.body.accessToken);
       }
@@ -74,6 +78,7 @@ export class HeaderInterceptor implements HttpInterceptor {
         return resp;
       }
       // servicio ejecutado correctamente, pero hubo error interno... alerta para todos los servicios en general
+
       if (response.status === 200 && response.body.status !== statusType.OK) {
         const mjs = `${response.body.status} - ${response.body.error}`;
         this.showModal(mjs);

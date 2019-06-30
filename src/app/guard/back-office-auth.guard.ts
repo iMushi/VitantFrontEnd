@@ -17,7 +17,7 @@ export class BackOfficeAuthGuard implements CanActivate {
 
     return this._auth.loggedInfo.do((user: LoginResponseModel) => {
       if (user === null || !this._auth.isAdmin) {
-        this.router.navigate(['/Vitant']);
+        this.router.navigate(['/Sign-out']);
       }
     }).map((user: LoginResponseModel) => !!user);
 

@@ -9,4 +9,5 @@ export interface LoginResponseModel {
   RegistrationDate: string;
   IdRole: number;
   Description: string;
+  ReferredPurchased: number;
 }

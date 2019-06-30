@@ -56,9 +56,10 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { pgDatePickerModule } from './@pages/components/datepicker/datepicker.module';
 import { pgSelectModule } from './@pages/components/select/select.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { defineLocale, esLocale } from 'ngx-bootstrap';
+import { BsModalService, defineLocale, esLocale, ModalModule } from 'ngx-bootstrap';
 import { BackOfficeService } from './services/back-office.service';
 import { BackOfficeAuthGuard } from './guard/back-office-auth.guard';
+import { EditContactComponent } from './back-office/edit-contact/edit-contact.component';
 
 
 defineLocale('es', esLocale);
@@ -99,7 +100,8 @@ export class AppHammerConfig extends HammerGestureConfig {
     InformacionComponent,
     LoginComponent,
     SignOutComponent,
-    BackOfficeComponent
+    BackOfficeComponent,
+    EditContactComponent,
   ],
   imports: [
     TextMaskModule,
@@ -115,6 +117,7 @@ export class AppHammerConfig extends HammerGestureConfig {
     pgCardModule,
     pgCardSocialModule,
     RouterModule.forRoot(AppRoutes),
+    ModalModule.forRoot(),
     pgTabsModule,
     PerfectScrollbarModule,
     pgSwitchModule,
@@ -122,6 +125,9 @@ export class AppHammerConfig extends HammerGestureConfig {
     pgSelectModule,
     pgDatePickerModule,
     NgxDatatableModule
+  ],
+  entryComponents: [
+    EditContactComponent
   ],
   providers: [pagesToggleService
     , SocialService
@@ -131,6 +137,7 @@ export class AppHammerConfig extends HammerGestureConfig {
     , AuthService
     , AuthGuard
     , BackOfficeAuthGuard
+    , BsModalService
     , {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

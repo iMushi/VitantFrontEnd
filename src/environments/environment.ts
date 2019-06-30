@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  useMockUps: true,
+  useMockUps: false,
   endpoint: 'http://localhost:8090',
   urlUserServices: '/api/user',
   urlBackOfficeServices: '/api/backOffice',
@@ -13,5 +13,8 @@ export const environment = {
   loginUser: '/login',
   getContacts: '/getContacts',
   registerContacts: '/registerContacts',
-  getRegByType: '/getRegByType'
+  getRegByType: '/getRegByType',
+  getDependants: '/getDependants',
+  saveEditDependants: '/saveEditDependants',
+  excelExport: '/excelExport'
 };

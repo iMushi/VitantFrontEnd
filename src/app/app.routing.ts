@@ -23,7 +23,7 @@ export const AppRoutes: Routes = [
     component: CondensedComponent,
     children: [{
       path: 'BackOffice',
-      canActivate: [BackOfficeAuthGuard],
+      // canActivate: [BackOfficeAuthGuard],
       data: {
         backOffice: true
       },

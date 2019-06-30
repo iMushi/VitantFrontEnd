@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  useMockUps: true,
+  useMockUps: false,
   endpoint: 'http://localhost:8090',
   urlUserServices: '/api/user',
   urlBackOfficeServices: '/api/backOffice',

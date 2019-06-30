@@ -93,6 +93,8 @@ export class RootLayout implements OnInit, OnDestroy {
 
         if (this._backOffice) {
           pg.addClass(document.body, 'backOffice');
+        } else{
+          pg.removeClass(document.body, 'backOffice');
         }
 
       }
