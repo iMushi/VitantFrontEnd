@@ -269,6 +269,7 @@ body {
 
  */
 
+
 .hoverCard:before {
   content: '';
   position: absolute;
@@ -283,7 +284,7 @@ body {
 }
 
 .smallBanner {
-  background-color: rgb(59, 12, 83);
+  background-color: $color-morado; // rgb(59, 12, 83);
 }
 
 .social-wrapper .social .smallBanner .titleContainer {
@@ -331,12 +332,21 @@ body {
 
 
 /** Small Banner Social Page **/
-@media (max-width: 991px) {
+@media (min-width: 991px) {
+  .maxSizes{
+    max-height: 300px;
+    min-height: 300px;
+  }
 
+  .vitantImgCard .vitantImgCardContainer img {
+    max-width: 458px !important;
+  }
+}
+
+@media (max-width: 991px) {
   .smallBannerWithHeader {
     top: 60px;
   }
-
 }
 
 @media (max-width: 767px) {
