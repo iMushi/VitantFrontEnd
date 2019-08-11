@@ -107,6 +107,9 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
     window.open(`${this.baseUrl}/static/Brochure_Digital_2.8MB.pdf`, '_blank');
   }
 
+  openInformacion() {
+    this._router.navigate(['/Informacion']);
+  }
 
 
   ngAfterViewInit (): void {

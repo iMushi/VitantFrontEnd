@@ -64,7 +64,7 @@
                     AdditionalClasses="widgetConoceMas card no-border no-margin widget-loader-bar full-height"
                     Controls="false"
                     BodyClass="no-padding" HeaderClass="hidden">
-              <swiper [config]="configLiveWidgetDesarrollo" [(index)]="indexWidgetDesarrollo" (swiperClick)="downloadBrochure()" (swiperTap)="downloadBrochure()">
+              <swiper [config]="configLiveWidgetDesarrollo" [(index)]="indexWidgetDesarrollo" (swiperClick)="openInformacion()" (swiperTap)="openInformacion()">
                 <div class="slide-front tiles slide active">
 
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
@@ -78,7 +78,6 @@
                     <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">CONOCE M&Aacute;S</span>
 
                   </div>
-
 
                 </div>
                 <div class="slide-back tiles tilesVerDesarrollo">
