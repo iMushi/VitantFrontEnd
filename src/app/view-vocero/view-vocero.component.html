@@ -26,7 +26,7 @@
                     AdditionalClasses="widgetRegContactos card no-border no-margin widget-loader-bar full-height"
                     Controls="false"
                     BodyClass="no-padding" HeaderClass="hidden">
-              <swiper [config]="configLiveWidgetRegContactos" [(index)]="indexWidgetRegContactos">
+              <swiper [config]="configLiveWidgetRegContactos" [(index)]="indexWidgetRegContactos" (swiperClick)="registerContact()" (swiperTap)="registerContact()">
                 <div class="slide-front tiles slide active">
 
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
@@ -37,16 +37,18 @@
                         Vitant.
                       </h4>
                     </div>
-
-                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;" [routerLink]="'/Registro-contacto'">REGISTRA A TUS CONTACTOS</span>
-
+                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">
+                      <a [routerLink]="'/Registro-contacto'">REGISTRA A TUS CONTACTOS</a>
+                    </span>
                   </div>
 
                 </div>
                 <div class="slide-back tiles tilesRegistrarContacto">
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
                     <h4 class="text-white hint-text d-xl-block" style="max-width: 90%;flex-basis: 60%;">&nbsp;</h4>
-                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;" [routerLink]="'/Registro-contacto'">REGISTRA A TUS CONTACTOS</span>
+                    <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">
+                      <a [routerLink]="'/Registro-contacto'">REGISTRA A TUS CONTACTOS</a>
+                    </span>
                   </div>
                 </div>
               </swiper>
@@ -62,7 +64,7 @@
                     AdditionalClasses="widgetConoceMas card no-border no-margin widget-loader-bar full-height"
                     Controls="false"
                     BodyClass="no-padding" HeaderClass="hidden">
-              <swiper [config]="configLiveWidgetDesarrollo" [(index)]="indexWidgetDesarrollo">
+              <swiper [config]="configLiveWidgetDesarrollo" [(index)]="indexWidgetDesarrollo" (swiperClick)="downloadBrochure()" (swiperTap)="downloadBrochure()">
                 <div class="slide-front tiles slide active">
 
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
@@ -101,26 +103,23 @@
               AdditionalClasses="widgetDescargaBrochure card no-border widget widget-loader-circle-lg no-margin full-height"
               Controls="false" BodyClass="no-padding" HeaderClass="hidden">
 
-
-              <swiper [config]="configLiveWidgetBrochure" [(index)]="indexWidgetBrochure">
+              <swiper [config]="configLiveWidgetBrochure" [(index)]="indexWidgetBrochure" (swiperClick)="downloadBrochure()" (swiperTap)="downloadBrochure()">
                 <div class="slide-front tiles slide active">
 
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
                     <div class="" style="max-width: 90%;flex-basis: 60%; display: flex;align-items: center">
                     </div>
                     <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">
-                      <a href="http://localhost:8090/static/Brochure_Digital_2.8MB.pdf" target="_blank">DESCARGA BROCHURE</a>
+                      <a href="{{baseUrl}}/static/Brochure_Digital_2.8MB.pdf" target="_blank">DESCARGA BROCHURE</a>
                     </span>
                   </div>
                 </div>
-
-
 
                 <div class="slide-back tiles tilesBrochure">
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
                     <h4 class="text-white hint-text d-xl-block" style="max-width: 90%;flex-basis: 60%;">&nbsp;</h4>
                     <span class="label font-montserrat fs-11 pointer" style="flex-basis: 16px;max-width: 90%;">
-                      <a href="http://localhost:8090/static/Brochure_Digital_2.8MB.pdf" target="_blank">DESCARGA BROCHURE</a>
+                      <a href="{{baseUrl}}/static/Brochure_Digital_2.8MB.pdf" target="_blank">DESCARGA BROCHURE</a>
                     </span>
                   </div>
                 </div>
@@ -138,7 +137,7 @@
                     AdditionalClasses="widgetContactoRegistrado card no-border no-margin widget-loader-bar full-height"
                     Controls="false"
                     BodyClass="no-padding" HeaderClass="hidden">
-              <swiper [config]="configLiveWidgetContactos" [(index)]="indexWidgetContactos" *ngIf="contacts.length">
+              <swiper [config]="configLiveWidgetContactos" [(index)]="indexWidgetContactos" *ngIf="contacts.length"  (swiperClick)="openContacts()" (swiperTap)="openContacts()" >
                 <div class="slide-front tiles slide active tilesMisContactos">
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
                     <h4 class="text-white hint-text d-xl-block" style="max-width: 90%;flex-basis: 60%;">&nbsp;</h4>
@@ -163,7 +162,7 @@
                 </div>
               </swiper>
 
-              <swiper [config]="configLiveWidgetContactos" [(index)]="indexWidgetContactos" *ngIf="!contacts.length">
+              <swiper [config]="configLiveWidgetContactos" [(index)]="indexWidgetContactos" *ngIf="!contacts.length" (swiperClick)="registerContact()" (swiperTap)="registerContact()">
                 <div class="slide-front tiles slide active">
                   <div class="" style="display: flex;flex-direction: column;height: 100%;justify-content: space-evenly;align-items: center;text-align: center;">
                     <div class="" style="max-width: 90%;flex-basis: 60%; display: flex;align-items: center">

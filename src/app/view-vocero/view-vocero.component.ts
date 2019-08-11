@@ -5,6 +5,8 @@ import { ContactModel } from '../models/contact.model';
 import { RegisterService } from '../services/register.service';
 import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from '../models/LoginResponse.model';
+import { environment as env } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-vocero',
@@ -42,8 +44,10 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
   contacts: Array<ContactModel> = [];
   voceroInfo: LoginResponseModel;
 
+  baseUrl = env.endpoint;
+
   constructor (public _togglerService: pagesToggleService, private _registerService: RegisterService,
-               private _auth: AuthService) {
+               private _auth: AuthService, private _router: Router) {
   }
 
 
@@ -90,6 +94,20 @@ export class ViewVoceroComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
   }
+
+  registerContact(){
+    this._router.navigate(['/Registro-contacto']);
+  }
+
+  openContacts(){
+    this._router.navigate(['/Contactos']);
+  }
+
+  downloadBrochure() {
+    window.open(`${this.baseUrl}/static/Brochure_Digital_2.8MB.pdf`, '_blank');
+  }
+
+
 
   ngAfterViewInit (): void {
     setTimeout(() => {
