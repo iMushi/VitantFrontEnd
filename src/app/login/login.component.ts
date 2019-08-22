@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   mask = {
     telephone: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
     name: Array(50).fill(/^[a-zA-Z\s]*$/),
-    password: Array(50).fill(/^[a-zA-Z\s.1-9]*$/),
+    password: Array(50).fill(/^[a-zA-Z\s.0-9!]*$/),
     emailMask: emailMask
   };
 
